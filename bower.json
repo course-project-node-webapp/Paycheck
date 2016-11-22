@@ -1,0 +1,17 @@
+{
+  "name": "paycheck",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "\"\""
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
