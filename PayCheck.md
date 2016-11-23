@@ -19,7 +19,7 @@
 # Project
     - General info ( name, description, etc)
     - Manager
-    - Employee 
+    - Employees 
         - Hours worked
         - Tasks completed
     - Tasks
