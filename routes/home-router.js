@@ -5,6 +5,7 @@ module.exports = function (app) {
   const homeRouter = new express.Router();
 
   homeRouter.get('/', homeController.index);
+  homeRouter.get('/latest', homeController.latest);
 
   app.use('/', homeRouter);
 };
