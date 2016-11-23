@@ -8,7 +8,7 @@ const config = require('./config/config')[env];
 
 require('./config/express')(config, app);
 require('./config/database')(config);
-require('./config/routes')(app);
 require('./config/passport')();
+require('./routes')(app);
 
 app.listen(config.port);

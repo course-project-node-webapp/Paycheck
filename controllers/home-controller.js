@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = {
-    index: (req,res) => {
-        res.render('index');
-    },
-}
+    index: (req, res) => {
+        res
+            .status(200)
+            .render('index');
+    }
+};
