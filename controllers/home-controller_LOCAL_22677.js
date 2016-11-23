@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    index: (req,res) => {
+    index: (req, res) => {
         res.render('home/index');
     },
 }
