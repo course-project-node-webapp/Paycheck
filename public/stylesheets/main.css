@@ -26,6 +26,7 @@ body {
         text-transform: capitalize;
         border-radius: 15px;
         margin-top: 10px;
+        font-weight: bold;
     }
 
     #header a.btn.left-btn {
