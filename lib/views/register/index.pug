@@ -1,0 +1,29 @@
+extends ../shared/_layout
+
+block stylesheets
+  link(rel="stylesheet" href="/bower_components/toastr/toastr.css")
+
+block content
+  #register-form
+    div.container
+      div.row
+        div.panel.panel-primary.col-xl-6.col-xl-offset-3
+          div.panel-heading
+            h2 Register
+          div.panel-body
+            label Username:
+              input#tb-username(type="text" placeholder="Username")
+            label Password:
+              input#tb-password(type="password" placeholder="Password")
+            label First Name:
+              input#tb-first-name(type="text" placeholder="First Name")
+            label Last Name: 
+              input#tb-last-name(type="text" placeholder="Last Name")
+          div.panel-footer
+            div.row
+              button.col-xl-4.col-xl-offset-4.btn.btn-success#btn-register(type="button") Register
+
+block javascript
+  script(src="bower_components/crypto-js/crypto-js.js")
+  script(src="bower_components/toastr/toastr.js")
+  script(src="javascripts/register.js")  
