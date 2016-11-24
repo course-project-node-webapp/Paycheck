@@ -1,6 +1,6 @@
 'use strict';
 
-const controllers = require('../controllers');
+const controllers = require('../lib/controllers');
 
 module.exports = function(app) {
     app.get('/', controllers.home.index);

@@ -9,6 +9,6 @@ const config = require('./config/config')[env];
 require('./config/express')(config, app);
 require('./config/database')(config);
 require('./config/passport')();
-require('./routes')(app);
+require('./lib/routes')(app);
 
 app.listen(config.port, () => console.log(`Server running on port: ${config.port}`));
