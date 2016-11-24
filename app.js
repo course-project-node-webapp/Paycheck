@@ -10,4 +10,6 @@ require('./config/database')(config);
 require('./config/passport')(models.User);
 require('./lib/routes')(app, data);
 
-app.listen(config.port, () => console.log(`Server running on port: ${config.port}`));
+app.listen(config.port, () => {
+  console.log(`Server running on port: ${config.port}`);
+});
