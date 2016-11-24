@@ -12,7 +12,6 @@
       username: usernameTb.val(),
       password: CryptoJS.SHA256(password).toString()
     };
-    console.log(user);
 
     $.ajax({
         url: '/login',
