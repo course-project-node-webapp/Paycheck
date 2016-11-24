@@ -8,7 +8,6 @@
   const btnRegister = content.find('#btn-register');
 
   // TODO: VALIDATION
-
   btnRegister.on('click', (ev) => {
     const user = getUserFromInput();
     createRequest('PUT', user);
