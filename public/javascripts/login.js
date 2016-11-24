@@ -1,5 +1,4 @@
 /* globals $ CryptoJS toastr window Promise */
-
 (() => {
   const MIN_NAME_LENGTH = 5;
   const MAX_NAME_LENGTH = 30;
@@ -8,18 +7,6 @@
   const tbUsername = content.find('#username-tb');
   const tbPassword = content.find('#password-tb');
   const btnSubmit = content.find('#btn-submit');
-  const btnRegister = content.find('#btn-register');
-
-  // TODO: VALIDATION
-  btnRegister.on('click', () => {
-    return getUserFromInput()
-      .then((user) => {
-        return createRequest('PUT', user);
-      })
-      .catch(() => {
-        toastr.error('Registration unsuccessful, please try again.');
-      });
-  });
 
   btnSubmit.on('click', (ev) => {
     return getUserFromInput()
