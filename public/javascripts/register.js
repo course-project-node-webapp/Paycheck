@@ -1,6 +1,9 @@
-/* globals $ toastr CryptoJS window */
+/* globals $ toastr CryptoJS window Promise */
 'use strict';
 (() => {
+  const MIN_NAME_LENGTH = 5;
+  const MAX_NAME_LENGTH = 30;
+
   const registerForm = $('#register-form');
   const tbUsername = registerForm.find('#tb-username');
   const tbPassword = registerForm.find('#tb-password');
@@ -8,30 +11,59 @@
   const tbLastName = registerForm.find('#tb-last-name');
   const btnRegister = registerForm.find('#btn-register');
 
-  // TODO: Validation
   btnRegister.on('click', () => {
-    const user = {
-      username: tbUsername.val(),
-      password: CryptoJS.SHA256(tbPassword.val()).toString(),
-      firstName: tbFirstName.val(),
-      lastName: tbLastName.val()
-    };
+    return Promise.resolve()
+      .then(() => {
+        const password = tbPassword.val();
+        const user = {
+          username: tbUsername.val(),
+          password: CryptoJS.SHA256(password).toString(),
+          firstName: tbFirstName.val(),
+          lastName: tbLastName.val()
+        };
 
-    $.ajax({
-        url: '/register',
-        method: 'PUT',
-        contentType: 'application/json',
-        data: JSON.stringify(user)
-      })
-      .done((res) => {
-        toastr.success(res.message);
+        validateString(user.username);
+        validateString(password);
+        validateString(user.firstName);
+        validateString(user.lastName);
 
-        setTimeout(() => {
-          window.location = res.redirectUrl;
-        }, 1500);
+        return user;
       })
-      .fail((err) => {
+      .then((user) => {
+        $.ajax({
+            url: '/register',
+            method: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(user)
+          })
+          .done((res) => {
+            toastr.success(res.message);
+
+            setTimeout(() => {
+              window.location = res.redirectUrl;
+            }, 1500);
+          })
+          .fail((err) => {
+            toastr.error(err.message);
+          });
+      })
+      .catch((err) => {
         toastr.error(err.message);
       });
   });
+
+  function validateString(value) {
+    if (typeof value !== 'string') {
+      throw new Error('Value must be a string');
+    }
+
+    const len = value.length;
+    if (!(MIN_NAME_LENGTH <= len && len <= MAX_NAME_LENGTH)) {
+      throw new Error('Invalid value length');
+    }
+
+    if (!/[A-Za-z\.-_]/.test(value)) {
+      throw new Error('Only latin letters dashes and dots allowed');
+    }
+  }
 })();

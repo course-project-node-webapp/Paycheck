@@ -8,7 +8,7 @@
   const tbPassword = content.find('#password-tb');
   const btnSubmit = content.find('#btn-submit');
 
-  btnSubmit.on('click', (ev) => {
+  btnSubmit.on('click', () => {
     return getUserFromInput()
       .then((user) => {
         return createRequest('POST', user);
