@@ -1,5 +1,21 @@
-extends ../shared/_layout
-
-block content
-    h1 Hello!
-    a(href="http://www.google.com") Click me
+doctype
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+        link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css")
+        link(rel="stylesheet" href="/stylesheets/material-kit.css")
+        link(rel="styleshet" href="/stylesheets/home.css")
+    body
+        include ../shared/_header.pug
+        .homepage-hero-module
+            .video-container
+                video.home-video.fillWidth(autoplay loop)
+                    source(src="/assets/media/MP4/Office-Day.mp4" type="video/mp4")
+                    source(src="/assets/media/MP4/Office-Day.webm" type="video/webm")
+                .poster.hidden
+                    img(src="assets/media/SnapShots/Office-Day.jpg" alt="poster-img")
+    script(src="/bower_components/jquery/dist/jquery.min.js")
+    script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+    script(src="/javascripts/home.js")

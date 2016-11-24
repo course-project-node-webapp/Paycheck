@@ -2,15 +2,19 @@ doctype
 html(lang="en")
     head
         meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
         title Home
-        link(href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet")
-        link(href="/stylesheets/main.css" rel="stylesheet")
+        link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css")
+        link(rel="stylesheet" href="/stylesheets/material-kit.css")
+        link(rel="stylesheet" href="/stylesheets/main.css")
+
     body
-        #header
+        include _header.pug
         .container
             .row.row-centered
                 #content.col-sm-12.col-xs-12.col-md-12.col-lg-12.col-centered
                     block content
-        #footer
+        include _footer.pug
         script(src="/bower_components/jquery/dist/jquery.min.js")
         script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
