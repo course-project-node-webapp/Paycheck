@@ -1,14 +1,15 @@
 'use strict';
-
-const express = require('express');
-const app = express();
-
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config')[env];
 
-require('./config/express')(config, app);
-require('./config/database')(config);
-require('./config/passport')();
-require('./lib/routes')(app);
+const app = require('./config/express')(config);
+const models = require('./lib/models')();
+const data = require('./data')(models);
 
-app.listen(config.port, () => console.log(`Server running on port: ${config.port}`));
+require('./config/database')(config);
+require('./config/passport')(models.User);
+require('./lib/routes')(app, data);
+
+app.listen(config.port, () => {
+  console.log(`Server running on port: ${config.port}`);
+});
