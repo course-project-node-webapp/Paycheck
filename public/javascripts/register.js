@@ -15,7 +15,6 @@
     return Promise.resolve()
       .then(() => {
         const password = tbPassword.val();
-        validateString(password);
         const user = {
           username: tbUsername.val(),
           password: CryptoJS.SHA256(password).toString(),
@@ -24,6 +23,7 @@
         };
 
         validateString(user.username);
+        validateString(password);
         validateString(user.firstName);
         validateString(user.lastName);
 
