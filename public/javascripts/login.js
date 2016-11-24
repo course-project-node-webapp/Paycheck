@@ -1,4 +1,4 @@
-/* globals $ CryptoJS toastr */
+/* globals $ CryptoJS toastr window */
 
 (() => {
   const content = $('#login-form');
@@ -20,8 +20,13 @@
         data: JSON.stringify(user)
       })
       .done((res) => {
+        toastr.success(res.message);
+        setTimeout(() => {
+          window.location = res.redirectUrl;
+        }, 1000);
       })
-      .fail((err) => {
+      .fail(() => {
+        toastr.error('Incorrect username or password.');
       });
   });
 })();
