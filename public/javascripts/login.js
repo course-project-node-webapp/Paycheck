@@ -2,14 +2,14 @@
 
 (() => {
   const content = $('#login-form');
-  const usernameTb = content.find('#username-tb');
-  const passwordTb = content.find('#password-tb');
+  const tbUsername = content.find('#username-tb');
+  const tbPassword = content.find('#password-tb');
   const btnSubmit = content.find('#btn-submit');
 
   btnSubmit.on('click', (ev) => {
-    const password = passwordTb.val();
+    const password = tbPassword.val();
     const user = {
-      username: usernameTb.val(),
+      username: tbUsername.val(),
       password: CryptoJS.SHA256(password).toString()
     };
 
