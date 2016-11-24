@@ -17,10 +17,10 @@ module.exports = function (models) {
         });
       });
     },
-    getUserByUsername(username){
+    getUserByUsername(username) {
       return new Promise((resolve, reject) => {
         User.findOne({
-          username
+          username: username
         }, (err, user) => {
           if (err) {
             return reject(err);
