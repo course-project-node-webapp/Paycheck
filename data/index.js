@@ -1,5 +1,7 @@
 const userData = require('./user-data');
 
-module.exports = {
-  userData
+module.exports = function () {
+  return {
+    userData
+  };
 };

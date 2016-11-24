@@ -6,7 +6,9 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 
-module.exports = function (config, app) {
+module.exports = function (config) {
+  const app = express();
+
   app.set('view engine', 'pug');
   app.set('views', config.rootPath + 'lib/views');
 
@@ -30,4 +32,6 @@ module.exports = function (config, app) {
     next();
   });
   app.use(express.static(config.rootPath + 'public'));
+
+  return app;
 };

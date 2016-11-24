@@ -1,13 +1,10 @@
 'use strict';
-
-const express = require('express');
-const app = express();
-
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config')[env];
 
-const models = require('./lib/models');
-const data = require('./data');
+const app = require('./config/express')();
+const models = require('./lib/models')();
+const data = require('./data')();
 
 require('./config/express')(config, app);
 require('./config/database')(config);
