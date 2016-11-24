@@ -15,6 +15,13 @@ function latest(req, res) {
 }
 
 module.exports = {
+<<<<<<<
   index,
   latest
 };
+=======
+    index: (req,res) => {
+        res.render('home/index');
+    },
+}
+>>>>>>>
