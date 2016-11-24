@@ -98,3 +98,4 @@
     "no-undefined": 2, // disallow use of undefined variable (off by default)
     "no-unused-vars": 1 // disallow declaration of variables that are not used in the code
   }
+}
