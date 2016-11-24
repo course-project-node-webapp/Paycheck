@@ -1,3 +1,5 @@
+/* globals process */
+
 'use strict';
 
 const path = require('path');
@@ -16,4 +18,4 @@ module.exports = {
         connectionString: process.env.CONNECTION_STRING,
         port: process.env.PORT
     }
-}
+};
