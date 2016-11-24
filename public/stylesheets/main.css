@@ -17,6 +17,30 @@ body {
     height: auto!important;
 }
 
+#header a {
+    font-size: 1.5rem;
+}
+
+@media screen and (min-device-width: 770px) {
+    #header a.btn {
+        text-transform: capitalize;
+        border-radius: 15px;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    #header a.btn.left-btn {
+        margin-right: 10px;
+        background-color: #AFD2EF;
+        color: #282828;
+    }
+
+    #header a.btn.right-btn {
+        background-color: #0056A7;
+    }
+}
+
 #header img.navbar-logo {
     height: 120%;
+    margin-right: 1em;
 }
