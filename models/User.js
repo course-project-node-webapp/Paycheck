@@ -43,5 +43,5 @@ userSchema.statics.getUser = (user) => {
     });
 };
 mongoose.model('User', userSchema);
-userSchema = mongoose.model('User');
+User = mongoose.model('User');
 module.exports = mongoose.model('User');
