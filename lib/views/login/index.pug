@@ -1,7 +1,22 @@
 extends ../shared/_layout
 
-block content
-  div.input-group
-    span.input-group-addon#basic-addon1 @
-    input.form-control(type="text" placeholder="Username" aria-describedby="basic-addon1")
+block stylesheets
+  link(rel="stylesheet" href="/bower_components/toastr/toastr.css")
 
+
+block content
+  #login-form
+    div.input-group
+      span.input-group-addon#basic-addon1 @
+      input.form-control#username-tb(type="text" placeholder="Username" aria-describedby="basic-addon1")
+    div.input-group
+      span.input-group-addon#basic-addon2 @
+      input.form-control#password-tb(type="password" placeholder="Password" aria-describedby="basic-addon2")
+    button#btn-submit(type="button") Submit
+
+block javascript
+  script(src="javascripts/login.js")
+  script(src="bower_components/crypto-js/crypto-js.js")
+  script(src="bower_components/toastr/toastr.js")
+  
+  

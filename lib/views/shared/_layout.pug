@@ -8,7 +8,8 @@ html(lang="en")
         link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css")
         link(rel="stylesheet" href="/stylesheets/material-kit.css")
         link(rel="stylesheet" href="/stylesheets/main.css")
-
+        block stylesheets
+        
     body
         include _header.pug
         .container
@@ -18,3 +19,4 @@ html(lang="en")
         include _footer.pug
         script(src="/bower_components/jquery/dist/jquery.min.js")
         script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+        block javascript

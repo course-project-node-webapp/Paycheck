@@ -1,38 +1,45 @@
 'use strict';
 
 const passport = require('passport');
-const LocalPassport = require('passport-local');
+const LocalStrategy = require('passport-local');
 
-module.exports = function (User) {
-  const local = new LocalPassport({
+module.exports = function (userData) {
+  const localStrategy = new LocalStrategy({
     username: 'username',
     password: 'password'
   }, (username, password, done) => {
-    User
-      .findOne({
-        username: username
-      })
+    userData
+      .getUserByUsername(username)
       .then(user => {
-        // TODO:
-      }).catch(err => done(err, false));
-
+        done(null, user);
+      })
+      .catch(err => {
+        done(err, false);
+      });
   });
 
   passport.serializeUser((user, done) => {
     if (user) {
       return done(null, user._id);
     }
+
+    return done(null, null);
   });
 
   passport.deserializeUser((id, done) => {
-    User
-      .findById(id)
+    userData
+      .getUserById(id)
       .then(user => {
         if (!user) {
           return done(null, false);
         } else {
           return done(null, user);
         }
-      }).catch(err => done(err, false));
+      })
+      .catch(err => {
+        done(err, false);
+      });
   });
+
+  passport.use(localStrategy);
 };
