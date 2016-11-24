@@ -40,7 +40,7 @@
         toastr.success(res.message);
         setTimeout(() => {
           window.location = res.redirectUrl;
-        }, 1000);
+        }, 1500);
       })
       .fail(() => {
         toastr.error('Incorrect username or password.');
