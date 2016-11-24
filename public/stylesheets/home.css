@@ -1,6 +1,5 @@
 .homepage-hero-module {
-    border-right: none;
-    border-left: none;
+    border: none;
     position: relative;
 }
 
