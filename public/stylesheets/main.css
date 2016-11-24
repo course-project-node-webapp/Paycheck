@@ -38,6 +38,12 @@ body {
     #header a.btn.right-btn {
         background-color: #0056A7;
     }
+
+    #header .nav-btn {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
 }
 
 #header img.navbar-logo {
