@@ -1,5 +1,6 @@
 'use strict';
 
+const constants = require('../config/constants');
 const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
@@ -10,8 +11,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    firstName: String,
-    lastName: String,
+    firstName: {
+        type: String,
+        required: true,
+        min: constants.nameMinLength,
+        max: constants.nameMaxLength
+    },
+    lastName: {
+        type: String,
+        required: true,
+        min: constants.nameMinLength,
+        max: constants.nameMaxLength
+    },
     salt: String,
     hashedPassword: String
 });
@@ -32,5 +43,5 @@ userSchema.statics.getUser = (user) => {
     });
 };
 mongoose.model('User', userSchema);
-User = mongoose.model('User');
+userSchema = mongoose.model('User');
 module.exports = mongoose.model('User');
