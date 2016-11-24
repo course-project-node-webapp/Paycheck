@@ -1,7 +1,9 @@
 'use strict';
 
-const User = require('./User');
+const User = require('./user');
 
 module.exports = {
-    User
+    getUser(user) {
+        return User.getUser(user);
+    }
 };
