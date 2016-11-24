@@ -10,9 +10,9 @@ body,
 }
 
 body {
-    /*background-image: url('../assets/images/background-patterns/cubes_@2X.png');*/
+    background-image: url('../assets/images/background-patterns/cubes.png');
     /*background-image: url('../assets/images/background-patterns/brushed_alu_@2X.png');*/
-    background-image: url('../assets/images/background-patterns/escheresque_@2X.png');
+    /*background-image: url('../assets/images/background-patterns/escheresque_@2X.png');*/
     background-repeat: repeat;
     background-color: #FFF;
     height: auto;

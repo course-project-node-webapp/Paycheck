@@ -1,5 +1,3 @@
-/* globals process */
-
 'use strict';
 
 const path = require('path');
