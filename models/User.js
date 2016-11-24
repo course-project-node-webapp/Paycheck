@@ -1,9 +1,11 @@
 'use strict';
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
 const encryptor = require('../utilities/encryptor');
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         unique: true
@@ -30,5 +32,5 @@ userSchema.statics.getUser = (user) => {
     });
 };
 mongoose.model('User', userSchema);
-userSchema = mongoose.model('User');
+User = mongoose.model('User');
 module.exports = mongoose.model('User');
