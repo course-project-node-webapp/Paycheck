@@ -1,6 +1,6 @@
-const userData = require('./user-data');
+module.exports = function (models) {
+  const userData = require('./user-data')(models);
 
-module.exports = function () {
   return {
     userData
   };

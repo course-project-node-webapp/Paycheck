@@ -2,11 +2,10 @@
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config')[env];
 
-const app = require('./config/express')();
+const app = require('./config/express')(config);
 const models = require('./lib/models')();
-const data = require('./data')();
+const data = require('./data')(models);
 
-require('./config/express')(config, app);
 require('./config/database')(config);
 require('./config/passport')(models.User);
 require('./lib/routes')(app, data);
