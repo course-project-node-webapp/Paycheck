@@ -6,9 +6,11 @@ const app = express();
 const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config')[env];
 
+const models = require('./lib/models');
+
 require('./config/express')(config, app);
 require('./config/database')(config);
-require('./config/passport')();
+require('./config/passport')(models.User);
 require('./lib/routes')(app);
 
 app.listen(config.port, () => console.log(`Server running on port: ${config.port}`));

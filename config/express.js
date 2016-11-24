@@ -11,6 +11,7 @@ module.exports = function (config, app) {
   app.set('views', config.rootPath + 'lib/views');
 
   app.use(cookieParser());
+  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true
   }));
