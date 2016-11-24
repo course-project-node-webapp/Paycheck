@@ -4,7 +4,10 @@ const mongoose = require('mongoose');
 const encryptor = require('../utilities/encryptor');
 
 const userSchema = mongoose.Schema({
-    username: { type: String, unique: true },
+    username: {
+        type: String,
+        unique: true
+    },
     firstName: String,
     lastName: String,
     salt: String,
@@ -12,16 +15,20 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.method({
-    authenticate: function(password) {
+    authenticate: function (password) {
         let inputHashedPassword = encryptor.generateHashedPassword(this.salt, password);
         return inputHashedPassword === this.hashedPassword;
     }
 });
 
-const User = mongoose.model('User', userSchema);
-
-new User({
-    username: 'gosho'
-}).save();
-
-module.exports.User = User;
+let User;
+userSchema.statics.getUser = (user) => {
+    return new User({
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName
+    });
+};
+mongoose.model('User', userSchema);
+userSchema = mongoose.model('User');
+module.exports = mongoose.model('User');
