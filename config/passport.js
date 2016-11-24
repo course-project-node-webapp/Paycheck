@@ -14,8 +14,10 @@ module.exports = function (User) {
       })
       .then(user => {
         // TODO:
-      }).catch(err => done(err, false));
-
+      })
+      .catch(err => {
+        done(err, false);
+      });
   });
 
   passport.serializeUser((user, done) => {
