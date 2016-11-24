@@ -1,29 +1,48 @@
-/* globals $ CryptoJS toastr Promise*/
+/* globals $ CryptoJS toastr window */
 
 (() => {
   const content = $('#login-form');
-  const usernameTb = content.find('#username-tb');
-  const passwordTb = content.find('#password-tb');
+  const tbUsername = content.find('#username-tb');
+  const tbPassword = content.find('#password-tb');
   const btnSubmit = content.find('#btn-submit');
+  const btnRegister = content.find('#btn-register');
+
+  // TODO: VALIDATION
+  btnRegister.on('click', (ev) => {
+    const user = getUserFromInput();
+    createRequest('PUT', user);
+  });
 
   btnSubmit.on('click', (ev) => {
-    const password = passwordTb.val();
+    const user = getUserFromInput();
+    createRequest('POST', user);
+  });
+
+  function getUserFromInput() {
+    const password = tbPassword.val();
     const user = {
-      username: usernameTb.val(),
+      username: tbUsername.val(),
       password: CryptoJS.SHA256(password).toString()
     };
 
+    return user;
+  }
+
+  function createRequest(method, user) {
     $.ajax({
         url: '/login',
-        method: 'POST',
+        method: method,
         contentType: 'application/json',
         data: JSON.stringify(user)
       })
       .done((res) => {
-        toastr.success(res);
+        toastr.success(res.message);
+        setTimeout(() => {
+          window.location = res.redirectUrl;
+        }, 1500);
       })
-      .fail((err) => {
-        toastr.error(err);
+      .fail(() => {
+        toastr.error('Incorrect username or password.');
       });
-  });
+  }
 })();
