@@ -11,10 +11,24 @@ module.exports = function (userData) {
     userData
       .getUserByUsername(username)
       .then(user => {
-        done(null, user);
+        if (user) {
+          return {
+            authenticated: user.authenticate(password),
+            user
+          };
+        }
+
+        return done(null, false);
+      })
+      .then((result) => {
+        if (result.authenticated) {
+          return done(null, result.user);
+        }
+
+        return done(null, false);
       })
       .catch(err => {
-        done(err, false);
+        return done(err, false);
       });
   });
 
@@ -32,9 +46,9 @@ module.exports = function (userData) {
       .then(user => {
         if (!user) {
           return done(null, false);
-        } else {
-          return done(null, user);
         }
+
+        return done(null, user);
       })
       .catch(err => {
         done(err, false);
