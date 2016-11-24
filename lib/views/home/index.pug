@@ -6,16 +6,18 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
         link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css")
         link(rel="stylesheet" href="/stylesheets/material-kit.css")
-        link(rel="styleshet" href="/stylesheets/home.css")
+        link(rel="stylesheet" href="/stylesheets/main.css")
+        link(rel="stylesheet" href="/stylesheets/home.css")
     body
         include ../shared/_header.pug
         .homepage-hero-module
             .video-container
                 video.home-video.fillWidth(autoplay loop)
-                    source(src="/assets/media/MP4/Office-Day.mp4" type="video/mp4")
-                    source(src="/assets/media/MP4/Office-Day.webm" type="video/webm")
+                    source(src="/assets/media/mp4/We-Work-We-Wait.mp4" type="video/mp4")
+                    source(src="/assets/media/webm/We-Work-We-Wait.webm" type="video/webm")
+                    source(src="/assets/media/ogv/We-Work-We-Wait.ogv" type="video/ogv")
                 .poster.hidden
-                    img(src="assets/media/SnapShots/Office-Day.jpg" alt="poster-img")
+                    img(src="assets/media/snapshots/We-Work-We-Wait.jpg" alt="poster-img")
     script(src="/bower_components/jquery/dist/jquery.min.js")
     script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
     script(src="/javascripts/home.js")
