@@ -5,17 +5,34 @@
   const tbUsername = content.find('#username-tb');
   const tbPassword = content.find('#password-tb');
   const btnSubmit = content.find('#btn-submit');
+  const btnRegister = content.find('#btn-register');
+
+  // TODO: VALIDATION
+
+  btnRegister.on('click', (ev) => {
+    const user = getUserFromInput();
+    createRequest('PUT', user);
+  });
 
   btnSubmit.on('click', (ev) => {
+    const user = getUserFromInput();
+    createRequest('POST', user);
+  });
+
+  function getUserFromInput() {
     const password = tbPassword.val();
     const user = {
       username: tbUsername.val(),
       password: CryptoJS.SHA256(password).toString()
     };
 
+    return user;
+  }
+
+  function createRequest(method, user) {
     $.ajax({
         url: '/login',
-        method: 'POST',
+        method: method,
         contentType: 'application/json',
         data: JSON.stringify(user)
       })
@@ -28,5 +45,5 @@
       .fail(() => {
         toastr.error('Incorrect username or password.');
       });
-  });
+  }
 })();

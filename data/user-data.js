@@ -44,7 +44,7 @@ module.exports = function (models) {
       });
     },
     createUser(user) {
-      let userModel = models.getUser(user);
+      let userModel = User.getUser(user);
 
       return new Promise((resolve, reject) => {
         userModel.save(err => {
