@@ -1,4 +1,4 @@
-/* globals $ CryptoJS toastr Promise*/
+/* globals $ CryptoJS toastr */
 
 (() => {
   const content = $('#login-form');
