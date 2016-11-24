@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "nodemon": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
