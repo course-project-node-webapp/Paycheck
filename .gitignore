@@ -30,7 +30,7 @@ build/Release
 node_modules
 bower_components
 jspm_packages
-typings 
+typings/
 
 # Optional npm cache directory
 .npm
