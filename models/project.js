@@ -28,5 +28,5 @@ projectSchema.statics.getProject = (project) => {
     });
 };
 mongoose.model('Project', projectSchema);
-projectSchema = mongoose.model('Project');
+Project = mongoose.model('Project');
 module.exports = mongoose.model('Project');
