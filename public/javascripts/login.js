@@ -20,10 +20,8 @@
         data: JSON.stringify(user)
       })
       .done((res) => {
-        toastr.success(res);
       })
       .fail((err) => {
-        toastr.error(err);
       });
   });
 })();

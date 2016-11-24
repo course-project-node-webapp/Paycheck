@@ -11,10 +11,14 @@ module.exports = function (userData) {
     userData
       .getUserByUsername(username)
       .then(user => {
-        done(null, user);
+        if (user) {
+          return done(null, user);
+        } else {
+          return done(null, false);
+        }
       })
       .catch(err => {
-        done(err, false);
+        return done(err, false);
       });
   });
 
