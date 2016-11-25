@@ -38,7 +38,7 @@
   function createRequest(method, user) {
     return new Promise((resolve, reject) => {
       $.ajax({
-          url: '/login',
+          url: '/account/login',
           method: method,
           contentType: 'application/json',
           data: JSON.stringify(user)
