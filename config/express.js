@@ -5,9 +5,16 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
+const morgan = require('morgan');
 
 module.exports = function (config) {
   const app = express();
+
+  app.use(morgan('combined', {
+    skip: function (req, res) {
+      return res.statusCode < config.errorResponseCode;
+    }
+  }));
 
   app.set('view engine', 'pug');
   app.set('views', config.rootPath + 'lib/views');

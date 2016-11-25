@@ -8,7 +8,8 @@ module.exports = {
         rootPath,
         sessionSecret: '[insert session secret here]',
         connectionString: 'mongodb://localhost:27017/paycheck-db',
-        port: 3002
+        port: 3002,
+        errorResponseCode: 400
     },
     production: {
         rootPath,
