@@ -1,27 +1,28 @@
 #header
   .navbar-wrapper.headroom
-      nav.navbar.navbar-primary
-          .container
-              .navbar-header
-                  button.navbar-toggle(type="button" data-toggle="collapse" data-target="#responsive-navbar")
-                      span.sr-only Toggle navigation
-                      span.icon-bar
-                      span.icon-bar
-                      span.icon-bar
-                  a.navbar-brand(href="/")
-                      img.navbar-logo(src="/assets/images/favicon.png" alt="Logo")
-              #responsive-navbar.collapse.navbar-collapse
-                  ul.nav.navbar-nav.navbar-left
-                      li
-                          a.btn.btn-default.btn-sm.hvr-underline-from-center.nav-btn(href="/") Home
-                      li.dropdown
-                          a.btn.btn-default.btn-sm.hvr-underline-from-center.dropdown-toggle.nav-btn(href="" data-toggle="dropdown" aria-expanded="false") Browse
-                      ul.dropdown-menu.dropdown-menu-right
-                          li
-                              a(href="/login") Login
-                              a(href="/register") Register
-                  ul.nav.navbar-nav.navbar-right
-                      li
-                          a.btn.btn-default.btn-sm.left-btn(href="/account/login") Sign in
-                      li
-                          a.btn.btn-default.btn-sm.right-btn(href="/register") Sign up
+    nav.navbar.navbar-primary
+      .container
+        .navbar-header
+          button.navbar-toggle(type="button" data-toggle="collapse" data-target="#responsive-navbar")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href="/")
+            img.navbar-logo(src="/assets/images/favicon.png" alt="Logo")
+        #responsive-navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-left
+            li
+              a.btn.btn-default.btn-sm.hvr-underline-from-center.nav-btn(href="/") Home
+            li.dropdown
+              a.btn.btn-default.btn-sm.hvr-underline-from-center.dropdown-toggle.nav-btn(href="" data-toggle="dropdown" aria-expanded="false") Browse
+            ul.dropdown-menu.dropdown-menu-right
+              li
+                a(href="/login") Login
+                a(href="/register") Register
+          ul.nav.navbar-nav.navbar-right
+            if !isAuthenticated
+              li
+                a.btn.btn-default.btn-sm.left-btn(href="/account/login") Sign in
+              li
+                a.btn.btn-default.btn-sm.right-btn(href="/register") Sign up
