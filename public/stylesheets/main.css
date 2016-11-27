@@ -9,7 +9,7 @@ html,
 }
 
 body {
-    background-image: url('../assets/images/background-patterns/white_brick_wall.png');
+    /*background-image: url('../assets/images/background-patterns/white_brick_wall.png');*/
     background-repeat: repeat;
     background-color: #FFF;
     /*height: auto!important;*/
@@ -66,13 +66,11 @@ body {
     vertical-align: top;
 }
 
-
 /* Footer left */
 
 .footer-distributed .footer-left {
     width: 40%;
 }
-
 
 /* The company logo */
 
@@ -85,7 +83,6 @@ body {
 .footer-distributed h3 span {
     color: #5383d3;
 }
-
 
 /* Footer links */
 
@@ -108,7 +105,6 @@ body {
     font-weight: normal;
     margin: 0;
 }
-
 
 /* Footer Center */
 
@@ -153,7 +149,6 @@ body {
     text-decoration: none;
     ;
 }
-
 
 /* Footer Right */
 

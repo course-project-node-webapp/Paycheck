@@ -1,4 +1,7 @@
 /* globals $ CryptoJS toastr window Promise */
+
+'use strict';
+
 (() => {
   const MIN_NAME_LENGTH = 5;
   const MAX_NAME_LENGTH = 30;
@@ -57,16 +60,16 @@
 
   function validateString(value) {
     if (typeof value !== 'string') {
-      throw new Error('Value must be a string');
+      throw new Error('Value must be a string.');
     }
 
     const len = value.length;
     if (!(MIN_NAME_LENGTH <= len && len <= MAX_NAME_LENGTH)) {
-      throw new Error('Invalid value length');
+      throw new Error('Invalid value length.');
     }
 
     if (!/[A-Za-z\.-_]/.test(value)) {
-      throw new Error('Only latin letters dashes and dots allowed');
+      throw new Error('Only latin letters, dashes and dots are allowed.');
     }
   }
 })();

@@ -15,8 +15,8 @@ $(document).ready(function() {
 });
 
 function scaleVideoContainer() {
-    var height = $(window).height();
-    var unitHeight = parseInt(height) + 'px';
+    let height = $(window).height();
+    let unitHeight = parseInt(height) + 'px';
     $('.homepage-hero-module').css('height', unitHeight);
 }
 
@@ -30,16 +30,16 @@ function initBannerVideoSize(element) {
 }
 
 function scaleBannerVideoSize(element) {
-    var windowWidth = $(window).width(),
+    let windowWidth = $(window).width(),
         windowHeight = $(window).height(),
         videoWidth,
         videoHeight;
 
     $(element).each(function() {
-        var videoAspectRatio = $(this).data('height') / $(this).data('width');
+        let videoAspectRatio = $(this).data('height') / $(this).data('width');
         $(this).width(windowWidth);
 
-        if (windowWidth < 1000) {
+        if (windowWidth < 1550) {
             videoHeight = windowHeight;
             videoWidth = videoHeight / videoAspectRatio;
             $(this).css({ 'margin-top': 0, 'margin-left': -(videoWidth - windowWidth) / 2 + 'px' });

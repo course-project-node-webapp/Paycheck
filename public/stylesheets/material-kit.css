@@ -1996,7 +1996,7 @@ legend {
   padding-bottom: 15px;
   font-weight: 400;
   font-size: 12px;
-  /*text-transform: uppercase;*/
+  text-transform: capitalize;
   border-radius: 3px;
 }
 .navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
@@ -2189,6 +2189,7 @@ legend {
 }
 .navbar.navbar-primary {
   background-color: #053844;
+  /*background-image: url('../assets/images/background-patterns/white_brick_wall.png');*/
   color: #ffffff;
 }
 .navbar.navbar-primary .navbar-form .form-group input.form-control::-moz-placeholder,
