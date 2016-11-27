@@ -4,17 +4,16 @@
 }
 
 html,
-body,
 .container {
     height: 100%;
 }
 
 body {
-    /*background-image: url('../assets/images/background-patterns/cubes.png');*/
     background-image: url('../assets/images/background-patterns/white_brick_wall.png');
     background-repeat: repeat;
     background-color: #FFF;
-    height: auto!important;
+    /*height: auto!important;*/
+    height: 80%;
 }
 
 #header a {
@@ -56,7 +55,7 @@ body {
     text-align: left;
     font: bold 16px sans-serif;
     padding: 55px 50px;
-    margin-top: 80px;
+    /*margin-top: 80px;*/
 }
 
 .footer-distributed .footer-left,
