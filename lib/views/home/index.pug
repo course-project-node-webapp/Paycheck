@@ -9,10 +9,11 @@ html(lang="en")
         link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css")
         link(rel="stylesheet" href="/stylesheets/material-kit.css")
         link(rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
         link(rel="stylesheet" href="/stylesheets/hover.css")
         link(rel="stylesheet" href="/stylesheets/main.css")
         link(rel="stylesheet" href="/stylesheets/home.css")
-        
+
     body
         include ../shared/_header.pug
         .homepage-hero-module
@@ -30,6 +31,34 @@ html(lang="en")
                         h3 Workflow has never been any smoother.
                     a.btn.btn-default.btn-lg(href="/account/login" style="margin-right: 10px") Sign In
                     a.btn.btn-default.btn-lg(href="/register") Sign Up
+        #content
+            .container
+                .row.row-centered
+                    .col-sm-12.col-xs-12.col-md-12.col-lg-12.col-centered
+                        .jumbotron
+                            h2 Work with someone perfect for your team
+                            ul#job-categories
+                                li.job-category.hvr-rectangle-in
+                                    i.material-icons desktop_windows
+                                    a Web Developers
+                                li.job-category.hvr-rectangle-in
+                                    i.material-icons smartphone
+                                    a Mobile Developers
+                                li.job-category.fin.hvr-rectangle-in
+                                    i.material-icons gamepad
+                                    a Game Developers
+                                br
+                                li.job-category.bot.hvr-rectangle-in
+                                    i.material-icons edit
+                                    a Writers
+                                li.job-category.bot.hvr-rectangle-in
+                                    i.material-icons color_lens
+                                    a Designers &amp; Creatives
+                                li.job-category.bot.fin.hvr-rectangle-in
+                                    i.material-icons trending_up
+                                    a Marketing Experts
+                            a.btn.btn-default.btn-lg.hvr-glow See all categories
+            #get-started-container
         include ../shared/_footer.pug
     script(src="/bower_components/jquery/dist/jquery.min.js")
     script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")

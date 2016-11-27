@@ -2188,7 +2188,8 @@ legend {
   color: contrast-color(#3f51b5, #000000, #ffffff);
 }
 .navbar.navbar-primary {
-  background-color: #053844;
+  /*background-color: #053844;*/
+  background-color: #292c2f;
   /*background-image: url('../assets/images/background-patterns/white_brick_wall.png');*/
   color: #ffffff;
 }

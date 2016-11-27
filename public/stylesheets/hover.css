@@ -1674,7 +1674,7 @@
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px transparent;
   position: relative;
-  background: #2098D1;
+  background: #87CEFA;
   -webkit-transition-property: color;
   transition-property: color;
   -webkit-transition-duration: 0.3s;
@@ -1688,7 +1688,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #e1e1e1;
+  background: #fff;
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transition-property: transform;
@@ -1709,7 +1709,7 @@
 /* Rectangle Out */
 .hvr-rectangle-out {
   display: inline-block;
-  vertical-align: middle;
+  /*vertical-align: middle;*/
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px transparent;
@@ -1918,7 +1918,7 @@
 /* Border Fade */
 .hvr-border-fade {
   display: inline-block;
-  vertical-align: middle;
+  /*vertical-align: middle;*/
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px transparent;
@@ -2439,7 +2439,7 @@
   transition-property: box-shadow;
 }
 .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px rgba(53, 81, 98, 0.6);
 }
 
 /* Shadow */
