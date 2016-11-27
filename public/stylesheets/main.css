@@ -111,8 +111,27 @@ ul#job-categories li.job-category i.material-icons {
 }
 
 #content #get-started-container {
-    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 15em;
     background-color: #87CEFA;
+    color: #292C2F;
+    text-align: center;
+    padding: 10em 0;
+}
+
+#content #get-started-container > a.btn {
+    background: none;
+    color: #292C2F;
+    /*border: 2px solid #292C2F;*/
+}
+
+#content h2 {
+    font-weight: 900;
+    font-size: 4rem;
+    display: block;
 }
 
 @media screen and (max-device-width: 770px) {
