@@ -27,12 +27,13 @@ body {
         margin-top: 10px;
         font-weight: bold;
     }
-    #header a.btn.left-btn {
+    #header a.btn.login-btn,
+    #header a.btn.logout-btn {
         margin-right: 10px;
         background-color: #AFD2EF;
         color: #282828;
     }
-    #header a.btn.right-btn {
+    #header a.btn.signup-btn {
         background-color: #0056A7;
     }
     #header .nav-btn {
@@ -152,6 +153,7 @@ body {
     text-decoration: none;
     ;
 }
+
 
 /* Footer Right */
 

@@ -23,6 +23,9 @@
           ul.nav.navbar-nav.navbar-right
             if !isAuthenticated
               li
-                a.btn.btn-default.btn-sm.left-btn(href="/account/login") Sign in
+                a.btn.btn-default.btn-sm.login-btn(href="/account/login") Sign in
               li
-                a.btn.btn-default.btn-sm.right-btn(href="/register") Sign up
+                a.btn.btn-default.btn-sm.signup-btn(href="/register") Sign up
+            else
+              li
+                a.btn.btn-default.btn-sm.logout-btn(href="account/logout") Sign out
