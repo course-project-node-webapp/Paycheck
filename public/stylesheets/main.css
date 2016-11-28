@@ -169,6 +169,25 @@ ul#job-categories li.job-category i.material-icons {
 
 /* Footer */
 
+#header img.header-profile-img {
+    display: inline-block;
+    height: 50px;
+    margin-right: 10px;
+}
+
+#header a.profile-link {
+    padding: 0;
+    margin: 0;
+}
+
+#header a.profile-link span {
+    font-weight: normal;
+}
+
+#header a.btn {
+    background: none;
+}
+
 .footer-distributed {
     background-color: #292c2f;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
