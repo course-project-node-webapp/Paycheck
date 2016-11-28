@@ -27,8 +27,8 @@ body {
     margin: 0 !important;
 }
 
-#header ul.nav.navbar-nav.navbar-left a.btn {
-    font-size: 1.8rem;
+#header ul.dropdown-menu {
+    text-align: center;
 }
 
 #header img.navbar-logo {
@@ -77,6 +77,9 @@ body {
         background: transparent;
         border: none;
         box-shadow: none;
+    }
+    #header ul.nav.navbar-nav.navbar-left a.btn {
+        font-size: 1.8rem;
     }
 }
 
