@@ -9,6 +9,7 @@
     "mongoose": "registry:dt/mongoose#4.6.8+20161122020749",
     "node": "registry:dt/node#6.0.0+20161110151007",
     "passport": "registry:dt/passport#0.2.0+20161028150851",
-    "serve-static": "registry:dt/serve-static#0.0.0+20160606155157"
+    "serve-static": "registry:dt/serve-static#0.0.0+20160606155157",
+    "winston": "registry:dt/winston#0.0.0+20161108133445"
   }
 }
