@@ -96,7 +96,6 @@ nav.navbar.navbar-primary {
     font-size: 2rem;
 }
 
-<<<<<<< HEAD
 #content .jumbotron a.btn {
     color: #fff;
     background-color: #0056A7;
@@ -170,27 +169,6 @@ ul#job-categories li.job-category i.material-icons {
 
 /* Footer */
 
-=======
-#header img.header-profile-img {
-    display: inline-block;
-    height: 50px;
-    margin-right: 10px;
-}
-
-#header a.profile-link {
-    padding: 0;
-    margin: 0;
-}
-
-#header a.profile-link span {
-    font-weight: normal;
-}
-
-#header a.btn {
-    background: none;
-}
-
->>>>>>> 7bb68191399568495781fb8b9f97aeabcb3f97a6
 .footer-distributed {
     background-color: #292c2f;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);

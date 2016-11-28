@@ -28,14 +28,26 @@
                 a.btn.btn-default.btn-sm.signup-btn(href="/register") Sign up
             else
               li.dropdown
+<<<<<<< HEAD
                 a.profile-link.dropdown-toggle(data-toggle="dropdown")
                   img.img-circle.img-responsive.header-profile-picture(src="http://www.famousbirthdays.com/faces/aoyama-gosho-image.jpg")
+=======
+                a.btn.btn-default.btn-sm.nav-btn.profile-link(href="" data-toggle="dropdown" aria-expanded="false")
+                  img.img-circle.img-responsive.header-profile-img(src="https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAewAAAAJDkzM2QxNTUyLTNkYjktNDNhOC1iZjZlLTkzNjRhNTMxMDdhOA.jpg" alt="profile image")
+>>>>>>> 7bb68191399568495781fb8b9f97aeabcb3f97a6
                   span #{firstName} #{lastName}
                   i.material-icons keyboard_arrow_down
                 ul.dropdown-menu
                   li.dropdown-header Profile
                   li
-                    a(href="/profile")
+<<<<<<< HEAD
+                    a Gosho
                   li.divider
                   li
                     a(href="account/logout") Sign Out
+=======
+                    a(href="/profile")
+                  li.divider
+                  li
+                    a(href="account/logout") Sign out
+>>>>>>> 7bb68191399568495781fb8b9f97aeabcb3f97a6

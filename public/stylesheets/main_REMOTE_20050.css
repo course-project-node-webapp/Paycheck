@@ -9,43 +9,15 @@ html,
 }
 
 body {
-    /*background-image: url('../assets/images/background-patterns/white_brick_wall.png');*/
+    background-image: url('../assets/images/background-patterns/white_brick_wall.png');
     background-repeat: repeat;
     background-color: #FFF;
     /*height: auto!important;*/
     height: 80%;
 }
 
-/* Header */
-
 #header a {
     font-size: 1.5rem;
-}
-
-nav.navbar.navbar-primary {
-    margin: 0 !important;
-}
-
-#header img.navbar-logo {
-    height: 120%;
-    margin-right: 1em;
-}
-
-#header .header-profile-picture {
-    display: inline-block;
-    height: 50px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-#header .profile-link {
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
-#header .profile-link > span {
-    font-weight: normal;
 }
 
 @media screen and (min-device-width: 770px) {
@@ -71,106 +43,11 @@ nav.navbar.navbar-primary {
     }
 }
 
-@media screen and (max-device-width: 770px) {
-    #header a.btn {
-        background-color: transparent;
-    }
+#header img.navbar-logo {
+    height: 120%;
+    margin-right: 1em;
 }
 
-/* Content */
-
-#content .jumbotron {
-    text-align: center;
-    background-color: transparent;
-}
-
-#content .jumbotron h2 {
-    margin-bottom: 70px;
-}
-
-#content .jumbotron a {
-    text-decoration: none;
-    cursor: pointer;
-    color: #292C2F;
-    text-transform: capitalize;
-    font-size: 2rem;
-}
-
-<<<<<<< HEAD
-#content .jumbotron a.btn {
-    color: #fff;
-    background-color: #0056A7;
-}
-
-ul#job-categories {
-    margin-bottom: 5em;
-}
-
-ul#job-categories li.job-category {
-    list-style-type: none;
-    display: inline-block;
-    width: 30%;
-    height: 50%;
-    border-left: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    padding: 20px 50px;
-}
-
-ul#job-categories li.job-category.fin {
-    border-right: 1px solid #ccc;
-}
-
-ul#job-categories li.job-category.bot {
-    border-bottom: 1px solid #ccc;
-}
-
-ul#job-categories li.job-category i.material-icons {
-    cursor: default;
-    display: block;
-    margin-bottom: 15px;
-    font-size: 7rem;
-    color: #0056A7;
-}
-
-#content #get-started-container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    height: 15em;
-    background-color: #F9F9F9;
-    color: #292C2F;
-    text-align: center;
-    padding: 10em 0;
-}
-
-#content #get-started-container > a.btn {
-    background: none;
-    color: #292C2F;
-    /*border: 2px solid #292C2F;*/
-}
-
-#content h2 {
-    font-weight: 900;
-    font-size: 4rem;
-    display: block;
-}
-
-@media screen and (max-device-width: 770px) {
-    ul#job-categories li.job-category {
-        width: 100%;
-        border: 1px solid #ccc;
-        border-bottom: none;
-    }
-
-    ul#job-categories li.job-category:last-child {
-        border-bottom: 1px solid #ccc;
-    }
-}
-
-/* Footer */
-
-=======
 #header img.header-profile-img {
     display: inline-block;
     height: 50px;
@@ -190,7 +67,6 @@ ul#job-categories li.job-category i.material-icons {
     background: none;
 }
 
->>>>>>> 7bb68191399568495781fb8b9f97aeabcb3f97a6
 .footer-distributed {
     background-color: #292c2f;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -209,11 +85,13 @@ ul#job-categories li.job-category i.material-icons {
     vertical-align: top;
 }
 
+
 /* Footer left */
 
 .footer-distributed .footer-left {
     width: 40%;
 }
+
 
 /* The company logo */
 
@@ -226,6 +104,7 @@ ul#job-categories li.job-category i.material-icons {
 .footer-distributed h3 span {
     color: #5383d3;
 }
+
 
 /* Footer links */
 
@@ -248,6 +127,7 @@ ul#job-categories li.job-category i.material-icons {
     font-weight: normal;
     margin: 0;
 }
+
 
 /* Footer Center */
 
@@ -292,6 +172,7 @@ ul#job-categories li.job-category i.material-icons {
     text-decoration: none;
     ;
 }
+
 
 /* Footer Right */
 
