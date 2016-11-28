@@ -45,9 +45,25 @@ module.exports = function (Organization) {
     });
   }
 
+  function findPage(page, size) {
+    return new Promise((resolve, reject) => {
+      Organization.find()
+        .skip(page * size)
+        .limit(size)
+        .exec((err, organizations) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(organizations);
+        });
+    });
+  }
+
   return {
     createOrganization,
     findById,
-    findByName
+    findByName,
+    findPage
   };
 };
