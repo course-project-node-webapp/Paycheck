@@ -11,9 +11,9 @@ html,
 body {
     /*background-image: url('../assets/images/background-patterns/white_brick_wall.png');*/
     background-repeat: repeat;
-    background-color: #FFF;
-    /*height: auto!important;*/
-    height: 80%;
+    background-color: #F9F9F9;
+    height: auto!important;
+    /*height: 80%;*/
 }
 
 /* Header */
@@ -46,6 +46,10 @@ nav.navbar.navbar-primary {
 
 #header .profile-link > span {
     font-weight: normal;
+}
+
+#header li.dropdown {
+    text-align: center;
 }
 
 @media screen and (min-device-width: 770px) {
@@ -137,7 +141,7 @@ ul#job-categories li.job-category i.material-icons {
     flex-direction: column;
     justify-content: center;
     height: 15em;
-    background-color: #F9F9F9;
+    background-color: #FFFFFF;
     color: #292C2F;
     text-align: center;
     padding: 10em 0;

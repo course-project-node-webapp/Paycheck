@@ -1,0 +1,55 @@
+#profile>h2 {
+    margin-bottom: 0;
+}
+
+#profile>a.btn {
+    margin-top: 0;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.profile-header {
+    /*text-align: center;*/
+}
+
+.container-header {
+  font-weight: 900;
+}
+
+.profile-header>.overview {
+    text-align: justify;
+}
+
+.profile-container {
+    position: relative;
+    border: 3px solid #ccc;
+    background-color: #fff;
+    padding: 2em;
+    margin-bottom: 2em;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.profile-header img {
+    height: 150px;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+}
+
+.profile-header ul.skills {
+    list-style-type: none;
+}
+
+.profile-header ul.skills li.skill {
+    display: inline-block;
+}
+
+ul.portfolio {
+    list-style-type: none;
+}
