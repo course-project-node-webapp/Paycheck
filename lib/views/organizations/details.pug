@@ -16,6 +16,7 @@ block content
                   li.list-group-item
                     a(href= "/account/" + owner.ownerId)
                       p= owner.username
+              a.btn.btn-success(href="#") Add owner
 
           if result.userRole === 'manager' || result.userRole === 'owner'
             div.well
@@ -24,6 +25,7 @@ block content
                   li.list-group-item
                     a(href= "/account/" + owner.managerId)
                       p= manager.username
+              a.btn.btn-success(href="#") Add manager
 
           if result.userRole === 'manager' || result.userRole === 'owner' || result.userRole === 'contributor'
             div.well
@@ -32,7 +34,8 @@ block content
                   li.list-group-item
                     a(href= "/account/" + owner.contributorId)
                       p= contributor.username
-      
+              a.btn.btn-success(href="#") Add contributor
+
       div.panel-footer
         if !result.userRole
           a.btn.btn-success(href= "/organizations/" + result.organization._id + "/apply")

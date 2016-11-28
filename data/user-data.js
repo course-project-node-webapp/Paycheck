@@ -15,6 +15,21 @@ module.exports = function (User) {
         });
       });
     },
+    getAllUsersWithoutOrganization() {
+      return new Promise((resolve, reject) => {
+        User.find({
+          organization: {
+            name: null
+          }
+        }, (err, users) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(users);
+        });
+      });
+    },
     getUserByUsername(username) {
       return new Promise((resolve, reject) => {
         User.findOne({
