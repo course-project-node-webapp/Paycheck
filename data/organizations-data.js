@@ -46,7 +46,7 @@ module.exports = function (Organization) {
   }
 
   function findPage(page, size) {
-    return new Promise((resolve, reject) => {
+    const promiseData = new Promise((resolve, reject) => {
       Organization.find()
         .skip(page * size)
         .limit(size)
@@ -58,6 +58,22 @@ module.exports = function (Organization) {
           return resolve(organizations);
         });
     });
+
+    const promisePageCount = new Promise((resolve, reject) => {
+      Organization.count((err, count) => {
+        if (err) {
+          return reject(err);
+        }
+
+        const pageCount = Math.ceil(count / size);
+        return resolve(pageCount);
+      });
+    });
+
+    return Promise.all([
+      promiseData,
+      promisePageCount
+    ]);
   }
 
   return {

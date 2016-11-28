@@ -13,11 +13,11 @@ block content
           ul.pagination
             if result.pagination.previous.active
               li.col-xs-3
-                a(href= "/fractions?page=" + result.pagination.previous.value + "&size=" + result.pagination.pageSize aria-label="Previous")
+                a(href= "/organizations?page=" + result.pagination.previous.value + "&size=" + result.pagination.pageSize aria-label="Previous")
                   span(aria-hidden="true") &laquo;
             if result.pagination.next.active
               li.col-xs-3
-                a(href= "/fractions?page=" + result.pagination.next.value + "&size=" + result.pagination.pageSize aria-label="Next")
+                a(href= "/organizations?page=" + result.pagination.next.value + "&size=" + result.pagination.pageSize aria-label="Next")
                   span(aria-hidden="true") &raquo;
 
     div.well
