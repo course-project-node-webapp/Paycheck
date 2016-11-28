@@ -3,6 +3,20 @@
 'use strict';
 
 module.exports = function (Organization) {
+  function createOrganization(organization) {
+    return new Promise((resolve, reject) => {
+      const newOrganization = Organization.getOrganization(organization);
+
+      newOrganization.save((err) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(newOrganization);
+      });
+    });
+  }
+
   function findById(id) {
     return new Promise((resolve, reject) => {
       Organization.findOne({
@@ -32,6 +46,7 @@ module.exports = function (Organization) {
   }
 
   return {
+    createOrganization,
     findById,
     findByName
   };
