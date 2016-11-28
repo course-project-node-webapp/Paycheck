@@ -76,10 +76,23 @@ module.exports = function (Organization) {
     ]);
   }
 
+  function updateOrganization(organization) {
+    return new Promise((resolve, reject) => {
+      organization.save((err, updated) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(updated);
+      });
+    });
+  }
+
   return {
     createOrganization,
     findById,
     findByName,
-    findPage
+    findPage,
+    updateOrganization
   };
 };

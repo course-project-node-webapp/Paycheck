@@ -11,27 +11,54 @@ block content
         div.panel-body
           if result.userRole === 'owner'
             div.well
-              ul.list-group
-                each owner in result.organization.owners
-                  li.list-group-item
-                    a(href= "/account/" + owner.ownerId)
-                      p= owner.username
+              if result.organization.owners.length > 0
+                heading 
+                  h3 Owners
+                ul.list-group
+                  each owner in result.organization.owners
+                    li.list-group-item
+                      a(href= "/account/" + owner.ownerId)
+                        p= owner.username
+              else 
+                h3 No Owners are currently assigned
 
           if result.userRole === 'manager' || result.userRole === 'owner'
             div.well
-              ul.list-group
-                each manager in result.organization.managers
-                  li.list-group-item
-                    a(href= "/account/" + manager.managerId)
-                      p= manager.username
+              if result.organization.managers.length > 0
+                heading 
+                  h3 Managers
+                ul.list-group
+                  each manager in result.organization.managers
+                    li.list-group-item
+                      a(href= "/account/" + manager.managerId)
+                        p= manager.username
+              else 
+                h3 No Managers are currently assigned
+
+            div.well
+              if result.organization.unassigned.length > 0
+                heading 
+                  h3 Unassigned
+                ul.list-group
+                  each unassigned in result.organization.unassigned
+                    li.list-group-item
+                      a(href= "/account/" + unassigned.unassignedId)
+                        p= unassigned.username
+              else 
+                h3 No Unassigned employees are currently available
 
           if result.userRole === 'manager' || result.userRole === 'owner' || result.userRole === 'contributor'
             div.well
-              ul.list-group
-                each contributor in result.organization.contributors
-                  li.list-group-item
-                    a(href= "/account/" + contributor.contributorId)
-                      p= contributor.username
+              if result.organization.contributors.length > 0
+                heading 
+                  h3 Contributors
+                ul.list-group
+                  each contributor in result.organization.contributors
+                    li.list-group-item
+                      a(href= "/account/" + contributor.contributorId)
+                        p= contributor.username
+              else 
+                h3 No Contributors are currently assigned
 
       div.panel-footer
         if !result.userRole
