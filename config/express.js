@@ -11,19 +11,19 @@ const logger = require('./logger');
 module.exports = function (config) {
   const app = express();
 
-  logger.debug("Overriding 'Express' logger");
+  logger.debug('Overriding "Express" logger');
   app.use(morgan('dev', {
     'stream': logger.stream
   }));
 
-  logger.debug("Setting 'Pug' as view engine");
+  logger.debug('Setting "Pug" as view engine');
   app.set('view engine', 'pug');
 
-  logger.debug("Setting 'Views' folder");
+  logger.debug('Setting "Views" folder');
   const viewsFolder = config.rootPath + 'lib/views';
   app.set('views', viewsFolder);
 
-  logger.debug("Setting 'Cookie Parser' as ");
+  logger.debug('Setting "Cookie Parser" as ');
   app.use(cookieParser());
 
   logger.debug('Setting parse urlencoded request bodies into req.body.');
@@ -39,7 +39,7 @@ module.exports = function (config) {
     saveUninitialized: true
   }));
 
-  logger.debug("Setting 'Passport' as login engine");
+  logger.debug('Setting "Passport" as login engine');
   app.use(passport.initialize());
   app.use(passport.session());
   app.use((req, res, next) => {
@@ -49,7 +49,7 @@ module.exports = function (config) {
     next();
   });
 
-  logger.debug("Setting 'Public' folder");
+  logger.debug('Setting "Public" folder');
   app.use(express.static(config.rootPath + 'public'));
 
   return app;
