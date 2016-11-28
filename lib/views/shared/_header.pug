@@ -27,5 +27,15 @@
               li
                 a.btn.btn-default.btn-sm.signup-btn(href="/register") Sign up
             else
-              li
-                a.btn.btn-default.btn-sm.logout-btn(href="account/logout") Sign out
+              li.dropdown
+                a.profile-link.dropdown-toggle(data-toggle="dropdown")
+                  img.img-circle.img-responsive.header-profile-picture(src="http://www.famousbirthdays.com/faces/aoyama-gosho-image.jpg")
+                  span #{firstName} #{lastName}
+                  i.material-icons keyboard_arrow_down
+                ul.dropdown-menu
+                  li.dropdown-header Profile
+                  li
+                    a Gosho
+                  li.divider
+                  li
+                    a(href="account/logout") Sign Out
