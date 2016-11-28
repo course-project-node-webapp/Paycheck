@@ -4,7 +4,7 @@ block content
 
   h3 All projects:
   each pr in data
-    h4 #{pr.name}
-    h4 #{pr.devSkills}
-    p #{pr.description}
+    h4 Project name: #{pr.name}
+    h4 Required skills: #{pr.devSkills}
+    p Project description: #{pr.description}
     a.btn.btn-primary(type='text' href='/') Apply
