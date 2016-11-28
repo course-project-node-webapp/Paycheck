@@ -1,0 +1,11 @@
+extends ../shared/_layout
+
+block content
+  div.well
+    h2 Available Employees
+  ul.list-group#available-users
+    each user in result.users
+      li.list-group-item
+        p= user.username
+        a.btn.btn-success(href="/organizations/" + result.organizationId + "/add-employee/" + user._id) 
+          p Add employee
