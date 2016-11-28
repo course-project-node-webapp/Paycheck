@@ -1,0 +1,15 @@
+extends ../shared/_layout
+
+block stylesheets
+  link(rel="stylesheet" href="/stylesheets/users.css")
+
+block content
+  ul.users
+    each user in users
+      li.user
+        img(src=user.image)
+        a.user-el(href="users/" + user._id)= user.username
+        span.user-el= user.firstName
+        span.user-el= user.lastName
+
+block javascript
