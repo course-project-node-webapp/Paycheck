@@ -27,7 +27,7 @@
                 a(href="/login") Login
                 a(href="/register") Register
           ul.nav.navbar-nav.navbar-right
-            if !isLoggedIn
+            if !isAuthenticated
               li
                 a.btn.btn-default.btn-sm.login-btn(href="/account/login") Sign in
               li
