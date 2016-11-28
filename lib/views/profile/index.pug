@@ -2,4 +2,5 @@ extends ../shared/_layout
 
 block content
   h1 #{result.user.username}
-  
+  if result.user.image
+    img(src= result.user.image)
