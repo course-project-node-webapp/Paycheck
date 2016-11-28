@@ -68,6 +68,17 @@ module.exports = function (User) {
           return resolve(userModel);
         });
       });
+    },
+    updateUser(user) {
+      return new Promise((resolve, reject) => {
+        user.save((err, updated) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(updated);
+        });
+      });
     }
   };
 };
