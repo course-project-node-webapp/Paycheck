@@ -2,7 +2,7 @@
 
 module.exports = function (models) {
   const userData = require('./user-data')(models.User);
-  const organizationsData = require('./organization-data')(models.Organization);
+  const organizationsData = require('./organizations-data')(models.Organization);
 
   return {
     userData,
