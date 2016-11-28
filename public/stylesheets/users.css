@@ -1,0 +1,11 @@
+ul.users {
+  list-style-type: none;
+}
+
+ul.users > li.user {
+  margin-bottom: 2em;
+}
+
+ul.users > li.user > .user-el {
+  display: block;
+}
