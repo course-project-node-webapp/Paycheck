@@ -6,12 +6,18 @@
     - Search for Manager public info ( project success rate, etc)
     - Search for Employee public info ( project success rate, etc )
 
+# Role: Owner
+    - Create organization
+    - Assign Employees to roles: Owner, Manager
+    - Everything role Manager can do
+
 # Role: Manager
     - Create project
     - Create task
-    - Assign Employee to task
+    - Assign Contributor to project
+    - Assign Contributor to task
 
-# Role: Employee
+# Role: Contributor
     - Complete task ( submit solution )
     - Personal info ( name, age, etc.)
     - Professional info ( profession, qualification, level, etc )
