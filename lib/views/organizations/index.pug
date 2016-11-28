@@ -1,0 +1,28 @@
+extends ../shared/_layout
+
+block content
+  section#organizations
+    if isAuthenticated
+      div.well#create-new-organization
+        a.btn.btn-success(href="/organizations/create")
+          p Create New Organization
+
+    if result.pagination.active
+      div.well.text-center
+        nav(aria-label="navigation")
+          ul.pagination
+            if result.pagination.previous.active
+              li.col-xs-3
+                a(href= "/fractions?page=" + result.pagination.previous.value + "&size=" + result.pagination.pageSize aria-label="Previous")
+                  span(aria-hidden="true") &laquo;
+            if result.pagination.next.active
+              li.col-xs-3
+                a(href= "/fractions?page=" + result.pagination.next.value + "&size=" + result.pagination.pageSize aria-label="Next")
+                  span(aria-hidden="true") &raquo;
+
+    div.well
+      ul.list-group#organizations
+        each organization in result.organizations
+          li.list-group-item
+            a(href= "/organizations/" + organization._id)
+              p= organization.name
