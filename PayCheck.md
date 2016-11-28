@@ -1,11 +1,3 @@
-# Public 
-    - Browse active projects
-    - Browse open position in projects.
-    - Successfully completed projects.
-    - Scrapped projects.
-    - Search for Manager public info ( project success rate, etc)
-    - Search for Employee public info ( project success rate, etc )
-
 # Role: Owner
     - Assign Employees to roles: Owner, Manager
     - Everything role Manager can do
@@ -25,9 +17,19 @@
     - Can browse organizations
     - Can create organization ( become owner )
     - Can apply to organization ( become employee ( defaults to: contributor ) )
+    - Can browse organization projects public info
 
 # Role: Not registered
     - Same as role Visitor
+    
+
+# Public 
+    - Browse active projects
+    - Browse open position in projects.
+    - Successfully completed projects.
+    - Scrapped projects.
+    - Search for Manager public info ( project success rate, etc)
+    - Search for Employee public info ( project success rate, etc )
 
 # Project
     - General info ( name, description, etc)
