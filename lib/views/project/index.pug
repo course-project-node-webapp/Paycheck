@@ -5,9 +5,11 @@ block content
         h3.display-4.m-b-2 Create new project
         form(method='POST' action='/projects/create')
             label(for='name') Name:
-            input.form-control#projectname(type='text', placeholder='project name' name='name')
+            input.form-control#projectname(type='text', name='name')
             label(for='description') Description:
-            input.form-control#projectdescription(type='text', placeholder='project description' name='description')
+            input.form-control#projectdescription(type='text', name='description')
+            label(for='devskills') Developper skills required:
+            input.form-control#devskills(type='text', name='devskills')
             label(for='managerName') Manager of this project:
             input.form-control#projectmanagername(type='text' name='managerName')
             label(for='employees') Employees:
