@@ -2210,7 +2210,7 @@ legend {
 }
 .navbar.navbar-primary .dropdown-menu li > a:hover, .navbar.navbar-primary .dropdown-menu li > a:focus {
   color: #FFFFFF;
-  background-color: #9c27b0;
+  background-color: #ccc;
 }
 .navbar.navbar-primary .dropdown-menu .active > a {
   background-color: #9c27b0;
@@ -2409,7 +2409,7 @@ legend {
 .dropdown-menu li a:hover,
 .dropdown-menu li a:focus,
 .dropdown-menu li a:active {
-  background-color: #9c27b0;
+  background-color: #ccc;
   color: #FFFFFF;
 }
 .dropdown-menu .divider {
