@@ -38,5 +38,5 @@ block content
           a.btn.btn-success(href= "/organizations/" + result.organization._id + "/apply")
             p Apply to this organization
         else if result.userRole === 'owner'
-          a.btn.btn-success(href= "/" + result.organization._id + "/add-employee") 
+          a.btn.btn-success(href= "/organizations/" + result.organization._id + "/add-employee") 
             p Add Employee

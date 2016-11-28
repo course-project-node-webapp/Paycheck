@@ -19,7 +19,7 @@ module.exports = function (User) {
       return new Promise((resolve, reject) => {
         User.find({
           organization: {
-            name: null
+            name: ''
           }
         }, (err, users) => {
           if (err) {
