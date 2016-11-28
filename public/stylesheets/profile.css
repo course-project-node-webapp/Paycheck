@@ -6,6 +6,15 @@
     margin-top: 0;
 }
 
+#profile .rates {
+    margin: 0;
+    float: right;
+}
+
+#profile .rates span {
+    color: #fff;
+}
+
 .capitalize {
     text-transform: capitalize;
 }
@@ -18,8 +27,12 @@
     /*text-align: center;*/
 }
 
+.profile-header-top {
+    display: inline-block;
+}
+
 .container-header {
-  font-weight: 900;
+    font-weight: 900;
 }
 
 .profile-header>.overview {

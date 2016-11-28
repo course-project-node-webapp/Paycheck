@@ -2,16 +2,24 @@ extends ../shared/_layout
 
 block stylesheets
   link(rel="stylesheet" href="/stylesheets/profile.css")
+  link(rel="stylesheet" href="/stylesheets/progress-bar.css")
 
 block content
   #profile
     h2.capitalize My profile 
     a.btn.btn-default.btn.uppercase Edit
     .profile-header.profile-container
-      h3.capitalize #{result.firstName} #{result.lastName}
-        br
-        small.specialty.capitalize Web Developer
-      img.img-rounded.img-responsive(src=imageSrc)
+      .profile-header-top
+        h3.capitalize #{result.firstName} #{result.lastName}
+          br
+          small.specialty.capitalize Web Developer
+        img.img-rounded.img-responsive(src=imageSrc)
+      .rates
+        .c100.p50.dark.small
+          span 50%
+          .slice
+            .bar
+            .fill
       .overview
         h3.capitalize.container-header Overview
         span  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae alias, dignissimos tempore ad quas quisquam optio nostrum, vitae facere dolores magnam. Ratione sapiente nam deserunt suscipit repellat. Quos, esse porro.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem est fugit provident blanditiis magnam. Atque aperiam voluptatibus, cumque quod cupiditate accusamus dolore nesciunt id deserunt commodi consequatur debitis nulla fugit?  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint qui, esse enim ipsa, iusto numquam eaque sequi accusamus voluptates blanditiis, ex! Nam facere, assumenda inventore commodi at quis, odio facilis.   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor nostrum veritatis a illum sit, accusantium aliquid, neque fugit expedita in voluptatem, magnam, nihil? Suscipit ipsum ab qui eius non vero.
