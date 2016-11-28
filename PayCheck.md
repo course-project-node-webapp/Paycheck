@@ -7,7 +7,6 @@
     - Search for Employee public info ( project success rate, etc )
 
 # Role: Owner
-    - Create organization
     - Assign Employees to roles: Owner, Manager
     - Everything role Manager can do
 
@@ -21,6 +20,14 @@
     - Complete task ( submit solution )
     - Personal info ( name, age, etc.)
     - Professional info ( profession, qualification, level, etc )
+
+# Role: Visitor ( unassigned )
+    - Can browse organizations
+    - Can create organization ( become owner )
+    - Can apply to organization ( become employee ( defaults to: contributor ) )
+
+# Role: Not registered
+    - Same as role Visitor
 
 # Project
     - General info ( name, description, etc)
