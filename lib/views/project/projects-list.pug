@@ -1,5 +1,10 @@
 extends ../shared/_layout
 
 block content
+
+  h3 All projects:
   each pr in data
     h4 #{pr.name}
+    h4 #{pr.devSkills}
+    p #{pr.description}
+    a.btn.btn-primary(type='text' href='/') Apply
