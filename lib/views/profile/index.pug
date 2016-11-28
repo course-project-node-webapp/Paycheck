@@ -6,8 +6,11 @@ block stylesheets
 
 block content
   #profile
-    h2.capitalize My profile 
-    a.btn.btn-default.btn.uppercase Edit
+    if isAuthenticated
+      h2.capitalize My profile 
+      a.btn.btn-default.btn.uppercase Edit
+    else
+      h2.capitalize #{result.username}'s Profile
     .profile-header.profile-container
       .profile-header-top
         h3.capitalize #{result.firstName} #{result.lastName}

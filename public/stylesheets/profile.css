@@ -31,6 +31,10 @@
     display: inline-block;
 }
 
+.profile-header-top > h3 {
+    margin-top: 0;
+}
+
 .container-header {
     font-weight: 900;
 }
