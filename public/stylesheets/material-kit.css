@@ -2188,15 +2188,12 @@ legend {
   color: contrast-color(#3f51b5, #000000, #ffffff);
 }
 .navbar.navbar-primary {
-<<<<<<< HEAD
   /*background-color: #053844;*/
-  background-color: #292c2f;
   /*background-image: url('../assets/images/background-patterns/white_brick_wall.png');*/
-=======
   background-color: #292c2f;
->>>>>>> 7bb68191399568495781fb8b9f97aeabcb3f97a6
   color: #ffffff;
 }
+
 .navbar.navbar-primary .navbar-form .form-group input.form-control::-moz-placeholder,
 .navbar.navbar-primary .navbar-form input.form-control::-moz-placeholder {
   color: #ffffff;
