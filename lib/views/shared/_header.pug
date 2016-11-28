@@ -16,14 +16,18 @@
               a.btn.btn-default.btn-sm.hvr-underline-from-center.nav-btn(href="/") Home
             li.dropdown
               a.btn.btn-default.btn-sm.hvr-underline-from-center.dropdown-toggle.nav-btn(href="" data-toggle="dropdown" aria-expanded="false") Browse
+               i.material-icons keyboard_arrow_down
+              ul.dropdown-menu
+                li
+                  a(href="/projects") Projects
+                li
+                  a(href="/organizations") Organizations
             ul.dropdown-menu.dropdown-menu-right
               li
                 a(href="/login") Login
                 a(href="/register") Register
           ul.nav.navbar-nav.navbar-right
-            li
-              a.btn.btn-default.btn-sm(href="/projects") Projects
-            if !isAuthenticated
+            if !isLoggedIn
               li
                 a.btn.btn-default.btn-sm.login-btn(href="/account/login") Sign in
               li
