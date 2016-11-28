@@ -1,4 +1,5 @@
 # Role: Owner
+    - Can change organization information
     - Assign Employees to roles: Owner, Manager
     - Everything role Manager can do
 
@@ -21,7 +22,6 @@
 
 # Role: Not registered
     - Same as role Visitor
-    
 
 # Public 
     - Browse active projects
