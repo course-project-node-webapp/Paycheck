@@ -29,7 +29,7 @@
                 a(href="/login") Login
                 a(href="/register") Register
           ul.nav.navbar-nav.navbar-right
-            if !isAuthenticated
+            if !result.user
               li
                 a.btn.btn-default.btn-sm.login-btn(href="/account/login") Sign in
               li
@@ -38,7 +38,7 @@
               li.dropdown
                 a.profile-link.dropdown-toggle(data-toggle="dropdown")
                   img.img-circle.img-responsive.header-profile-picture(src=imageSrc)
-                  span #{result.firstName} #{result.lastName}
+                  span #{result.user.firstName} #{result.user.lastName}
                   i.material-icons keyboard_arrow_down
                 ul.dropdown-menu
                   li.dropdown-header Profile
