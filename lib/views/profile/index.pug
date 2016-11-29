@@ -10,10 +10,10 @@ block content
       h2.capitalize My profile 
       a.btn.btn-default.btn.uppercase Edit
     else
-      h2.capitalize #{result.username}'s Profile
+      h2.capitalize #{result.user.username}'s Profile
     .profile-header.profile-container
       .profile-header-top
-        h3.capitalize #{result.firstName} #{result.lastName}
+        h3.capitalize #{result.user.firstName} #{result.user.lastName}
           br
           small.specialty.capitalize Web Developer
         img.img-rounded.img-responsive(src=imageSrc)
