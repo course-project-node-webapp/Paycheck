@@ -41,14 +41,16 @@ module.exports = function (Project) {
                 });
             });
         },
-        createProject() {
+        createProject(project) {
+            const newProject = Project.getProject(project);
+
             return new Promise((resolve, reject) => {
-                Project.save(err => {
+                newProject.save(err => {
                     if (err) {
                         return reject(err);
                     }
 
-                    return resolve(Project);
+                    return resolve(newProject);
                 });
             });
         }
