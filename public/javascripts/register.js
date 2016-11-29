@@ -1,5 +1,7 @@
 /* globals $ toastr CryptoJS window Promise */
+
 'use strict';
+
 (() => {
   const MIN_NAME_LENGTH = 5;
   const MAX_NAME_LENGTH = 30;
