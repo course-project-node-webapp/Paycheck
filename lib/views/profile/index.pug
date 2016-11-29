@@ -38,6 +38,7 @@ block content
           li.skill
             span.endorsement-points 3
             span.skill-name= skill
-        li.add: a.btn.btn-default.btn.uppercase.add-skill-btn Add Skill
+        if isAuthorized
+          li.add: a.btn.btn-default.btn.uppercase.add-skill-btn Add Skill
     if isAuthorized
       a.btn.btn-default.uppercase.edit-profile-btn Edit Profile     
