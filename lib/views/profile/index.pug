@@ -6,17 +6,17 @@ block stylesheets
 
 block content
   #profile
-    if isAuthenticated
+    if isAuthorized
       h2.capitalize My profile 
       a.btn.btn-default.btn.uppercase Edit
     else
-      h2.capitalize #{result.user.username}'s Profile
+      h2.capitalize #{result.userData.username}'s Profile
     .profile-header.profile-container
       .profile-header-top
-        h3.capitalize #{result.user.firstName} #{result.user.lastName}
+        h3.capitalize #{result.userData.firstName} #{result.userData.lastName}
           br
           small.specialty.capitalize Web Developer
-        img.img-rounded.img-responsive(src=imageSrc)
+        img.img-rounded.img-responsive(src=result.userData.image)
       .rates
         .c100.p50.dark.small
           span 50%

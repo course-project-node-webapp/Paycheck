@@ -1,4 +1,4 @@
-/* globals $ CryptoJS toastr window Promise */
+/* globals $ CryptoJS toastr window Promise document */
 
 'use strict';
 
@@ -11,7 +11,19 @@
   const tbPassword = content.find('#password-tb');
   const btnSubmit = content.find('#btn-submit');
 
+
+  $(document).on('keydown', (ev) => {
+    const ENTER_KEY_CODE = 13;
+
+    let keyCode = ev.keyCode || ev.which;
+    if (keyCode === ENTER_KEY_CODE) {
+      btnSubmit.trigger('click');
+    }
+  });
+
   btnSubmit.on('click', () => {
+    toastr.options.preventDuplicates = true;
+
     return getUserFromInput()
       .then((user) => {
         return createRequest('POST', user);
