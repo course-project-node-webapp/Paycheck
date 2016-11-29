@@ -9,7 +9,8 @@ block content
         ul.list-group
           each project in result.organization.projects
             li.list-group-item
-              p= project.name
+              a(href="/organizations/" + result.organization._id + "/projects/" + project.projectId)
+                p= project.name
       else 
         p This organization has no active projects.
     
