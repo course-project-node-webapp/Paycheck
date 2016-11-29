@@ -1,4 +1,4 @@
-/* globals $ toastr CryptoJS window Promise */
+/* globals $ toastr CryptoJS window Promise document */
 
 'use strict';
 
@@ -12,6 +12,15 @@
   const tbFirstName = registerForm.find('#tb-first-name');
   const tbLastName = registerForm.find('#tb-last-name');
   const btnRegister = registerForm.find('#btn-register');
+
+  $(document).on('keydown', (ev) => {
+    const ENTER_KEY_CODE = 13;
+    
+    let keyCode = ev.keyCode || ev.which;
+    if (keyCode === ENTER_KEY_CODE) {
+      btnRegister.trigger('click');
+    }
+  });
 
   btnRegister.on('click', () => {
     return Promise.resolve()
