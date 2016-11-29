@@ -46,7 +46,7 @@
       })
       .then((user) => {
         $.ajax({
-            url: '/register',
+            url: '/account/register',
             method: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(user)
