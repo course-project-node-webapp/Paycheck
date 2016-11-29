@@ -1,0 +1,8 @@
+extends ../shared/_layout
+
+block content
+  form(method="POST" action= "/organizations/" + organizationId + "/projects/create")
+    input(type="text" name="name" placeholder="Project name")
+    input(type="text" name="description" placeholder="Project description")
+    
+    
