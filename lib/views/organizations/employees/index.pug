@@ -1,0 +1,75 @@
+extends ../../shared/_layout
+
+block content
+  div.well#organization-details
+    div.panel.panel-primary
+      div.panel-heading
+        h1= result.organization.name
+        h1= result.organization.owner
+      
+      if result.userRole
+        div.panel-body
+          if result.userRole === 'owner'
+            div.well
+              if result.organization.owners.length > 0
+                heading 
+                  h3 Owners
+                ul.list-group
+                  each owner in result.organization.owners
+                    li.list-group-item
+                      a(href= "/account/" + owner.ownerId)
+                        p= owner.username
+              else 
+                h3 No Owners are currently assigned
+
+          if result.userRole === 'manager' || result.userRole === 'owner'
+            div.well
+              if result.organization.managers.length > 0
+                heading 
+                  h3 Managers
+                ul.list-group
+                  each manager in result.organization.managers
+                    li.list-group-item
+                      a(href= "/account/" + manager.managerId)
+                        p= manager.username
+                      a.btn.btn-danger(href="/organizations/" + result.organization._id + "/remove-employee/" + manager.managerId + "/role/managers") 
+                        p Remove Manager
+              else 
+                h3 No Managers are currently assigned
+
+            div.well
+              if result.organization.unassigned.length > 0
+                heading 
+                  h3 Unassigned
+                ul.list-group
+                  each unassigned in result.organization.unassigned
+                    li.list-group-item
+                      a(href= "/account/" + unassigned.unassignedId)
+                        p= unassigned.username
+                      a.btn.btn-danger(href="/organizations/" + result.organization._id + "/remove-employee/" +  unassigned.unassignedId + "/role/unassigned") 
+                        p Remove Employee
+              else 
+                h3 No Unassigned employees are currently available
+
+          if result.userRole === 'manager' || result.userRole === 'owner' || result.userRole === 'contributor'
+            div.well
+              if result.organization.contributors.length > 0
+                heading 
+                  h3 Contributors
+                ul.list-group
+                  each contributor in result.organization.contributors
+                    li.list-group-item
+                      a(href= "/account/" + contributor.contributorId)
+                        p= contributor.username
+                      a.btn.btn-danger(href="/organizations/" + result.organization._id + "/remove-employee/" +  contributor.contributorId + "/role/contributors") 
+                        p Remove Contributor
+              else 
+                h3 No Contributors are currently assigned
+
+      div.panel-footer
+        if !result.userRole
+          a.btn.btn-success(href= "/organizations/" + result.organization._id + "/apply")
+            p Apply to this organization
+        else if result.userRole === 'owner'
+          a.btn.btn-success(href= "/organizations/" + result.organization._id + "/add-employee") 
+            p Add Employee
