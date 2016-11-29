@@ -32,6 +32,8 @@ block content
                     li.list-group-item
                       a(href= "/account/" + manager.managerId)
                         p= manager.username
+                      a.btn.btn-danger(href="/organizations/" + result.organization._id + "/remove-employee/" + manager.managerId + "/role/managers") 
+                        p Remove Manager
               else 
                 h3 No Managers are currently assigned
 
@@ -44,6 +46,8 @@ block content
                     li.list-group-item
                       a(href= "/account/" + unassigned.unassignedId)
                         p= unassigned.username
+                      a.btn.btn-danger(href="/organizations/" + result.organization._id + "/remove-employee/" +  unassigned.unassignedId + "/role/unassigned") 
+                        p Remove Employee
               else 
                 h3 No Unassigned employees are currently available
 
@@ -57,6 +61,8 @@ block content
                     li.list-group-item
                       a(href= "/account/" + contributor.contributorId)
                         p= contributor.username
+                      a.btn.btn-danger(href="/organizations/" + result.organization._id + "/remove-employee/" +  contributor.contributorId + "/role/contributors") 
+                        p Remove Contributor
               else 
                 h3 No Contributors are currently assigned
 
