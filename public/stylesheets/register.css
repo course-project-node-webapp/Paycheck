@@ -25,3 +25,9 @@
         display: block;
     }
 }
+
+@media screen and (max-device-height: 500px) {
+    #register-form {
+        margin-bottom: 10vh;
+    }
+}
