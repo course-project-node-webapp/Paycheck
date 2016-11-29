@@ -1,8 +1,13 @@
-extends ../shared/_layout
+extends ../../shared/_layout
 
 block content
-  form(method="POST" action= "/organizations/" + organizationId + "/projects/create")
-    input(type="text" name="name" placeholder="Project name")
-    input(type="text" name="description" placeholder="Project description")
-    
+  div.jumbotron.col-xs-6.col-xs-offset-3
+    form(method="POST" action= "/organizations/" + organizationId + "/projects/create")
+      div.row
+        input.form-control(type="text" name="name" placeholder="Project name")
+      div.row
+        input.form-control(type="text" name="description" placeholder="Project description")
+      div.row
+        button.form-control.btn.btn-success(type="submit") Create Project
+
     
