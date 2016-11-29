@@ -2,16 +2,20 @@ extends ../shared/_layout
 
 block stylesheets
   link(rel="stylesheet" href="/bower_components/toastr/toastr.css")
+  link(rel="stylesheet" href="/stylesheets/login.css")
 
 block content
   #login-form
-    div.input-group
-      span.input-group-addon#basic-addon1 @
-      input.form-control#username-tb(type="text" placeholder="Username" aria-describedby="basic-addon1")
-    div.input-group
-      span.input-group-addon#basic-addon2 @
-      input.form-control#password-tb(type="password" placeholder="Password" aria-describedby="basic-addon2")
-    button#btn-submit.btn.btn-success(type="button") Submit
+    div.panel.panel-default.col-lg-6.col-lg-offset-3
+      div.panel-heading.text-center
+        h3 Sign In
+      div.panel-body
+        div.row         
+          input.form-control.text-center#username-tb(type="text" name="username" placeholder="Username")
+        div.row        
+          input.form-control.text-center#password-tb(type="password" name="password" placeholder="Password")
+        div.row
+          button.col-sm-12.btn.btn-default#btn-submit(type="button") Sign In
     
 block javascript
   script(src="/javascripts/login.js")

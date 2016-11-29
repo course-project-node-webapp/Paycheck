@@ -1,5 +1,7 @@
-/* globals $ toastr CryptoJS window Promise */
+/* globals $ toastr CryptoJS window Promise document */
+
 'use strict';
+
 (() => {
   const MIN_NAME_LENGTH = 5;
   const MAX_NAME_LENGTH = 30;
@@ -9,9 +11,21 @@
   const tbPassword = registerForm.find('#tb-password');
   const tbFirstName = registerForm.find('#tb-first-name');
   const tbLastName = registerForm.find('#tb-last-name');
+  const tbCountry = registerForm.find('#tb-country');
   const btnRegister = registerForm.find('#btn-register');
 
+  $(document).on('keydown', (ev) => {
+    const ENTER_KEY_CODE = 13;
+
+    let keyCode = ev.keyCode || ev.which;
+    if (keyCode === ENTER_KEY_CODE) {
+      btnRegister.trigger('click');
+    }
+  });
+
   btnRegister.on('click', () => {
+    toastr.options.preventDuplicates = true;
+
     return Promise.resolve()
       .then(() => {
         const password = tbPassword.val();
@@ -19,7 +33,8 @@
           username: tbUsername.val(),
           password: CryptoJS.SHA256(password).toString(),
           firstName: tbFirstName.val(),
-          lastName: tbLastName.val()
+          lastName: tbLastName.val(),
+          country: tbCountry.find(':selected').text()
         };
 
         validateString(user.username);
@@ -54,16 +69,16 @@
 
   function validateString(value) {
     if (typeof value !== 'string') {
-      throw new Error('Value must be a string');
+      throw new Error('Value must be a string.');
     }
 
     const len = value.length;
     if (!(MIN_NAME_LENGTH <= len && len <= MAX_NAME_LENGTH)) {
-      throw new Error('Invalid value length');
+      throw new Error('Invalid value length.');
     }
 
     if (!/[A-Za-z\.-_]/.test(value)) {
-      throw new Error('Only latin letters dashes and dots allowed');
+      throw new Error('Only latin letters dashes and dots allowed.');
     }
   }
 })();
