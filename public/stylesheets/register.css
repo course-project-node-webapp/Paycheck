@@ -18,6 +18,9 @@
 }
 
 @media screen and (max-device-width: 770px) {
+    #register-form {
+        margin-bottom: 15vh;
+    }
     #register-form .form-footer>a {
         display: block;
     }
