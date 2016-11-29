@@ -11,6 +11,7 @@
   const tbPassword = content.find('#password-tb');
   const btnSubmit = content.find('#btn-submit');
 
+
   $(document).on('keydown', (ev) => {
     const ENTER_KEY_CODE = 13;
 
@@ -21,6 +22,8 @@
   });
 
   btnSubmit.on('click', () => {
+    toastr.options.preventDuplicates = true;
+
     return getUserFromInput()
       .then((user) => {
         return createRequest('POST', user);

@@ -8,7 +8,7 @@ block content
   #register-form
     div.panel.panel-default.col-lg-6.col-lg-offset-3
       div.panel-heading.text-center
-        h3 Register
+        h3 Sign Up
       div.panel-body
         div.row         
           input.form-control.text-center#tb-username(type="text" name="username" placeholder="Username")
@@ -19,8 +19,8 @@ block content
         div.row               
           input.form-control.text-center#tb-last-name(type="text" name="lastName" placeholder="Last Name")
         div.row 
-          label(for="tb-country") Country
           select.form-control#tb-country
+            option(value="" disabled) Country
             option(value="bulgaria") Bulgaria
             option(value="germany") Germany
             option(value="united-kingdom") United Kingdom
