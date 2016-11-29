@@ -1,0 +1,12 @@
+extends ../../shared/_layout
+
+block content
+  div#organization-projects
+    heading.well
+      h2= result.organization.name
+    
+    section.well#projects
+      ul.list-group
+        each project in result.organization.projects
+          li.list-group-item
+            p= project.name
