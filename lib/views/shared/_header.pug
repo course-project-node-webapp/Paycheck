@@ -37,7 +37,7 @@
             else
               li.dropdown
                 a.profile-link.dropdown-toggle(data-toggle="dropdown")
-                  img.img-circle.img-responsive.header-profile-picture(src=imageSrc)
+                  img.img-circle.img-responsive.header-profile-picture(src= result.user.image)
                   span #{result.user.firstName} #{result.user.lastName}
                   i.material-icons keyboard_arrow_down
                 ul.dropdown-menu
