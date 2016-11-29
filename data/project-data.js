@@ -53,6 +53,20 @@ module.exports = function (Project) {
           return resolve(newProject);
         });
       });
+    },
+
+    getProjectBySkill(skill) {
+      return new Promise((resolve, reject) => {
+        Project.find({
+          devSkills: skill
+        }, (err, project) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(project);
+        });
+      });
     }
   };
 };
