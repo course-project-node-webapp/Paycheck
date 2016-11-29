@@ -2,25 +2,31 @@ extends ../shared/_layout
 
 block stylesheets
   link(rel="stylesheet" href="/bower_components/toastr/toastr.css")
+  link(rel="stylesheet" href="/stylesheets/register.css")
 
 block content
   #register-form
-    div.container
-      div.row
-        div.panel.panel-success.col-lg-6.col-lg-offset-3
-          div.panel-heading.text-center
-            h3 Register
-          div.panel-body
-            div.row         
-              input.form-control.text-center#tb-username(type="text" name="username" placeholder="Username")
-            div.row        
-              input.form-control.text-center#tb-password(type="password" name="password" placeholder="Password")
-            div.row                
-              input.form-control.text-center#tb-first-name(type="text" name="firstName" placeholder="First Name")
-            div.row               
-              input.form-control.text-center#tb-last-name(type="text" name="lastName" placeholder="Last Name")
-            div.row  
-              button.col-sm-12.btn.btn-success#btn-register(type="button") Register
+    div.panel.panel-default.col-lg-6.col-lg-offset-3
+      div.panel-heading.text-center
+        h3 Register
+      div.panel-body
+        div.row         
+          input.form-control.text-center#tb-username(type="text" name="username" placeholder="Username")
+        div.row        
+          input.form-control.text-center#tb-password(type="password" name="password" placeholder="Password")
+        div.row                
+          input.form-control.text-center#tb-first-name(type="text" name="firstName" placeholder="First Name")
+        div.row               
+          input.form-control.text-center#tb-last-name(type="text" name="lastName" placeholder="Last Name")
+        div.row 
+          label(for="tb-country") Country
+          select.form-control#tb-country
+            option(value="bulgaria") Bulgaria
+            option(value="germany") Germany
+            option(value="united-kingdom") United Kingdom
+            option(value="united-states-of-america") United States of America
+        div.row
+          button.col-sm-12.btn.btn-default#btn-register(type="button") Register
 
 block javascript
   script(src="bower_components/crypto-js/crypto-js.js")
