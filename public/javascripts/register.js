@@ -11,11 +11,10 @@
   const tbPassword = registerForm.find('#tb-password');
   const tbFirstName = registerForm.find('#tb-first-name');
   const tbLastName = registerForm.find('#tb-last-name');
-  const tbCountry = registerForm.find('#tb-country option:selected');
+  const tbCountry = registerForm.find('#tb-country');
   const btnRegister = registerForm.find('#btn-register');
 
   $(document).on('keydown', (ev) => {
-    console.log(tbCountry.text());
     const ENTER_KEY_CODE = 13;
 
     let keyCode = ev.keyCode || ev.which;
@@ -35,7 +34,7 @@
           password: CryptoJS.SHA256(password).toString(),
           firstName: tbFirstName.val(),
           lastName: tbLastName.val(),
-          country: tbCountry.text()
+          country: tbCountry.find(':selected').text()
         };
 
         validateString(user.username);
