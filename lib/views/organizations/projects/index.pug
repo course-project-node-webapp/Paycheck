@@ -8,15 +8,20 @@ block content
       if result.organization.projects.length > 0
         ul.list-group
           each project in result.organization.projects
-            li.list-group-item
-              heading
-                h3= project.name
-              a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId)
-                p Project Details
-              a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/employees")
-                p Manage Employees
-              a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/tasks")
-                p Manage Tasks
+            if !project.isDeleted
+              p= project.isDeleted
+              li.list-group-item
+                heading
+                  h3= project.name
+                a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId)
+                  p Project Details
+                a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/employees")
+                  p Manage Employees
+                a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/tasks")
+                  p Manage Tasks
+                if result.userRole === 'owner'
+                  a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/delete/" + project.projectId)
+                    p Delete Project
       else 
         p This organization has no active projects.
     
