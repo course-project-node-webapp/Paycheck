@@ -16,6 +16,10 @@ body {
     /*height: 80%;*/
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
 
 /* Return To Top */
 
@@ -62,6 +66,17 @@ body {
 }
 
 
+/* Search Modal */
+
+#search-modal {
+    display: none;
+    padding-right: 15px;
+}
+
+#search-modal .form-group {
+    text-align: center;
+}
+
 /* Header */
 
 #header a {
@@ -70,6 +85,7 @@ body {
 
 #header nav.navbar.navbar-primary {
     margin: 0 !important;
+    text-transform: capitalize;
 }
 
 #header ul.dropdown-menu {
