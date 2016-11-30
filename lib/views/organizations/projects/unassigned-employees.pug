@@ -1,0 +1,13 @@
+extends ../../shared/_layout
+
+block content
+  div.well#unassigned-employees
+    if result.organization.unassigned.length > 0
+      ul.list-group
+        each employee in result.organization.unassigned
+          li.list-group-item
+            p= employee.username
+            a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.projectId + "/employees/add/" + employee.unassignedId + "/" + result.roleName)
+              p= "Assign employee to project " + result.roleName
+    else 
+      p No unassigned employees of this organization are available.
