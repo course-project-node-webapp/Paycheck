@@ -7,28 +7,32 @@ block content
       h3 Employees List
 
     section.well#managers
-      if result.organization.managers.length > 0
+      if result.project.managers.length > 0
         ul.list-group
-          each manager in result.organization.managers
+          each manager in result.project.managers
             li.list-group-item
               p= manager.name
+              a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + manager.managerId + "/managers")
+               
       else 
         p This project has no managers assigned.
 
       if result.userRole === 'owner' || result.userRole === 'manager'
-        a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.projectId + "/employees/add/managers")
+        a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/add/managers")
           p Add managers
 
     section.well#contributors
-      if result.organization.contributors.length > 0
+      if result.project.contributors.length > 0
         ul.list-group
-          each contributor in result.organization.contributors
+          each contributor in result.project.contributors
             li.list-group-item
               p= contributor.name
+              a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + manager.managerId + "/contributors")
+              
       else 
         p This project has no contributors assigned.
 
       if result.userRole === 'owner' || result.userRole === 'manager'
-        a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.projectId + "/employees/add/contributors")
+        a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/add/contributors")
           p Add contributors
 
