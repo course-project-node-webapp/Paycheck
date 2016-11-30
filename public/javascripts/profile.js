@@ -33,10 +33,10 @@
       })
       .then((skill) => {
         $.ajax({
-            url: 'account/update/skills',
+            url: '/account/update/skills',
             method: 'PUT',
             contentType: 'application/json',
-            data: JSON.stringify(skill)
+            data: JSON.stringify({ skill })
           })
           .fail((err) => {
             toastr.error(err.message);
