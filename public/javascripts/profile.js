@@ -24,6 +24,8 @@
   });
 
   $submitSkillBtn.on('click', () => {
+    toastr.options.preventDuplicates = true;
+
     return Promise.resolve()
       .then(() => {
         let skill = $skillInput.val();
@@ -44,6 +46,12 @@
           .fail((err) => {
             toastr.error(err.message);
           });
+      })
+      .then(() => {
+        $addSkillInputContainer.addClass('hide');
+        $skillInput.val('');
+
+        $addSkillBtn.removeClass('hide');
       })
       .catch((err) => {
         toastr.error(err.message);
