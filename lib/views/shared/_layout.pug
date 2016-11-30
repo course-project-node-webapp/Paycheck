@@ -24,6 +24,23 @@ html(lang="en")
             .row.row-centered
                 #content.col-sm-12.col-xs-12.col-md-12.col-lg-12.col-centered
                     block content
+        #search-modal.modal.fade(tabindex="-1" role="dialog" aria-labeledby="SearchModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        button.close(type="button" data-dismiss="modal" aria-hidden="true")
+                            i.material-icons clear
+                        .form-group
+                            input.form-control(placeholder="Search...")
+                            .btn-group
+                                button.btn.btn-default(type="button") Search
+                                button.btn.btn-default.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                    span.caret
+                                    span.sr-only Toggle Dropdown
+                                ul.dropdown-menu
+                                    li: a Users
+                                    li: a Projects
+                                    li: a Organizations
         include _footer.pug
         script(src="/bower_components/jquery/dist/jquery.min.js")
         script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
