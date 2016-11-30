@@ -54,7 +54,6 @@ module.exports = function (Project) {
         });
       });
     },
-
     getProjectBySkill(skill) {
       return new Promise((resolve, reject) => {
         Project.find({
@@ -65,6 +64,17 @@ module.exports = function (Project) {
           }
 
           return resolve(project);
+        });
+      });
+    },
+    updateProject(project) {
+      return new Promise((resolve, reject) => {
+        project.save((err, updated) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(updated);
         });
       });
     }
