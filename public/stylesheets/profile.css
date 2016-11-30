@@ -1,3 +1,7 @@
+ul {
+    list-style-type: none;
+}
+
 #profile>h2 {
     margin-bottom: 0;
 }
@@ -31,7 +35,7 @@
     display: inline-block;
 }
 
-.profile-header-top > h3 {
+.profile-header-top>h3 {
     margin-top: 0;
 }
 
@@ -59,14 +63,31 @@
     /*margin-right: auto;*/
 }
 
-.profile-header ul.skills {
-    list-style-type: none;
-}
-
 .profile-header ul.skills li.skill {
     display: inline-block;
 }
 
 ul.portfolio {
     list-style-type: none;
+}
+
+li.skill span.endorsement-points {
+    font-size: 2rem;
+    margin-right: .5em;
+}
+
+li.skill span.skill-name {
+    font-size: 2rem;
+}
+
+#profile a.add-skill-btn {
+    /*width: 100%;*/
+    border-radius: 15px;
+    background-color: #EEEEEE;
+    color: #666666;
+    margin-bottom: -2.5em;
+}
+
+#profile a.edit-profile-btn {
+    width: 100%;
 }
