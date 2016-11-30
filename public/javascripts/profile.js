@@ -1,4 +1,4 @@
-/* globals Promise $ toastr */
+/* globals Promise $ toastr window */
 
 'use strict';
 
@@ -38,15 +38,12 @@
             contentType: 'application/json',
             data: JSON.stringify({ skill })
           })
+          .done(() => {
+            window.location.reload(false);
+          })
           .fail((err) => {
             toastr.error(err.message);
           });
-      })
-      .then(() => {
-        $addSkillInputContainer.addClass('hide');
-        $skillInput.val('');
-
-        $addSkillBtn.removeClass('hide');
       })
       .catch((err) => {
         toastr.error(err.message);
