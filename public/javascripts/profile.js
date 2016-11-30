@@ -25,9 +25,13 @@
 
   $submitSkillBtn.on('click', () => {
     toastr.options.preventDuplicates = true;
-
+    
     return Promise.resolve()
       .then(() => {
+        if ($('ul.skills').children('li.skill').length >= 10) {
+          throw new Error('You cannot have more than 10 skills.');
+        }
+
         let skill = $skillInput.val();
         validateString(skill);
 
