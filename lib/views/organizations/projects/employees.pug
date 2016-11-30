@@ -1,0 +1,34 @@
+extends ../../shared/_layout
+
+block content
+  div.jumbotron#employees
+    heading
+      h2= result.organization.name
+      h3 Employees List
+
+    section.well#managers
+      if result.organization.managers.length > 0
+        ul.list-group
+          each manager in result.organization.managers
+            li.list-group-item
+              p= manager.name
+      else 
+        p This project has no managers assigned.
+
+      if result.userRole === 'owner' || result.userRole === 'manager'
+        a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.projectId + "/employees/add/managers")
+          p Add managers
+
+    section.well#contributors
+      if result.organization.contributors.length > 0
+        ul.list-group
+          each contributor in result.organization.contributors
+            li.list-group-item
+              p= contributor.name
+      else 
+        p This project has no contributors assigned.
+
+      if result.userRole === 'owner' || result.userRole === 'manager'
+        a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.projectId + "/employees/add/contributors")
+          p Add contributors
+
