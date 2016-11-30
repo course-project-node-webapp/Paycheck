@@ -9,8 +9,14 @@ block content
         ul.list-group
           each project in result.organization.projects
             li.list-group-item
-              a(href="/organizations/" + result.organization._id + "/projects/" + project.projectId)
-                p= project.name
+              heading
+                h3= project.name
+              a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId)
+                p Project Details
+              a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/employees")
+                p Manage Employees
+              a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/tasks")
+                p Manage Tasks
       else 
         p This organization has no active projects.
     
