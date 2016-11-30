@@ -1,4 +1,4 @@
-/* globals Promise $ toastr */
+/* globals Promise $ toastr window */
 
 'use strict';
 
@@ -24,6 +24,8 @@
   });
 
   $submitSkillBtn.on('click', () => {
+    toastr.options.preventDuplicates = true;
+
     return Promise.resolve()
       .then(() => {
         let skill = $skillInput.val();
@@ -37,6 +39,9 @@
             method: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify({ skill })
+          })
+          .done(() => {
+            window.location.reload(false);
           })
           .fail((err) => {
             toastr.error(err.message);
