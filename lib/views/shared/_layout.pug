@@ -32,7 +32,15 @@ html(lang="en")
                             i.material-icons clear
                         .form-group
                             input.form-control(placeholder="Search...")
-                            a.btn.btn-default Search
+                            .btn-group
+                                button.btn.btn-default(type="button") Search
+                                button.btn.btn-default.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                    span.caret
+                                    span.sr-only Toggle Dropdown
+                                ul.dropdown-menu
+                                    li: a Users
+                                    li: a Projects
+                                    li: a Organizations
         include _footer.pug
         script(src="/bower_components/jquery/dist/jquery.min.js")
         script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
