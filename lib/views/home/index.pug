@@ -63,6 +63,15 @@ html(lang="en")
             #get-started-container
                 h2 Build your online dream team
                 a.btn.btn-default.btn-lg.hvr-grow-shadow.hvr-outline-out(href="/account/register") Get Started
+        #search-modal.modal.fade(tabindex="-1" role="dialog" aria-labeledby="SearchModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        button.close(type="button" data-dismiss="modal" aria-hidden="true")
+                            i.material-icons clear
+                        .form-group
+                            input.form-control(placeholder="Search...")
+                            a.btn.btn-default Search
         include ../shared/_footer.pug
     script(src="/bower_components/jquery/dist/jquery.min.js")
     script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
