@@ -28,8 +28,14 @@ block content
     .portfolio.profile-container
       h3.capitalize.container-header Project History
       ul.portfolio
-        li.portfolio-item 
-          h4 Sinoptik.bg
+        each project in result.userData.projects
+          li.portfolio-item 
+            h4= project.name
+            span= project.description
+            h5 Tasks
+            ul.tasks
+              each task in project.tasks
+                li.task= task.description
         li.add-item
     .skills-container.profile-container
       h3.capitalize.container-header Skills &amp; Endorsements
