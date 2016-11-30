@@ -64,11 +64,12 @@ html(lang="en")
                 h2 Build your online dream team
                 a.btn.btn-default.btn-lg.hvr-grow-shadow.hvr-outline-out(href="/account/register") Get Started
         #search-modal.modal.fade(tabindex="-1" role="dialog" aria-labeledby="SearchModalLabel" aria-hidden="true")
-            .modal-dialog
+             .modal-dialog
                 .modal-content
                     .modal-header
                         button.close(type="button" data-dismiss="modal" aria-hidden="true")
                             i.material-icons clear
+                        h4.modal-title Search
                         .form-group
                             form.search-form(action="/users/search" method="GET")
                                 input.form-control.search-input(name="search" type="text" placeholder="Search...")
