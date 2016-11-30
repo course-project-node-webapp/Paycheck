@@ -2,7 +2,11 @@
 
 'use strict';
 
-module.exports = function (Organization) {
+module.exports = function ({models}) {
+  const {
+    Organization
+  } = models;
+
   function createOrganization(organization) {
     return new Promise((resolve, reject) => {
       const newOrganization = Organization.getOrganization(organization);

@@ -2,7 +2,11 @@
 
 'use strict';
 
-module.exports = function (User) {
+module.exports = function ({models}) {
+  const {
+    User
+  } = models;
+
   return {
     getAllUsers() {
       return new Promise((resolve, reject) => {
