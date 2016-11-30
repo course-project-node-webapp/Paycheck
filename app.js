@@ -10,7 +10,7 @@ logger.info('Configuring express...');
 const app = require('./config/express')(config);
 logger.info('Expressed configured...');
 
-const controllerLoaders = require('./lib/controllers');
+const controllerLoaders = require('./lib/controllers')();
 const models = require('./lib/models')();
 const data = require('./data')(models);
 
