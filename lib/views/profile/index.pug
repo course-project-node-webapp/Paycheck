@@ -7,7 +7,7 @@ block stylesheets
 block content
   #profile
     if isAuthorized
-      h2.capitalize My profile 
+      h2.capitalize My profile
     else
       h2.capitalize #{result.userData.username}'s Profile
     .profile-header.profile-container
@@ -29,7 +29,7 @@ block content
       h3.capitalize.container-header Project History
       ul.portfolio
         each project in result.userData.projects
-          li.portfolio-item 
+          li.portfolio-item
             h4= project.name
             span= project.description
             h5 Tasks
@@ -47,4 +47,7 @@ block content
         if isAuthorized
           li.add: a.btn.btn-default.btn.uppercase.add-skill-btn Add Skill
     if isAuthorized
-      a.btn.btn-default.uppercase.edit-profile-btn Edit Profile     
+      a.btn.btn-default.uppercase.edit-profile-btn Edit Profile
+
+block javascript
+  script(src="/javascripts/profile.js")
