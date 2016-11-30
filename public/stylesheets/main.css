@@ -9,11 +9,13 @@ html,
 }
 
 body {
-    /*background-image: url('../assets/images/background-patterns/white_brick_wall.png');*/
     background-repeat: repeat;
     background-color: #F9F9F9;
     height: auto!important;
-    /*height: 80%;*/
+}
+
+a {
+    cursor: pointer;
 }
 
 .capitalize {
@@ -76,6 +78,7 @@ body {
 #search-modal .form-group {
     text-align: center;
 }
+
 
 /* Header */
 

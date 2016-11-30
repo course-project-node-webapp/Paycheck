@@ -31,19 +31,21 @@ html(lang="en")
                         button.close(type="button" data-dismiss="modal" aria-hidden="true")
                             i.material-icons clear
                         .form-group
-                            input.form-control(placeholder="Search...")
-                            .btn-group
-                                button.btn.btn-default(type="button") Search
-                                button.btn.btn-default.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-                                    span.caret
-                                    span.sr-only Toggle Dropdown
-                                ul.dropdown-menu
-                                    li: a Users
-                                    li: a Projects
-                                    li: a Organizations
+                            form.search-form(action="/users/search" method="GET")
+                                input.form-control.search-input(name="search" type="text" placeholder="Search...")
+                                .btn-group
+                                    button.btn.btn-default.search-btn(type="submit") Search
+                                    button.btn.btn-default.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                        span.caret
+                                        span.sr-only Toggle Dropdown
+                                    ul.dropdown-menu.search-categories
+                                        li: a Users
+                                        li: a Projects
+                                        li: a Organizations
         include _footer.pug
         script(src="/bower_components/jquery/dist/jquery.min.js")
         script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
         script(src="/bower_components/toastr/toastr.js")
         script(src="/javascripts/global.js")
+        script(src="/javascripts/search.js")
         block javascript
