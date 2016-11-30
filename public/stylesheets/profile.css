@@ -27,10 +27,6 @@ ul {
     text-transform: uppercase;
 }
 
-.profile-header {
-    /*text-align: center;*/
-}
-
 .profile-header-top {
     display: inline-block;
 }
@@ -59,8 +55,6 @@ ul {
 
 .profile-header img {
     height: 150px;
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
 }
 
 .profile-header ul.skills li.skill {
@@ -81,10 +75,14 @@ li.skill span.skill-name {
 }
 
 #profile a.add-skill-btn {
-    /*width: 100%;*/
     border-radius: 15px;
     background-color: #EEEEEE;
     color: #666666;
+    margin-bottom: -2.5em;
+}
+
+#profile a.submit-skill-btn {
+    border-radius: 15px;
     margin-bottom: -2.5em;
 }
 
