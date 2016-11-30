@@ -42,8 +42,8 @@ block content
       ul.skills
         each skill in result.userData.skills
           li.skill
-            span.endorsement-points 3
-            span.skill-name= skill
+            span.endorsement-points= skill.ednorsements
+            span.skill-name= skill.name
         if isAuthorized
           li.add: a.btn.btn-default.btn.uppercase.add-skill-btn Add Skill
     if isAuthorized
