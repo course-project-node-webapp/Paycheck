@@ -17,8 +17,9 @@ block content
                 p Manage Employees
               a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/tasks")
                 p Manage Tasks
-              a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/delete/" + project.projectId)
-                p Delete Project
+              if result.userRole === 'owner'
+                a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/delete/" + project.projectId)
+                  p Delete Project
       else 
         p This organization has no active projects.
     
