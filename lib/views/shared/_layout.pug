@@ -16,6 +16,8 @@ html(lang="en")
         block stylesheets
         
     body
+        a#return-to-top(href="javascript:")
+            i.fa.fa-chevron-up(aria-hidden="true")
         include _header.pug
         .container
             .row.row-centered
@@ -24,4 +26,5 @@ html(lang="en")
         include _footer.pug
         script(src="/bower_components/jquery/dist/jquery.min.js")
         script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+        script(src="/javascripts/global.js")
         block javascript

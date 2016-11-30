@@ -15,6 +15,8 @@ html(lang="en")
         link(rel="stylesheet" href="/stylesheets/home.css")
 
     body
+        a#return-to-top(href="javascript:")
+            i.fa.fa-chevron-up(aria-hidden="true")
         include ../shared/_header.pug
         .homepage-hero-module
             .video-container
@@ -65,3 +67,4 @@ html(lang="en")
     script(src="/bower_components/jquery/dist/jquery.min.js")
     script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
     script(src="/javascripts/home.js")
+    script(src="/javascripts/global.js")
