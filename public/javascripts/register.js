@@ -52,11 +52,7 @@
             data: JSON.stringify(user)
           })
           .done((res) => {
-            toastr.success(res.message);
-
-            setTimeout(() => {
-              window.location = res.redirectUrl;
-            }, 1500);
+            window.location = res.redirectUrl;
           })
           .fail((err) => {
             toastr.error(err.message);
