@@ -9,6 +9,7 @@ block content
         ul.list-group
           each project in result.organization.projects
             if !project.isDeleted
+              p= project.isDeleted
               li.list-group-item
                 heading
                   h3= project.name
