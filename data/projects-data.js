@@ -2,7 +2,9 @@
 
 'use strict';
 
-module.exports = function({ models }) {
+module.exports = function ({
+  models
+}) {
   const {
     Project
   } = models;
@@ -28,6 +30,21 @@ module.exports = function({ models }) {
             return reject(err);
           }
 
+          return resolve(project);
+        });
+      });
+    },
+    updateProjectByName(projectName, applyer) {
+      return new Promise((resolve, reject) => {
+        Project.findOne({
+          name: projectName
+        }, (err, project) => {
+          if (err) {
+            return reject(err);
+          }
+          
+          project.applyers.push(applyer);
+          project.save();
           return resolve(project);
         });
       });
