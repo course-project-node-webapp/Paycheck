@@ -89,21 +89,21 @@
 
     $editProfileBtn.removeClass('hide');
 
-    return Promise.resolve()
-      .then(() => {
-        let skills = $('ul.skills li.skill span.skill-name')
-          .map((_, el) => el.innerHTML);
+    // return Promise.resolve()
+    //   .then(() => {
+    //     let skills = $('ul.skills li.skill span.skill-name')
+    //       .map((_, el) => el.innerHTML);
 
-        return skills;
-      })
-      .then((skills) => {
-        $.ajax({
-          url: 
-        });
-      })
-      .catch((err) => {
-        toastr.error(err.message);
-      });
+    //     return skills;
+    //   })
+    //   .then((skills) => {
+    //     $.ajax({
+    //       url: 
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     toastr.error(err.message);
+    //   });
   });
 
   $deleteSkillBtn.on('click', function() {
