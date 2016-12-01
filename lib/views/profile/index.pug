@@ -14,6 +14,7 @@ block content
       .profile-header-top
         h3.capitalize #{result.userData.firstName} #{result.userData.lastName}
           br
+          a.btn-specialty-edit.btn-edit.edit-mode.animated.zoomIn.hide: i.material-icons mode_edit
           small.specialty.capitalize #{result.userData.specialization}
         img.img-rounded.img-responsive(src=result.userData.image)
       .rates
@@ -24,6 +25,7 @@ block content
             .fill
       .overview
         h3.capitalize.container-header Summary
+        a.btn-summary-edit.btn-edit.edit-mode.animated.zoomIn.hide: i.material-icons mode_edit
         span #{result.userData.description}
     .portfolio.profile-container
       h3.capitalize.container-header Project History
@@ -42,12 +44,14 @@ block content
       ul.skills
         each skill in result.userData.skills
           li.skill
+            a.btn-delete.edit-mode.hide.animated.zoomIn: i.material-icons delete 
             span.endorsement-points= skill.ednorsements
             span.skill-name= skill.name
         if isAuthorized
           li.add: a.btn.btn-default.btn.uppercase.add-skill-btn Add Skill
     if isAuthorized
       a.btn.btn-default.uppercase.edit-profile-btn Edit Profile
+      a.btn.btn-success.uppercase.save-changes-btn.hide Save Changes
 
 block javascript
   script(src="/javascripts/profile.js")
