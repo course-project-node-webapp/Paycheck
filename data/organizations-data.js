@@ -2,7 +2,7 @@
 
 'use strict';
 
-module.exports = function ({models}) {
+module.exports = function({ models }) {
   const {
     Organization
   } = models;
@@ -45,6 +45,22 @@ module.exports = function ({models}) {
         }
 
         return resolve(organization);
+      });
+    });
+  }
+
+  function getOrganizationsWhichContains(string) {
+    let regex = new RegExp(string, 'i');
+
+    return new Promise((resolve, reject) => {
+      Organization.find({
+        name: regex
+      }, (err, organizations) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(organizations);
       });
     });
   }
@@ -96,6 +112,7 @@ module.exports = function ({models}) {
     createOrganization,
     findById,
     findByName,
+    getOrganizationsWhichContains,
     findPage,
     updateOrganization
   };
