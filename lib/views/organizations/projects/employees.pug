@@ -22,7 +22,7 @@ block content
       else 
         p This project has no managers assigned.
 
-      if result.userRole === 'owner' || result.userRole === 'manager'
+      if result.isManager
         a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/add/managers")
           p Add managers
 
@@ -42,7 +42,7 @@ block content
       else 
         p This project has no contributors assigned.
 
-      if result.userRole === 'owner' || result.userRole === 'manager'
+      if result.isManager
         a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/add/contributors")
           p Add contributors
 
