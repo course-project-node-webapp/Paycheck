@@ -2,9 +2,10 @@ extends ../shared/_layout
 
 block content
 
-  h3 All projects:
+  h3 All public projects:
   each pr in data
-    h4 Project name: #{pr.name}
-    h4 Required skills: #{pr.devSkills}
-    p Project description: #{pr.description}
-    a.btn.btn-primary(type='text' href='/') Apply
+    if pr.privacy === 'public'
+      h4 Project name: #{pr.name}
+      h4 Required skills: #{pr.devSkills}
+      p Project description: #{pr.description}
+      a.btn.btn-primary(type='text' href='/') Apply
