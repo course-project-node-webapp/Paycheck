@@ -16,7 +16,7 @@ html(lang="en")
         link(rel="stylesheet" href="/stylesheets/home.css")
         block stylesheets
         
-    body
+    body.bk-img
         a#return-to-top(href="javascript:")
             i.fa.fa-chevron-up(aria-hidden="true")
         include _header.pug
@@ -33,7 +33,7 @@ html(lang="en")
                         h4.modal-title Search
                         .form-group
                             form.search-form(action="/users/search" method="GET")
-                                input.form-control.search-input(name="search" type="text" placeholder="Search...")
+                                input.form-control.search-input(name="search" type="text" placeholder="Search users...")
                                 .btn-group
                                     button.btn.btn-default.search-btn(type="submit") Search
                                     button.btn.btn-default.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
