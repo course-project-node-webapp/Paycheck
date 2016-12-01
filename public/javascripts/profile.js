@@ -33,12 +33,21 @@
 
     return Promise.resolve()
       .then(() => {
-        if ($('ul.skills').children('li.skill').length >= 10) {
+        let skills = $('ul.skills').children('li.skill');
+        if (skills.length >= 10) {
           throw new Error('You cannot have more than 10 skills.');
         }
 
         let skill = $skillInput.val();
         validateString(skill);
+
+        let skillNames = skills.children('span.skill-name');
+        let doesExists = [].slice.call(skillNames)
+          .some(s => s.innerHTML.toLowerCase() === skill.toLowerCase());
+
+        if (doesExists) {
+          throw new Error('Skill already exists.');
+        }
 
         return skill;
       })
@@ -79,6 +88,22 @@
     $editMode.addClass('hide');
 
     $editProfileBtn.removeClass('hide');
+
+    return Promise.resolve()
+      .then(() => {
+        let skills = $('ul.skills li.skill span.skill-name')
+          .map((_, el) => el.innerHTML);
+
+        return skills;
+      })
+      .then((skills) => {
+        $.ajax({
+          url: 
+        });
+      })
+      .catch((err) => {
+        toastr.error(err.message);
+      });
   });
 
   $deleteSkillBtn.on('click', function() {
