@@ -1,13 +1,16 @@
 extends ../shared/_layout
 
 block content
-  if !result.data.length
+  if !data.length
     h3 No projects found.
   else
     h3 All public projects
-      each pr in result.data
+      each pr in data
         if pr.privacy === 'public'
           h4 Project name: #{pr.name}
           h4 Required skills: #{pr.devSkills}
           p Project description: #{pr.description}
-          a.btn.btn-primary(type='text' href='/') Apply
+          if result.user
+            form(method='POST' action="/projects/"+pr.name)
+              input(type='hidden' name='privacy' value=result.user.username)
+              button.btn.btn-primary(type='submit') Apply
