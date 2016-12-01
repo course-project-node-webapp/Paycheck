@@ -4,9 +4,9 @@ block content
   if !result.data.length
     h3 No projects found.
   else
-    h3 All public projects
+    h3 My projects
       each pr in result.data
-        if pr.privacy === 'public'
+        if pr.privacy === 'public' && result.user.username === pr.owner
           div.well.text-center
             h4 Project name: #{pr.name}
             h4 Required skills: #{pr.devSkills}
