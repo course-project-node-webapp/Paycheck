@@ -1,11 +1,11 @@
 extends ../shared/_layout
 
 block content
-  if !data.length
+  if !result.data.length
     h3 No projects found.
   else
     h3 All public projects
-      each pr in data
+      each pr in result.data
         if pr.privacy === 'public'
           h4 Project name: #{pr.name}
           h4 Required skills: #{pr.devSkills}
