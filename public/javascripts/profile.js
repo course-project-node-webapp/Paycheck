@@ -52,18 +52,21 @@
         return skill;
       })
       .then((skill) => {
-        $.ajax({
-            url: '/account/update/skills/add',
-            method: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify({ skill })
-          })
-          .done(() => {
-            window.location.reload(false);
-          })
-          .fail((err) => {
-            toastr.error(err.message);
-          });
+        return new Promise((resolve, reject) => {
+          $.ajax({
+              url: '/account/update/skills/add',
+              method: 'PUT',
+              contentType: 'application/json',
+              data: JSON.stringify({ skill })
+            })
+            .done(() => {
+              window.location.reload(false);
+              resolve();
+            })
+            .fail((err) => {
+              reject(err);
+            });
+        });
       })
       .then(() => {
         $addSkillInputContainer.addClass('hide');
@@ -88,31 +91,40 @@
     $editMode.addClass('hide');
 
     $editProfileBtn.removeClass('hide');
-
-    // return Promise.resolve()
-    //   .then(() => {
-    //     let skills = $('ul.skills li.skill span.skill-name')
-    //       .map((_, el) => el.innerHTML);
-
-    //     return skills;
-    //   })
-    //   .then((skills) => {
-    //     $.ajax({
-    //       url: 
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     toastr.error(err.message);
-    //   });
   });
 
   $deleteSkillBtn.on('click', function() {
-    const $target = $(this);
+    const $this = $(this);
 
-    $target.parent('li.skill').addClass('animated zoomOut');
-    setTimeout(function() {
-      $target.parent('li.skill').remove();
-    }, 400);
+    return Promise.resolve()
+      .then(() => {
+        let skill = $this.text();
+
+        return new Promise((resolve, reject) => {
+          $.ajax({
+              url: '/account/update/skills/remove',
+              method: 'PUT',
+              contentType: 'application/json',
+              data: JSON.stringify({ skill })
+            })
+            .done(() => {
+              window.location.reload(false);
+              resolve();
+            })
+            .fail((err) => {
+              reject(err);
+            });
+        });
+      })
+      .then(() => {
+        $this.parent('li.skill').addClass('animated zoomOut');
+        setTimeout(function() {
+          $this.parent('li.skill').remove();
+        }, 400);
+      })
+      .catch((err) => {
+        toastr.error(err.message);
+      });
   });
 
   function validateString(value) {

@@ -61,7 +61,7 @@ ul.portfolio {
     list-style-type: none;
 }
 
-li.skill:not(:nth-last-child(2)) {
+li.skill:not(:last-child) {
     margin-bottom: 1em;
 }
 
