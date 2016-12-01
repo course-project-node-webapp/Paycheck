@@ -7,10 +7,11 @@ block content
     h3 All public projects
       each pr in result.data
         if pr.privacy === 'public'
-          h4 Project name: #{pr.name}
-          h4 Required skills: #{pr.devSkills}
-          p Project description: #{pr.description}
-          if result.user
-            form(method='POST' action="/projects/"+pr.name)
-              input(type='hidden' name='applyer' value=result.user.username)
-              button.btn.btn-primary(type='submit') Apply
+          div.well.text-center
+            h4 Project name: #{pr.name}
+            h4 Required skills: #{pr.devSkills}
+            p Project description: #{pr.description}
+            if result.user
+              form(method='POST' action="/projects/aplyers/"+pr.name)
+                input(type='hidden' name='applyer' value=result.user.username)
+                button.btn.btn-primary(type='submit') Apply

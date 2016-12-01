@@ -8,10 +8,10 @@ block content
         h1= result.organization.owner   
 
       div.panel-footer
-        if !result.userRole
+        if !result.isMember
           a.btn.btn-success(href= "/organizations/" + result.organization._id + "/apply")
             p Apply to this organization
-        else if result.userRole === 'owner'
+        if result.isMember
           a.btn.btn-success(href= "/organizations/" + result.organization._id + "/employees") 
             p View Employees
           a.btn.btn-success(href= "/organizations/" + result.organization._id + "/projects") 

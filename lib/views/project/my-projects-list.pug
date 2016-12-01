@@ -1,0 +1,26 @@
+extends ../shared/_layout
+
+block content
+  if !result.data.length
+    h3 No projects found.
+  else
+    h3 My projects
+      each pr in result.data
+        if pr.privacy === 'public' && result.user.username === pr.owner
+          div.well.text-center
+            h4 Project name: #{pr.name}
+            h4 Required skills: #{pr.devSkills}
+            p Project description: #{pr.description}
+            h4 Appliers:
+            ul
+              each aplyer in pr.applyers
+                a() #{aplyer}
+                form(method='POST' action="/projects/employees/"+pr.name)
+                  input(type='hidden' name='employee' value= aplyer)
+                  button.btn.btn-success(type='submit') Assign to employees
+                  
+            h4 Employees:
+            ul
+              each employee in pr.employees
+                li.form-control
+                  a() #{employee.employeeName}
