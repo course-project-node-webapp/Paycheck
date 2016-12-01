@@ -53,7 +53,7 @@
       })
       .then((skill) => {
         $.ajax({
-            url: '/account/update/skills',
+            url: '/account/update/skills/add',
             method: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify({ skill })
