@@ -57,20 +57,27 @@ ul {
     height: 150px;
 }
 
-.profile-header ul.skills li.skill {
-    display: inline-block;
-}
-
 ul.portfolio {
     list-style-type: none;
 }
 
+li.skill:not(:nth-last-child(2)) {
+    margin-bottom: 1em;
+}
+
 li.skill span.endorsement-points {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    text-shadow: -1px -1px 4px rgba(7, 0, 0, 1);
     font-size: 2rem;
-    margin-right: .5em;
+    padding: 5px;
+    margin-right: .2em;
+    background-color: #1BA8E5;
 }
 
 li.skill span.skill-name {
+    color: #292C2F;
     font-size: 2rem;
 }
 
@@ -88,4 +95,36 @@ li.skill span.skill-name {
 
 #profile a.edit-profile-btn {
     width: 100%;
+    background-color: #337AB7;
+}
+
+#profile a.save-changes-btn {
+    width: 100%;
+}
+
+a.btn-delete {
+    color: #D9534F;
+}
+
+a.btn-edit {
+    color: #fff;
+}
+
+a.btn-edit i {
+    background-color: #292C2F;
+    line-height: 42px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+a.submit-skill-btn {
+    margin-top: 0;
+}
+
+input.skill-input {
+    margin-bottom: 0;
+    margin-top: 7px;
 }

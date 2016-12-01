@@ -9,8 +9,13 @@
   const $addListItem = $('ul.skills>li.add');
   const $addSkillBtn = $('a.add-skill-btn');
 
+  const $editMode = $('.edit-mode');
+  const $editProfileBtn = $('a.edit-profile-btn');
+  const $saveChangesBtn = $('a.save-changes-btn');
+  const $deleteSkillBtn = $('a.btn-delete');
+
   const $submitSkillBtn = $('<a class="btn btn-success submit-skill-btn">Add</a>');
-  const $skillInput = $('<input class="form-control" type="text" placeholder="Enter your skill"/>');
+  const $skillInput = $('<input class="form-control skill-input" type="text" placeholder="Enter your skill"/>');
   const $addSkillInputContainer = $('<div class="add-skill-input-container hide"/>')
     .append($skillInput)
     .append($submitSkillBtn);
@@ -25,7 +30,7 @@
 
   $submitSkillBtn.on('click', () => {
     toastr.options.preventDuplicates = true;
-    
+
     return Promise.resolve()
       .then(() => {
         if ($('ul.skills').children('li.skill').length >= 10) {
@@ -60,6 +65,29 @@
       .catch((err) => {
         toastr.error(err.message);
       });
+  });
+
+  $editProfileBtn.on('click', function() {
+    $(this).addClass('hide');
+
+    $saveChangesBtn.removeClass('hide');
+    $editMode.removeClass('hide');
+  });
+
+  $saveChangesBtn.on('click', function() {
+    $(this).addClass('hide');
+    $editMode.addClass('hide');
+
+    $editProfileBtn.removeClass('hide');
+  });
+
+  $deleteSkillBtn.on('click', function() {
+    const $target = $(this);
+
+    $target.parent('li.skill').addClass('animated zoomOut');
+    setTimeout(function() {
+      $target.parent('li.skill').remove();
+    }, 400);
   });
 
   function validateString(value) {
