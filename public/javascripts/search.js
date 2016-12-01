@@ -12,6 +12,7 @@
     searchCategory = $(this).text().toLowerCase();
     $searchForm.attr('action', `/${searchCategory}/search`);
 
+    $searchInput.val('');
     $searchInput.attr('placeholder', `Search ${searchCategory}...`);
   });
 })();
