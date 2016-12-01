@@ -3,6 +3,8 @@
 'use strict';
 
 (() => {
+  toastr.options.preventDuplicates = true;
+
   const MIN_SKILL_NAME_LENGTH = 3;
   const MAX_SKILL_NAME_LENGTH = 20;
 
@@ -29,8 +31,6 @@
   });
 
   $submitSkillBtn.on('click', () => {
-    toastr.options.preventDuplicates = true;
-
     return Promise.resolve()
       .then(() => {
         let skills = $('ul.skills').children('li.skill');
