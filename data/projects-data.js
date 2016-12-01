@@ -34,7 +34,7 @@ module.exports = function ({
         });
       });
     },
-    updateProjectByName(projectName, applyer) {
+    updateProjectAplyersByName(projectName, applyer) {
       return new Promise((resolve, reject) => {
         Project.findOne({
           name: projectName
@@ -42,8 +42,23 @@ module.exports = function ({
           if (err) {
             return reject(err);
           }
-          
+
           project.applyers.push(applyer);
+          project.save();
+          return resolve(project);
+        });
+      });
+    },
+    updateProjectEmployeesByName(projectName, employee) {
+      return new Promise((resolve, reject) => {
+        Project.findOne({
+          name: projectName
+        }, (err, project) => {
+          if (err) {
+            return reject(err);
+          }
+
+          project.employees.push(employee);
           project.save();
           return resolve(project);
         });
