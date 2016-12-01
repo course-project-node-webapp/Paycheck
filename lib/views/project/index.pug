@@ -17,6 +17,7 @@ block content
             label(for='tasks') Tasks:
             input.form-control#projecttasks(type='text' name='tasks')
             input(type='hidden' name='privacy' value='public')
+            input(type='hidden' name='owner' value= result.user.username)
             button.btn.btn-primary(type='submit') Submit
   else
     .row
