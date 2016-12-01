@@ -27,7 +27,7 @@ block content
           each contributor in result.project.contributors
             li.list-group-item
               p= contributor.name
-              a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + manager.managerId + "/contributors")
+              a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + contributor.contributorId + "/contributors")
               
       else 
         p This project has no contributors assigned.
