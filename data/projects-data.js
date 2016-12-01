@@ -2,7 +2,7 @@
 
 'use strict';
 
-module.exports = function ({models}) {
+module.exports = function({ models }) {
   const {
     Project
   } = models;
@@ -29,6 +29,21 @@ module.exports = function ({models}) {
           }
 
           return resolve(project);
+        });
+      });
+    },
+    getProjectsWhichContains(string) {
+      let regex = new RegExp(string, 'i');
+
+      return new Promise((resolve, reject) => {
+        Project.find({
+          name: regex
+        }, (err, projects) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(projects);
         });
       });
     },
