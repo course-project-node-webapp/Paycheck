@@ -1,13 +1,16 @@
 extends ../../shared/_layout
 
 block content
-  if result.project.tasks.length > 0
-    ul.list-group
-      each task in result.project.tasks
-        li.list-group-item
-          a(href="/organizations/" + result.organizationId + "/projects/" + result.project._id + "/tasks/" + task._id)
-            p= task.name
-    
+  div.well
+    if result.project.tasks.length > 0
+      ul.list-group
+        each task in result.project.tasks
+          li.list-group-item
+            a(href="/organizations/" + result.organizationId + "/projects/" + result.project._id + "/tasks/" + task._id)
+              p= task.name
+    else
+      p This project has no active tasks.
+
   if result.isManager
     a.btn.btn-success(href="/organizations/" + result.organizationId + "/projects/" + result.project._id + "/tasks/add")
-      p Create a new task.
+      p Create a new task
