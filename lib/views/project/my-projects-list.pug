@@ -11,7 +11,16 @@ block content
             h4 Project name: #{pr.name}
             h4 Required skills: #{pr.devSkills}
             p Project description: #{pr.description}
-            if result.user
-              form(method='POST' action="/projects/"+pr.name)
-                input(type='hidden' name='applyer' value=result.user.username)
-                button.btn.btn-primary(type='submit') Apply
+            h4 Appliers:
+            ul
+              each aplyer in pr.applyers
+                a() #{aplyer}
+                form(method='POST' action="/projects/employees/"+pr.name)
+                  input(type='hidden' name='employee' value= aplyer)
+                  button.btn.btn-success(type='submit') Assign to employees
+                  
+            h4 Employees:
+            ul
+              each employee in pr.employees
+                li.form-control
+                  a() #{employee.employeeName}
