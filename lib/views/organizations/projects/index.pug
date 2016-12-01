@@ -24,7 +24,6 @@ block content
       else 
         p This organization has no active projects.
     
-    if result.userRole === 'owner' || result.userRole === 'manager'
-      section.well#create
-        a.btn.btn-success(href= "/organizations/" + result.organization._id + "/projects/create") 
-          p Create Project 
+    section.well#create
+      a.btn.btn-success(href= "/organizations/" + result.organization._id + "/projects/create") 
+        p Create Project 
