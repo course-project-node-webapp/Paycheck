@@ -1,0 +1,10 @@
+extends ../../shared/_layout
+
+block content
+  ul.list-group
+    each task in result.project.tasks
+      li.list-group-item
+        p= task.name
+    
+  if isManager
+    p Insert create task button here.
