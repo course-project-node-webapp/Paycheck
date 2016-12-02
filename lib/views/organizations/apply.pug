@@ -1,0 +1,13 @@
+extends ../shared/_layout
+
+block content
+  seciton.well.col-xs-6.col-xs-offset-3#apply-form
+    if result.organization.isHiring
+      form(method="POST" action="/organizations/" + result.organization._id + "/apply")
+        div.row
+          input.form-control(type="text" name="comment" placeholder="Comment")  
+        div.row
+          button.btn.btn-success.form-control(type="submit") Submit applications
+  
+    else
+      p This organization is not hiring right now. 
