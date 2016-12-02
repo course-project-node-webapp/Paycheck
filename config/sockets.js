@@ -3,6 +3,7 @@
 'use strict';
 
 module.exports = function (app, data, controllerLoaders) {
+  console.log(data);
   const server = require('http').Server(app);
   const io = require('socket.io').listen(server);
 
@@ -29,7 +30,6 @@ module.exports = function (app, data, controllerLoaders) {
 
     messageController.getLast100Messages()
       .then((messages) => {
-        console.log('hi');
         // console.log(messages);
         // messages.toArray(function (err, res) {
         //   socket.emit('output', res);
