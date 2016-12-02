@@ -28,7 +28,7 @@ module.exports = function ({ models }) {
             return reject(err);
 
           }
-          console.log(messages);
+          
           return resolve(messages);
         });
       });
