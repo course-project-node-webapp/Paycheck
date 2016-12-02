@@ -1,0 +1,37 @@
+/* globals module Promise */
+
+'use strict';
+
+module.exports = function ({ models }) {
+  const {
+    Message
+  } = models;
+  
+  return {
+    createMessage(message) {
+      let messageModel = Message.getMessage(message);
+
+      return new Promise((resolve, reject) => {
+        messageModel.save(err => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(messageModel);
+        });
+      });
+    },
+    getLast100Messages() {
+      return new Promise((resolve, reject) => {
+        Message.find((err, messages) => {
+          if (err) {
+            return reject(err);
+
+          }
+          console.log(messages);
+          return resolve(messages);
+        });
+      });
+    }
+  };
+};

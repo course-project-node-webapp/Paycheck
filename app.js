@@ -18,6 +18,7 @@ require('./config/database')(config);
 require('./config/passport')(data.userData);
 require('./lib/routes')(app, data, controllerLoaders);
 
-app.listen(port, () => {
+const server = require('./config/sockets')(app, data, controllerLoaders);
+server.listen(port, () => {
   logger.info(`Listening on port: ${port}`);
 });
