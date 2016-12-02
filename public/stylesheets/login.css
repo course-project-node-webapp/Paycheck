@@ -22,6 +22,10 @@
     display: block;
 }
 
+/*#footer {
+    display: none;*/
+/*}*/
+
 @media screen and (max-device-width: 770px) {
     #login-form {
         margin-bottom: 10vh;

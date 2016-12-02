@@ -14,7 +14,7 @@ block content
             h4 Appliers:
             ul
               each aplyer in pr.applyers
-                a() #{aplyer}
+                a(href='/users/search?search='+aplyer) #{aplyer}
                 form(method='POST' action="/projects/employees/"+pr.name)
                   input(type='hidden' name='employee' value= aplyer)
                   button.btn.btn-success(type='submit') Assign to employees
@@ -23,4 +23,4 @@ block content
             ul
               each employee in pr.employees
                 li.form-control
-                  a() #{employee.employeeName}
+                  a(href='/users/search?search='+employee.employeeName) #{employee.employeeName}

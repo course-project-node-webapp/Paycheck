@@ -42,9 +42,10 @@ module.exports = function ({
           if (err) {
             return reject(err);
           }
-
-          project.applyers.push(applyer);
-          project.save();
+          if (!project.applyers.some(x => x === applyer)) {
+            project.applyers.push(applyer);
+            project.save();
+          }
           return resolve(project);
         });
       });
@@ -58,8 +59,10 @@ module.exports = function ({
             return reject(err);
           }
 
-          project.employees.push(employee);
-          project.save();
+          if (!project.employees.some(x => x.employeeName === employee.employeeName)) {
+            project.employees.push(employee);
+            project.save();
+          }
           return resolve(project);
         });
       });

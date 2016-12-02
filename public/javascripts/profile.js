@@ -3,6 +3,8 @@
 'use strict';
 
 (() => {
+  toastr.options.preventDuplicates = true;
+
   const MIN_SKILL_NAME_LENGTH = 3;
   const MAX_SKILL_NAME_LENGTH = 20;
 
@@ -29,32 +31,42 @@
   });
 
   $submitSkillBtn.on('click', () => {
-    toastr.options.preventDuplicates = true;
-
     return Promise.resolve()
       .then(() => {
-        if ($('ul.skills').children('li.skill').length >= 10) {
+        let skills = $('ul.skills').children('li.skill');
+        if (skills.length >= 10) {
           throw new Error('You cannot have more than 10 skills.');
         }
 
         let skill = $skillInput.val();
         validateString(skill);
 
+        let skillNames = skills.children('span.skill-name');
+        let doesExists = [].slice.call(skillNames)
+          .some(s => s.innerHTML.toLowerCase() === skill.toLowerCase());
+
+        if (doesExists) {
+          throw new Error('Skill already exists.');
+        }
+
         return skill;
       })
       .then((skill) => {
-        $.ajax({
-            url: '/account/update/skills',
-            method: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify({ skill })
-          })
-          .done(() => {
-            window.location.reload(false);
-          })
-          .fail((err) => {
-            toastr.error(err.message);
-          });
+        return new Promise((resolve, reject) => {
+          $.ajax({
+              url: '/account/update/skills/add',
+              method: 'PUT',
+              contentType: 'application/json',
+              data: JSON.stringify({ skill })
+            })
+            .done(() => {
+              window.location.reload(false);
+              resolve();
+            })
+            .fail((err) => {
+              reject(err);
+            });
+        });
       })
       .then(() => {
         $addSkillInputContainer.addClass('hide');
@@ -82,12 +94,34 @@
   });
 
   $deleteSkillBtn.on('click', function() {
-    const $target = $(this);
+    const $this = $(this);
 
-    $target.parent('li.skill').addClass('animated zoomOut');
-    setTimeout(function() {
-      $target.parent('li.skill').remove();
-    }, 400);
+    return Promise.resolve()
+      .then(() => {
+        let skill = $this.nextAll('span.skill-name').text();
+
+        return new Promise((resolve, reject) => {
+          $.ajax({
+              url: '/account/update/skills/remove',
+              method: 'PUT',
+              contentType: 'application/json',
+              data: JSON.stringify({ skill })
+            })
+            .done(resolve)
+            .fail((err) => {
+              reject(err);
+            });
+        });
+      })
+      .then(() => {
+        $this.parent('li.skill').addClass('animated zoomOut');
+        setTimeout(function() {
+          $this.parent('li.skill').remove();
+        }, 400);
+      })
+      .catch((err) => {
+        toastr.error(err.message);
+      });
   });
 
   function validateString(value) {
