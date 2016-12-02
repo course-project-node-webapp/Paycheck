@@ -107,10 +107,7 @@
               contentType: 'application/json',
               data: JSON.stringify({ skill })
             })
-            .done(() => {
-              window.location.reload(false);
-              resolve();
-            })
+            .done(resolve)
             .fail((err) => {
               reject(err);
             });
