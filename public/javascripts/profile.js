@@ -98,7 +98,7 @@
 
     return Promise.resolve()
       .then(() => {
-        let skill = $this.text();
+        let skill = $this.nextAll('span.skill-name').text();
 
         return new Promise((resolve, reject) => {
           $.ajax({
