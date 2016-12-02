@@ -8,7 +8,7 @@ const requester = (function () {
 
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: 'api/' + url,
+                url: url,
                 method: 'GET',
                 contentType: 'application/json',
                 headers: headers
@@ -23,7 +23,7 @@ const requester = (function () {
         
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: 'api/' + url,
+                url: url,
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(body),
@@ -37,7 +37,7 @@ const requester = (function () {
     function putJSON(url, body, headers) {
         return new Promise((resolve, reject) => {
             $.ajax({
-                url: 'api/' + url,
+                url: url,
                 method: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify(body),

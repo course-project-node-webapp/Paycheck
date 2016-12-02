@@ -3,7 +3,6 @@
 'use strict';
 
 module.exports = function (app, data, controllerLoaders) {
-  console.log(data);
   const server = require('http').Server(app);
   const io = require('socket.io').listen(server);
 
