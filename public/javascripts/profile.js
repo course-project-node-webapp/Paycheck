@@ -1,4 +1,4 @@
-/* globals Promise $ toastr window */
+/* globals Promise $ toastr window requester */
 
 'use strict';
 
@@ -59,30 +59,15 @@
           throw new Error('Skill already exists.');
         }
 
-        return skill;
-      })
-      .then((skill) => {
-        return new Promise((resolve, reject) => {
-          $.ajax({
-              url: '/account/update/skills/add',
-              method: 'PUT',
-              contentType: 'application/json',
-              data: JSON.stringify({ skill })
-            })
-            .done(() => {
-              window.location.reload(false);
-              resolve();
-            })
-            .fail((err) => {
-              reject(err);
-            });
-        });
+        return requester.putJSON('/account/update/skills/add', { skill });
       })
       .then(() => {
         $addSkillInputContainer.addClass('hide');
         $skillInput.val('');
 
         $addSkillBtn.removeClass('hide');
+
+        window.location.reload(false);
       })
       .catch((err) => {
         toastr.error(err.message);
@@ -125,13 +110,19 @@
 
     return Promise.resolve()
       .then(() => {
+        let inputValue = $textArea.val();
+        requester.putJSON('/account/update/summary', { summary: inputValue });
 
+        return inputValue;
+      })
+      .then((inputValue) => {
+        $textArea.replaceWith(`<span>${inputValue}</span>`);
+        $this.replaceWith(editSummaryBtnHtml);
+      })
+      .catch((err) => {
+        toastr.error(err.message);
       });
 
-    let inputValue = $textArea.val();
-    $textArea.replaceWith(`<span>${inputValue}</span>`);
-
-    $this.replaceWith(editSummaryBtnHtml);
   });
 
   $deleteSkillBtn.on('click', function() {
@@ -140,18 +131,7 @@
 
     return Promise.resolve()
       .then(() => {
-        return new Promise((resolve, reject) => {
-          $.ajax({
-              url: '/account/update/skills/remove',
-              method: 'PUT',
-              contentType: 'application/json',
-              data: JSON.stringify({ skill })
-            })
-            .done(resolve)
-            .fail((err) => {
-              reject(err);
-            });
-        });
+        return requester.putJSON('/account/update/skills/remove', { skill });
       })
       .then(() => {
         $this.parent('li.skill').addClass('animated zoomOut');
