@@ -1,0 +1,80 @@
+extends ../../shared/_layout
+
+block content
+  div.well#organization-details
+    div.panel.panel-primary
+      div.panel-heading
+        h1= result.organization.name
+        h2= "Created by " + result.organization.owner
+      
+      if result.userRole
+        div.panel-body
+          div.well
+            if result.organization.owners.length > 0
+              heading 
+                h3 Owners
+              ul.list-group
+                each owner in result.organization.owners
+                  li.list-group-item
+                    a(href= "/users/" + owner.ownerId)
+                      p= owner.username
+            else 
+              h3 No Owners are currently assigned
+      
+          if result.organization.projects.length > 0
+            each project in result.organization.projects
+              div.well
+                heading 
+                  h3= "Project name: " + project.name
+                
+                if project.managers.length > 0
+                  ul.list-group
+                    heading
+                      p Managers
+                    
+                    each manager in project.managers
+                      li.list-group-item.row
+                        div.col-xs-3
+                          a(href="/users/" + manager.managerId)
+                            p See user profile
+                        div.col-xs-3
+                          p= manager.name
+
+                if project.contributors.length > 0
+                  ul.list-group
+                    heading
+                      p Contributors
+                    
+                    each contributor in project.contributors
+                      li.list-group-item.row
+                        div.col-xs-3
+                          a(href="/users/" + contributor.contributorId)
+                            p See user profile
+                        div.col-xs-3
+                          p= contributor.name
+                        
+                footer
+                  a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/employees")
+                    p Manage Employees for this project
+
+          div.well
+            if result.organization.unassigned.length > 0
+              heading 
+                h3 Unassigned
+              ul.list-group
+                each unassigned in result.organization.unassigned
+                  li.list-group-item
+                    a(href= "/users/" + unassigned.unassignedId)
+                      p= unassigned.username
+                    a.btn.btn-danger(href="/organizations/" + result.organization._id + "/remove-employee/" +  unassigned.unassignedId + "/role/unassigned") 
+                      p Remove Employee
+            else 
+              h3 No Unassigned employees are currently available
+
+      div.panel-footer
+        if !result.userRole
+          a.btn.btn-success(href= "/organizations/" + result.organization._id + "/apply")
+            p Apply to this organization
+        else if result.userRole === 'owner' || result.userRole === 'manager'
+          a.btn.btn-success(href= "/organizations/" + result.organization._id + "/add-employee") 
+            p Add Employee

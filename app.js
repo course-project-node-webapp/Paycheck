@@ -8,14 +8,15 @@ const logger = require('./config/logger');
 
 logger.info('Configuring express...');
 const app = require('./config/express')(config);
-logger.info('Expressed configured...');
+logger.info('Express configured...');
 
+const controllerLoaders = require('./lib/controllers')();
 const models = require('./lib/models')();
 const data = require('./data')(models);
 
 require('./config/database')(config);
 require('./config/passport')(data.userData);
-require('./lib/routes')(app, data);
+require('./lib/routes')(app, data, controllerLoaders);
 
 const server = require('./config/sockets')(app, data);
 server.listen(port, () => {

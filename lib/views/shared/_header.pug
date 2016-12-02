@@ -19,6 +19,9 @@
                i.material-icons keyboard_arrow_down
               ul.dropdown-menu
                 li
+                  a(data-toggle="modal" data-target="#search-modal") Search
+                li.divider
+                li
                   a(href="/users") Users
                 li
                   a(href="/projects") Projects
@@ -35,7 +38,7 @@
               li
                 a.btn.btn-default.btn-sm.login-btn(href="/account/login") Sign in
               li
-                a.btn.btn-default.btn-sm.signup-btn(href="/register") Sign up
+                a.btn.btn-default.btn-sm.signup-btn(href="/account/register") Sign up
             else
               li.dropdown
                 a.profile-link.dropdown-toggle(data-toggle="dropdown")
@@ -47,6 +50,11 @@
                     a(href="/profile") Profile
                   li
                     a(href="/profile") Messages
+                  li.divider
+                  li
+                    a(href="/projects/myprojects") My projects
+                  li
+                    a(href="/projects/create") Create project
                   li.divider
                   li
                     a(href="/profile/settings") Settings

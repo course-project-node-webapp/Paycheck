@@ -2,7 +2,11 @@
 
 'use strict';
 
-module.exports = function (User) {
+module.exports = function({ models }) {
+  const {
+    User
+  } = models;
+
   return {
     getAllUsers() {
       return new Promise((resolve, reject) => {
@@ -40,6 +44,21 @@ module.exports = function (User) {
           }
 
           return resolve(user);
+        });
+      });
+    },
+    getUsersWhichContains(string) {
+      let regex = new RegExp(string, 'i');
+
+      return new Promise((resolve, reject) => {
+        User.find({
+          username: regex
+        }, (err, users) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(users);
         });
       });
     },

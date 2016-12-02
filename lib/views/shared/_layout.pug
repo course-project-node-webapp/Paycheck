@@ -8,20 +8,46 @@ html(lang="en")
         link(rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon")
         link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css")
         link(rel="stylesheet" href="/stylesheets/material-kit.css")
+        link(rel="stylesheet" href="/bower_components/toastr/toastr.css")
         link(rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css")
         link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        link(rel="stylesheet" href="/bower_components/animate.css/animate.css")
         link(rel="stylesheet" href="/stylesheets/hover.css")
         link(rel="stylesheet" href="/stylesheets/main.css")
         link(rel="stylesheet" href="/stylesheets/home.css")
         block stylesheets
         
-    body
+    body.bk-img
+        a#return-to-top(href="javascript:")
+            i.fa.fa-chevron-up(aria-hidden="true")
         include _header.pug
         .container
             .row.row-centered
                 #content.col-sm-12.col-xs-12.col-md-12.col-lg-12.col-centered
                     block content
+        #search-modal.modal.fade(tabindex="-1" role="dialog" aria-labeledby="SearchModalLabel" aria-hidden="true")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        button.close(type="button" data-dismiss="modal" aria-hidden="true")
+                            i.material-icons clear
+                        h4.modal-title Search
+                        .form-group
+                            form.search-form(action="/users/search" method="GET")
+                                input.form-control.search-input(name="search" type="text" placeholder="Search users...")
+                                .btn-group
+                                    button.btn.btn-default.search-btn(type="submit") Search
+                                    button.btn.btn-default.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                        span.caret
+                                        span.sr-only Toggle Dropdown
+                                    ul.dropdown-menu.search-categories
+                                        li: a Users
+                                        li: a Projects
+                                        li: a Organizations
         include _footer.pug
         script(src="/bower_components/jquery/dist/jquery.min.js")
         script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+        script(src="/bower_components/toastr/toastr.js")
+        script(src="/javascripts/global.js")
+        script(src="/javascripts/search.js")
         block javascript

@@ -1,15 +1,24 @@
 'use strict';
 
-module.exports = function (models) {
-  const userData = require('./user-data')(models.User);
-  const organizationsData = require('./organizations-data')(models.Organization);
-  const projectsData = require('./project-data')(models.Project);
-  const messageData = require('./message-data')(models.Message);
+const fs = require('fs');
+const path = require('path');
 
-  return {
-    userData,
-    organizationsData,
-    projectsData,
-    messageData
-  };
+module.exports = function (models) {
+  const data = Object.create(null, {});
+  fs.readdirSync('./data')
+    .filter(fileName => fileName.includes('-data'))
+    .forEach(fileName => {
+      const dataModule = require(path.join(__dirname, fileName))({ models });
+      const dataModuleName = convertFileNameToDataModuleName(fileName);
+
+      data[dataModuleName] = dataModule;
+    });
+
+  return data;
 };
+
+function convertFileNameToDataModuleName(fileName) {
+  const indexOfSeparator = fileName.indexOf('-');
+  const dataModuleName = fileName.substring(0, indexOfSeparator) + 'Data';
+  return dataModuleName;
+}

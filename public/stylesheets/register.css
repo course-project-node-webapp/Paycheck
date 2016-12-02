@@ -1,8 +1,46 @@
+.bk-img {
+    background-image: url('/assets/images/background-photo.jpg');
+}
+
+#register-form .panel-heading {
+    background-color: #064352;
+    color: #fff;
+}
+
 #register-form {
+    text-align: center;
     height: 60vh;
     margin-top: 10vh;
 }
 
 #tb-country {
     text-align-last: center;
+}
+
+#register-form .form-footer>span {
+    margin-right: 10px;
+}
+
+#register-form .form-footer>a {
+    color: #0056A7;
+    display: block;
+}
+
+/*#footer {
+    display: none;
+}*/
+
+@media screen and (max-device-width: 770px) {
+    #register-form {
+        margin-bottom: 15vh;
+    }
+    #register-form .form-footer>a {
+        display: block;
+    }
+}
+
+@media screen and (max-device-height: 500px) {
+    #register-form {
+        margin-bottom: 10vh;
+    }
 }

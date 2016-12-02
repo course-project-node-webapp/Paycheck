@@ -15,6 +15,8 @@ html(lang="en")
         link(rel="stylesheet" href="/stylesheets/home.css")
 
     body
+        a#return-to-top(href="javascript:")
+            i.fa.fa-chevron-up(aria-hidden="true")
         include ../shared/_header.pug
         .homepage-hero-module
             .video-container
@@ -30,7 +32,7 @@ html(lang="en")
                         h1 Paycheck
                         h3 Workflow has never been any smoother.
                     a.btn.btn-default.btn-lg(href="/account/login" style="margin-right: 10px") Sign In
-                    a.btn.btn-default.btn-lg(href="/register") Sign Up
+                    a.btn.btn-default.btn-lg(href="/account/register") Sign Up
         #content
             .container
                 .row.row-centered
@@ -43,7 +45,7 @@ html(lang="en")
                                     a(href="/projects/webdeveloper") Web Developers
                                 li.job-category.hvr-rectangle-in
                                     i.material-icons smartphone
-                                    a Mobile Developers
+                                    a(href="/projects/mobiledeveloper") Mobile Developers
                                 li.job-category.fin.hvr-rectangle-in
                                     i.material-icons gamepad
                                     a Game Developers
@@ -60,8 +62,29 @@ html(lang="en")
                             a.btn.btn-default.btn-lg.hvr-glow(href="/categories") See all categories
             #get-started-container
                 h2 Build your online dream team
-                a.btn.btn-default.btn-lg.hvr-grow-shadow.hvr-outline-out(href="/register") Get Started
+                a.btn.btn-default.btn-lg.hvr-grow-shadow.hvr-outline-out(href="/account/register") Get Started
+        #search-modal.modal.fade(tabindex="-1" role="dialog" aria-labeledby="SearchModalLabel" aria-hidden="true")
+             .modal-dialog
+                .modal-content
+                    .modal-header
+                        button.close(type="button" data-dismiss="modal" aria-hidden="true")
+                            i.material-icons clear
+                        h4.modal-title Search
+                        .form-group
+                            form.search-form(action="/users/search" method="GET")
+                                input.form-control.search-input(name="search" type="text" placeholder="Search users...")
+                                .btn-group
+                                    button.btn.btn-default.search-btn(type="submit") Search
+                                    button.btn.btn-default.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                        span.caret
+                                        span.sr-only Toggle Dropdown
+                                    ul.dropdown-menu.search-categories
+                                        li: a Users
+                                        li: a Projects
+                                        li: a Organizations
         include ../shared/_footer.pug
     script(src="/bower_components/jquery/dist/jquery.min.js")
     script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
     script(src="/javascripts/home.js")
+    script(src="/javascripts/global.js")
+    script(src="/javascripts/search.js")
