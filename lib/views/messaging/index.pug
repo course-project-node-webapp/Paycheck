@@ -1,0 +1,17 @@
+extends ../shared/_layout
+
+block stylesheets
+  link(rel="stylesheet" href="/stylesheets/messaging.css")
+
+block content
+  if isAuthorized
+    h2.capitalize Messaging 
+    div.chat
+      div.chat-messages
+      textarea.chat-textarea(placeholder="Type your message")
+      div.chat-status
+        span Connected
+
+block javascript
+  script(src="/socket.io/socket.io.js")
+  script(src="/javascripts/messaging.js")
