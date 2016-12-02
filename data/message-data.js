@@ -2,7 +2,11 @@
 
 'use strict';
 
-module.exports = function (Message) {
+module.exports = function ({ models }) {
+  const {
+    Message
+  } = models;
+  
   return {
     createMessage(message) {
       let messageModel = Message.getMessage(message);
@@ -22,8 +26,9 @@ module.exports = function (Message) {
         Message.find((err, messages) => {
           if (err) {
             return reject(err);
-          }
 
+          }
+          console.log(messages);
           return resolve(messages);
         });
       });
