@@ -1,4 +1,4 @@
-/* globals Promise $ toastr window */
+/* globals Promise $ toastr window requester */
 
 'use strict';
 
@@ -15,6 +15,16 @@
   const $editProfileBtn = $('a.edit-profile-btn');
   const $saveChangesBtn = $('a.save-changes-btn');
   const $deleteSkillBtn = $('a.btn-delete');
+
+  const $saveIcon = $('<i class="material-icons">save</i>')
+    .css({
+      'background-color': '#4CAF50'
+    });
+
+  const $editSummayBtn = $('a.btn-summary-edit');
+  const editSummaryBtnHtml = $editSummayBtn[0].outerHTML;
+  const $saveSummaryBtn = $('<a class="btn-save-circle btn-edit btn-save-summary">')
+    .append($saveIcon);
 
   const $submitSkillBtn = $('<a class="btn btn-success submit-skill-btn">Add</a>');
   const $skillInput = $('<input class="form-control skill-input" type="text" placeholder="Enter your skill"/>');
@@ -49,30 +59,15 @@
           throw new Error('Skill already exists.');
         }
 
-        return skill;
-      })
-      .then((skill) => {
-        return new Promise((resolve, reject) => {
-          $.ajax({
-              url: '/account/update/skills/add',
-              method: 'PUT',
-              contentType: 'application/json',
-              data: JSON.stringify({ skill })
-            })
-            .done(() => {
-              window.location.reload(false);
-              resolve();
-            })
-            .fail((err) => {
-              reject(err);
-            });
-        });
+        return requester.putJSON('/account/update/skills/add', { skill });
       })
       .then(() => {
         $addSkillInputContainer.addClass('hide');
         $skillInput.val('');
 
         $addSkillBtn.removeClass('hide');
+
+        window.location.reload(false);
       })
       .catch((err) => {
         toastr.error(err.message);
@@ -93,25 +88,50 @@
     $editProfileBtn.removeClass('hide');
   });
 
-  $deleteSkillBtn.on('click', function() {
+  $editSummayBtn.on('click', function() {
     const $this = $(this);
+    let $spanDescription = $this.next('span');
+    let currentSummary = $spanDescription.text();
+
+    let $summaryInput = $(`<textarea class="summary-input form-control animated fadeIn">${currentSummary}</textarea>`)
+      .css({
+        width: '100%',
+        height: '10em',
+        'margin-top': '2vh'
+      });
+    $spanDescription.replaceWith($summaryInput);
+
+    $this.replaceWith($saveSummaryBtn);
+  });
+
+  $saveSummaryBtn.on('click', function() {
+    const $this = $(this);
+    const $textArea = $('textarea.summary-input');
 
     return Promise.resolve()
       .then(() => {
-        let skill = $this.nextAll('span.skill-name').text();
+        let inputValue = $textArea.val();
+        requester.putJSON('/account/update/summary', { summary: inputValue });
 
-        return new Promise((resolve, reject) => {
-          $.ajax({
-              url: '/account/update/skills/remove',
-              method: 'PUT',
-              contentType: 'application/json',
-              data: JSON.stringify({ skill })
-            })
-            .done(resolve)
-            .fail((err) => {
-              reject(err);
-            });
-        });
+        return inputValue;
+      })
+      .then((inputValue) => {
+        $textArea.replaceWith(`<span>${inputValue}</span>`);
+        $this.replaceWith(editSummaryBtnHtml);
+      })
+      .catch((err) => {
+        toastr.error(err.message);
+      });
+
+  });
+
+  $deleteSkillBtn.on('click', function() {
+    const $this = $(this);
+    let skill = $this.nextAll('span.skill-name').text();
+
+    return Promise.resolve()
+      .then(() => {
+        return requester.putJSON('/account/update/skills/remove', { skill });
       })
       .then(() => {
         $this.parent('li.skill').addClass('animated zoomOut');
