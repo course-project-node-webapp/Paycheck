@@ -26,6 +26,10 @@
     display: block;
 }
 
+/*#footer {
+    display: none;
+}*/
+
 @media screen and (max-device-width: 770px) {
     #register-form {
         margin-bottom: 15vh;
