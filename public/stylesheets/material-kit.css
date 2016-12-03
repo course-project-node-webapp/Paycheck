@@ -62,7 +62,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
 }
 
 a, a:hover, a:focus {
-  color: #9c27b0;
+  color: #292C2F;
 }
 a .material-icons, a:hover .material-icons, a:focus .material-icons {
   vertical-align: middle;
@@ -3040,7 +3040,8 @@ h2.title {
   background-color: #3f51b5;
 }
 .panel.panel-primary > .panel-heading {
-  background-color: #9c27b0;
+  text-align: center;
+  background-color: #292C2F;
 }
 .panel.panel-success > .panel-heading {
   background-color: #4caf50;
@@ -3065,6 +3066,7 @@ h2.title {
 }
 
 .panel-footer {
+  text-align: center;
   background-color: #eeeeee;
 }
 

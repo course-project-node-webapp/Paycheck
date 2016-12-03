@@ -143,7 +143,10 @@
       .css({
         width: '100%',
         height: '10em',
-        'margin-top': '2vh'
+        'margin-top': '2vh',
+        padding: '10px',
+        resize: 'none',
+        border: '1px solid #ccc'
       });
 
     $btnSummaryEdit.replaceWith($saveSummaryBtn);
