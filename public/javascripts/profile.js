@@ -11,7 +11,6 @@
   const $addListItem = $('ul.skills>li.add');
   const $addSkillBtn = $('a.add-skill-btn');
 
-  const $editMode = $('.edit-mode');
   const $editProfileBtn = $('a.edit-profile-btn');
   const $saveChangesBtn = $('a.save-changes-btn');
   const $deleteSkillBtn = $('a.btn-delete');
@@ -21,9 +20,10 @@
       'background-color': '#4CAF50'
     });
 
+  const $summaryContainer = $('div.overview');
   const $editSummayBtn = $('a.btn-summary-edit');
-  const editSummaryBtnHtml = $editSummayBtn[0].outerHTML;
-  const $saveSummaryBtn = $('<a class="btn-save-circle btn-edit btn-save-summary">')
+  const editSummaryBtnHtml = $editSummayBtn[0].outerHTML.replace(/hide\b/ig, '');
+  const $saveSummaryBtn = $('<a class="btn-save-circle btn-edit btn-save-summary edit-mode">')
     .append($saveIcon);
 
   const $submitSkillBtn = $('<a class="btn btn-success submit-skill-btn">Add</a>');
@@ -75,6 +75,7 @@
   });
 
   $editProfileBtn.on('click', function() {
+    let $editMode = $('.edit-mode');
     $(this).addClass('hide');
 
     $saveChangesBtn.removeClass('hide');
@@ -82,47 +83,33 @@
   });
 
   $saveChangesBtn.on('click', function() {
-    $(this).addClass('hide');
+    let $textArea = $('textarea.summary-input');
+    let $btnSummarySave = $('a.btn-save-summary');
+
+    let inputValue = $textArea.val();
+
+    $textArea.replaceWith(`<span>${inputValue}</span>`);
+    $btnSummarySave.replaceWith(editSummaryBtnHtml);
+
+    let $editMode = $('.edit-mode');
     $editMode.addClass('hide');
+    $(this).addClass('hide');
 
     $editProfileBtn.removeClass('hide');
   });
 
-  $editSummayBtn.on('click', function() {
-    const $this = $(this);
-    let $spanDescription = $this.next('span');
-    let currentSummary = $spanDescription.text();
+  $summaryContainer.on('click', function(ev) {
+    const $target = $(ev.target);
 
-    let $summaryInput = $(`<textarea class="summary-input form-control animated fadeIn">${currentSummary}</textarea>`)
-      .css({
-        width: '100%',
-        height: '10em',
-        'margin-top': '2vh'
-      });
-    $spanDescription.replaceWith($summaryInput);
+    if ($target.hasClass('btn-summary-edit') ||
+      $target.parent().hasClass('btn-summary-edit')) {
+      return editSummary($target);
+    } else if ($target.hasClass('btn-save-summary') ||
+      $target.parent().hasClass('btn-save-summary')) {
+      return saveSummary($target);
+    }
 
-    $this.replaceWith($saveSummaryBtn);
-  });
-
-  $saveSummaryBtn.on('click', function() {
-    const $this = $(this);
-    const $textArea = $('textarea.summary-input');
-
-    return Promise.resolve()
-      .then(() => {
-        let inputValue = $textArea.val();
-        requester.putJSON('/account/update/summary', { summary: inputValue });
-
-        return inputValue;
-      })
-      .then((inputValue) => {
-        $textArea.replaceWith(`<span>${inputValue}</span>`);
-        $this.replaceWith(editSummaryBtnHtml);
-      })
-      .catch((err) => {
-        toastr.error(err.message);
-      });
-
+    return null;
   });
 
   $deleteSkillBtn.on('click', function() {
@@ -143,6 +130,42 @@
         toastr.error(err.message);
       });
   });
+
+  function editSummary($target) {
+    let $btnSummaryEdit = $target.closest('a.btn-summary-edit');
+    let $spanDescription = $btnSummaryEdit.next('span');
+    let currentSummary = $spanDescription.text();
+
+    let $summaryInput = $(`<textarea class="summary-input form-control animated fadeIn">${currentSummary}</textarea>`)
+      .css({
+        width: '100%',
+        height: '10em',
+        'margin-top': '2vh'
+      });
+    $spanDescription.replaceWith($summaryInput);
+
+    $btnSummaryEdit.replaceWith($saveSummaryBtn);
+  }
+
+  function saveSummary($target) {
+    let $btnSummarySave = $target.closest('a.btn-save-summary');
+    let $textArea = $('textarea.summary-input');
+
+    return Promise.resolve()
+      .then(() => {
+        let inputValue = $textArea.val();
+        requester.putJSON('/account/update/summary', { summary: inputValue });
+
+        return inputValue;
+      })
+      .then((inputValue) => {
+        $textArea.replaceWith(`<span>${inputValue}</span>`);
+        $btnSummarySave.replaceWith(editSummaryBtnHtml);
+      })
+      .catch((err) => {
+        toastr.error(err.message);
+      });
+  }
 
   function validateString(value) {
     if (typeof value !== 'string') {
