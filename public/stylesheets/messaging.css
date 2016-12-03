@@ -8,6 +8,33 @@
     text-align: left;
     margin: 0 auto;
     overflow-x: hidden;
+    border-radius: 5px;
+}
+
+ul.messages {
+    list-style-type: none;
+}
+
+ul.messages>li.chat-message {
+    margin-bottom: 2vh;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.message-author {
+    font-weight: 600px;
+}
+
+.message {
+    border-radius: 15px;
+    background-color: #77A2D6;
+    padding: 10px;
+}
+
+.message-author::after {
+    content: ": ";
 }
 
 .chat-messages,
@@ -42,4 +69,8 @@
 
 .chat-textarea {
     outline: none;
+}
+
+.connection-status {
+    color: #ccc;
 }
