@@ -29,17 +29,8 @@ module.exports = function (app, data, controllerLoaders) {
 
     messageController.getLast100Messages()
       .then((messages) => {
-        // console.log(messages);
-        // messages.toArray(function (err, res) {
-        //   socket.emit('output', res);
-        // });
+        socket.emit('output', messages);
       });
-
-    // col.find().limit(100).sort({
-    //   _id: 1
-    // }).toArray(function (err, res) {
-    //   socket.emit('output', res);
-    // });
 
     socket.on('input', function (socketData) {
       let message = socketData.message;
