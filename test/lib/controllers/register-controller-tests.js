@@ -29,7 +29,7 @@ describe('registerController', () => {
       reqMock.verify();
     });
 
-    it('Should invoke res.Redirect() with correct url when req.isAuthenticated() returns true', () => {
+    it('Should invoke res.redirect() with url "/" when req.isAuthenticated() returns true', () => {
       const userData = {},
         logger = {},
         req = {
@@ -49,6 +49,59 @@ describe('registerController', () => {
 
       const resMock = sinon.mock(res);
       resMock.expects('redirect').withExactArgs('/').once();
+
+      registerController.index(req, res);
+
+      resMock.verify();
+    });
+
+    it('Should invoke res.status() with value "200" when req.isAuthenticated() returns false', () => {
+      const userData = {},
+        logger = {},
+        req = {
+          isAuthenticated: () => { }
+        },
+        res = {
+          status: function () { return this; },
+          render: function () { return this; },
+          redirect: function () { return this; }
+        };
+
+      const registerController = require('../../../lib/controllers/register-controller')(userData, logger);
+
+      sinon.stub(req, 'isAuthenticated', function () {
+        return false;
+      });
+
+      const resMock = sinon.mock(res);
+      resMock.expects('status').returnsThis().withExactArgs(200).once();
+
+      registerController.index(req, res);
+
+      resMock.verify();
+    });
+
+    it('Should invoke res.render() with value "./register/index" when req.isAuthenticated() returns false', () => {
+      const userData = {},
+        logger = {},
+        req = {
+          isAuthenticated: () => { }
+        },
+        res = {
+          status: function () { return this; },
+          render: function () { return this; },
+          redirect: function () { return this; }
+        };
+
+      const registerController = require('../../../lib/controllers/register-controller')(userData, logger);
+
+      sinon.stub(req, 'isAuthenticated', function () {
+        return false;
+      });
+
+      const expectedView = './register/index';
+      const resMock = sinon.mock(res);
+      resMock.expects('render').returnsThis().withArgs(expectedView).once();
 
       registerController.index(req, res);
 
