@@ -86,7 +86,7 @@
     let $textArea = $('textarea.summary-input');
     let $btnSummarySave = $('a.btn-save-summary');
 
-    let inputValue = $textArea.val();
+    let inputValue = $textArea.val() && $textArea.val().trim();
 
     $textArea.replaceWith(`<span>${inputValue}</span>`);
     $btnSummarySave.replaceWith(editSummaryBtnHtml);
@@ -153,7 +153,7 @@
 
     return Promise.resolve()
       .then(() => {
-        let inputValue = $textArea.val();
+        let inputValue = $textArea.val() && $textArea.val().trim();
         requester.putJSON('/account/update/summary', { summary: inputValue });
 
         return inputValue;
