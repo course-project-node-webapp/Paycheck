@@ -5,7 +5,7 @@
 (() => {
   const $status = $('.chat-status span'),
     $textarea = $('.chat-textarea'),
-    $messages = $('.chat-messages'),
+    $messages = $('ul.messages'),
     $fullname = $('.full-name'),
     defaultStatus = $status.text(),
     setStatus = function(s) {
@@ -24,11 +24,14 @@
   socket.on('output', function(data) {
     if (data.length) {
       for (let i = 0; i < data.length; i++) {
-        let $message = $('<div/>', { 'class': 'chat-message' });
-        $message.text(data[i].name + ': ' + data[i].message);
+        let $messageWrapper = $('<li/>', { 'class': 'chat-message' });
+        let $author = $(`<span class="message-author capitalize">${data[i].name}</span>`);
+        let $message = $(`<span class="message">${data[i].message}</span>`);
 
-        $messages.append($message);
-        $messages.insertAfter($messages);
+        $messageWrapper
+          .append($author)
+          .append($message);
+        $messages.append($messageWrapper);
       }
     }
   });
