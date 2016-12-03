@@ -30,10 +30,17 @@
         let $messageWrapper = $('<li/>', {
           'class': 'chat-message'
         });
+        let msgDate = new Date(data[i].dateCreated);
+        let msgHour = convertTime(msgDate.getHours());
+        let msgMinute = convertTime(msgDate.getMinutes());
+        let msgSecond = convertTime(msgDate.getSeconds());
+        msgDate = msgHour + ':' + msgMinute + ':' + msgSecond;
+        let $dateCreated = $(`<span class="message-time">[${msgDate}]: </span>`);
         let $author = $(`<span class="message-author capitalize">${data[i].name}</span>`);
         let $message = $(`<span class="message">${data[i].message}</span>`);
 
         $messageWrapper
+          .append($dateCreated)
           .append($author)
           .append($message);
         $messages.append($messageWrapper);
@@ -66,11 +73,20 @@
     if (event.which === 13 && event.shiftKey === false) {
       socket.emit('input', {
         name: name,
-        message: self.value
+        message: self.value,
+        dateCreated: Date.now()
       });
 
       $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
       event.preventDefault();
     }
   });
+
+  function convertTime(time) {
+    if (time < 10) {
+      time = '0' + time;
+    }
+
+    return time;
+  }
 })();
