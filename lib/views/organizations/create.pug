@@ -1,5 +1,8 @@
 extends ../shared/_layout
 
+block stylesheets
+  link(rel="stylesheet" href="/stylesheets/organizations.css")
+
 block content
   section.well#create-organization
     form(method="POST" action="/organizations/create")
