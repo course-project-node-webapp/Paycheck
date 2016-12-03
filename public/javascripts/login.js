@@ -62,9 +62,8 @@
           window.location = res.redirectUrl;
         }, 1500);
       })
-      .catch((err) => {
+      .catch(() => {
         toastr.error('Invalid username or password.');
-        console.log(err);
       });
   }
 
