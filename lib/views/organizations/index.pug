@@ -9,19 +9,6 @@ block content
       div.well.text-center#create-new-organization
         a.btn.btn-success(href="/organizations/create")
           p Create a new organization
-
-    if result.pagination.active
-      div.well.text-center
-        nav(aria-label="navigation")
-          ul.pagination
-            if result.pagination.previous.active
-              li.col-xs-3
-                a(href= "/organizations?page=" + result.pagination.previous.value + "&size=" + result.pagination.pageSize aria-label="Previous")
-                  span(aria-hidden="true") &laquo;
-            if result.pagination.next.active
-              li.col-xs-3
-                a(href= "/organizations?page=" + result.pagination.next.value + "&size=" + result.pagination.pageSize aria-label="Next")
-                  span(aria-hidden="true") &raquo;
     
     div.well
       if result.organizations.length > 0
@@ -34,4 +21,16 @@ block content
         p No organizations have been created yet.
         if !isAuthenticated
           a.btn.btn-success(href="/account/login") Login to create an organization
-        
+    
+    if result.pagination.active
+      div.well.text-center
+        nav(aria-label="navigation")
+          ul.pagination
+            if result.pagination.previous.active
+              li
+                a(href= "/organizations?page=" + result.pagination.previous.value + "&size=" + result.pagination.pageSize aria-label="Previous")
+                  span(aria-hidden="true") &laquo; Previous page
+            if result.pagination.next.active
+              li
+                a(href= "/organizations?page=" + result.pagination.next.value + "&size=" + result.pagination.pageSize aria-label="Next")
+                  span(aria-hidden="true") Next page &raquo;
