@@ -1,10 +1,16 @@
-/* globals $ CryptoJS toastr window Promise document requester */
+/* globals $ CryptoJS toastr window Promise document requester validator userConstants */
 
 'use strict';
 
 (() => {
-  const MIN_NAME_LENGTH = 5;
-  const MAX_NAME_LENGTH = 30;
+  toastr.options.preventDuplicates = true;
+
+  const {
+    MIN_NAME_LENGTH,
+    MAX_NAME_LENGTH,
+    MIN_PASS_LENGTH,
+    MAX_PASS_LENGTH
+  } = userConstants;
 
   const content = $('#login-form');
   const tbUsername = content.find('#username-tb');
@@ -22,24 +28,22 @@
   });
 
   btnSubmit.on('click', () => {
-    toastr.options.preventDuplicates = true;
-
     return getUserFromInput()
       .then((user) => {
         return createRequest('POST', user);
       })
-      .catch(() => {
-        toastr.error('Invalid username or password.');
+      .catch((err) => {
+        toastr.error(err.message);
       });
   });
 
   function getUserFromInput() {
     return new Promise((resolve) => {
-      const username = tbUsername.val();
-      validateString(username);
+      const username = validator.escape(tbUsername.val());
+      const password = validator.escape(tbPassword.val());
 
-      const password = tbPassword.val();
-      validateString(password);
+      validateUsername(username);
+      validatePassword(password);
 
       const user = {
         username: username,
@@ -63,18 +67,25 @@
       });
   }
 
-  function validateString(value) {
-    if (typeof value !== 'string') {
-      throw new Error('Value must be a string.');
+  function validateUsername(value) {
+    if (!validator.isLength(value, {
+        min: MIN_NAME_LENGTH,
+        max: MAX_NAME_LENGTH
+      })) {
+      throw new Error(`Username must be between ${MIN_NAME_LENGTH} and ${MAX_NAME_LENGTH} letters long.`);
     }
 
-    const len = value.length;
-    if (!(MIN_NAME_LENGTH <= len && len <= MAX_NAME_LENGTH)) {
-      throw new Error('Invalid value length.');
+    if (!validator.isAlphanumeric(value)) {
+      throw new Error('Username can consist of letters and digits only.');
     }
+  }
 
-    if (!/[A-Za-z\.-_]/.test(value)) {
-      throw new Error('Only latin letters, dashes and dots are allowed.');
+  function validatePassword(value) {
+    if (!validator.isLength(value, {
+        min: MIN_PASS_LENGTH,
+        max: MAX_PASS_LENGTH
+      })) {
+      throw new Error(`Password must be between ${MIN_PASS_LENGTH} and ${MAX_PASS_LENGTH} characters long.`);
     }
   }
 })();

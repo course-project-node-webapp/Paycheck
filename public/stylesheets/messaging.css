@@ -17,6 +17,11 @@ ul.messages {
 
 ul.messages>li.chat-message {
     margin-bottom: 2vh;
+    height: 2em;
+}
+
+ul.messages>li.chat-message:nth-child(even)>.message-author {
+    color: gray;
 }
 
 .capitalize {
