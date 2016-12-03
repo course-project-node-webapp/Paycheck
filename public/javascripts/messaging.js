@@ -7,6 +7,7 @@
     $textarea = $('.chat-textarea'),
     $messages = $('ul.messages'),
     $fullname = $('.full-name'),
+    $onlineUsers = $('online-users'),
     defaultStatus = $status.text(),
     setStatus = function(s) {
       $status.text(s);
@@ -43,7 +44,16 @@
     }
   });
 
-  $textarea.on('keydown', function(event) {
+  socket.on('online-users', function (data) {
+    let users = '';
+    let dataLength = data.length;
+    for (let i = 0; i < dataLength; i++) {
+      users += data[i].name + '<br />';
+    }
+    $onlineUsers.html(users);
+  });
+
+  $textarea.on('keydown', function (event) {
     let self = this,
       name = $fullname.text();
 
