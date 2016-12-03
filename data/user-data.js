@@ -76,8 +76,12 @@ module.exports = function({ models }) {
       });
     },
     createUser(user) {
+      // Mongoose forced me to!
+      if (!user.image) {
+        delete user.image;
+      }
+
       let userModel = User.getUser(user);
-      console.log(user);
 
       return new Promise((resolve, reject) => {
         userModel.save(err => {

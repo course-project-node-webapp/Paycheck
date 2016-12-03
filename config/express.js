@@ -13,7 +13,9 @@ module.exports = function (config) {
 
   logger.debug('Overriding "Express" logger');
   app.use(morgan('dev', {
-    'stream': logger.stream
+    skip: function (req, res) {
+      return res.statusCode < config.errorResponseCode;
+    }
   }));
 
   logger.debug('Setting "Pug" as view engine');
@@ -51,6 +53,6 @@ module.exports = function (config) {
 
   logger.debug('Setting "Public" folder');
   app.use(express.static(config.rootPath + 'public'));
-  
+
   return app;
 };

@@ -1,4 +1,4 @@
-/* globals Promise $ toastr window requester */
+/* globals Promise $ toastr window requester validator */
 
 'use strict';
 
@@ -58,6 +58,7 @@
           throw new Error('Skill already exists.');
         }
 
+        skill = validator.escape(skill);
         return requester.putJSON('/account/update/skills/add', { skill });
       })
       .then(() => {
@@ -79,6 +80,7 @@
 
     return Promise.resolve()
       .then(() => {
+        skill = validator.escape(skill);
         return requester.putJSON('/account/update/skills/remove', { skill });
       })
       .then(() => {
@@ -160,6 +162,7 @@
     return Promise.resolve()
       .then(() => {
         let inputValue = $textArea.val() && $textArea.val().trim();
+        inputValue = validator.escape(inputValue);
         requester.putJSON('/account/update/summary', { summary: inputValue });
 
         return inputValue;
@@ -192,6 +195,7 @@
     return Promise.resolve()
       .then(() => {
         let inputValue = $specialtyInput.val() && $specialtyInput.val().trim();
+        inputValue = validator.escape(inputValue);
         requester.putJSON('account/update/specialty', { specialty: inputValue });
 
         return inputValue;
