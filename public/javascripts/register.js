@@ -1,13 +1,16 @@
-/* globals $ toastr CryptoJS window Promise document requester validator */
+/* globals $ toastr CryptoJS window Promise document requester validator userConstants */
 
 'use strict';
 
 (() => {
-  const MIN_NAME_LENGTH = 3;
-  const MAX_NAME_LENGTH = 30;
+  toastr.options.preventDuplicates = true;
 
-  const MIN_PASS_LENGTH = 6;
-  const MAX_PASS_LENGTH = 30;
+  const {
+    MIN_NAME_LENGTH,
+    MAX_NAME_LENGTH,
+    MIN_PASS_LENGTH,
+    MAX_PASS_LENGTH
+  } = userConstants;
 
   const registerForm = $('#register-form');
   const tbUsername = registerForm.find('#tb-username');
@@ -28,7 +31,6 @@
   });
 
   btnRegister.on('click', () => {
-    toastr.options.preventDuplicates = true;
     let password = tbPassword.val();
 
     return Promise.resolve()
