@@ -107,5 +107,42 @@ describe('registerController', () => {
 
       resMock.verify();
     });
+
+    it('Should invoke res.render() with correct data when req.isAuthenticated() returns false', () => {
+      const userData = {},
+        logger = {},
+        req = {
+          isAuthenticated: () => { },
+          user: {
+            username: 'stub'
+          }
+        },
+        res = {
+          status: function () { return this; },
+          render: function () { return this; },
+          redirect: function () { return this; }
+        };
+
+      const registerController = require('../../../lib/controllers/register-controller')(userData, logger);
+
+      sinon.stub(req, 'isAuthenticated', function () {
+        return false;
+      });
+
+      const expectedView = './register/index';
+      const expectedData = {
+        isAuthenticated: false,
+        result: {
+          user: req.user
+        }
+      };
+
+      const resMock = sinon.mock(res);
+      resMock.expects('render').returnsThis().withExactArgs(expectedView, expectedData).once();
+
+      registerController.index(req, res);
+
+      resMock.verify();
+    });
   });
 });
