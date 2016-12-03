@@ -1,4 +1,4 @@
-/* globals describe it*/
+/* globals describe it Promise*/
 
 'use strict';
 
@@ -7,7 +7,6 @@ const sinon = require('sinon');
 
 describe('registerController', () => {
   describe('index()', () => {
-
     it('Should invoke req.isAuthenticated()', () => {
       const userData = {},
         logger = {},
@@ -143,6 +142,42 @@ describe('registerController', () => {
       registerController.index(req, res);
 
       resMock.verify();
+    });
+  });
+
+  describe('register()', () => {
+    it('Should invoke userData.getUserByUsername with correct value.', (done) => {
+      const userData = {
+        getUserByUsername: function () {
+          return Promise.resolve(null);
+        },
+        createUser: function () {
+          return Promise.resolve({ username: 'stub' });
+        }
+      },
+        logger = {},
+        req = {
+          body: {
+            username: 'stub user'
+          },
+          isAuthenticated: function () { }
+        },
+        res = {
+          status: function () { return this; },
+          render: function () { return this; },
+          redirect: function () { return this; },
+          json: function () { return this; }
+        };
+
+      const registerController = require('../../../lib/controllers/register-controller')(userData, logger);
+      const userDataMock = sinon.mock(userData);
+      userDataMock.expects('getUserByUsername').returns(Promise.resolve(null)).withExactArgs(req.body.username).once();
+
+      registerController.register(req, res)
+        .then(() => {
+          userDataMock.verify();
+        })
+        .then(done, done);
     });
   });
 });
