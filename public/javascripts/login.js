@@ -62,8 +62,9 @@
           window.location = res.redirectUrl;
         }, 1500);
       })
-      .catch(() => {
-        return Promise.reject();
+      .catch((err) => {
+        toastr.error('Invalid username or password.');
+        console.log(err);
       });
   }
 
