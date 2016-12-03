@@ -8,11 +8,11 @@
     $messages = $('.chat-messages'),
     $fullname = $('.full-name'),
     defaultStatus = $status.text(),
-    setStatus = function(s) {
+    setStatus = function (s) {
       $status.text(s);
 
       if (s !== defaultStatus) {
-        let delay = setTimeout(function() {
+        let delay = setTimeout(function () {
           setStatus(defaultStatus);
           clearInterval(delay);
         }, 3000);
@@ -21,11 +21,14 @@
 
   var socket = io.connect();
 
-  socket.on('output', function(data) {
+  socket.on('output', function (data) {
     if (data.length) {
       for (let i = 0; i < data.length; i++) {
-        let $message = $('<div/>', { 'class': 'chat-message' });
-        $message.text(data[i].name + ': ' + data[i].message);
+        let $message = $('<div/>', {
+          'class': 'chat-message'
+        });
+        
+        $message.html('<b>' + data[i].name + '</b>: ' + data[i].message);
 
         $messages.append($message);
         $messages.insertAfter($messages);
@@ -33,14 +36,14 @@
     }
   });
 
-  socket.on('status', function(data) {
+  socket.on('status', function (data) {
     setStatus((typeof data === 'object') ? data.message : data);
     if (data.clear === true) {
       $textarea.val('');
     }
   });
 
-  $textarea.on('keydown', function(event) {
+  $textarea.on('keydown', function (event) {
     let self = this,
       name = $fullname.text();
 
