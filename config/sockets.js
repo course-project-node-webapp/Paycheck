@@ -14,7 +14,7 @@ module.exports = function (app, data, controllerLoaders) {
     messageData
   } = data;
 
-  let onlineUsers = {};
+  var onlineUsers = {};
 
   function updateOnlineUsers() {
     return io.sockets.emit('online-users', Object.keys(onlineUsers));
@@ -56,6 +56,23 @@ module.exports = function (app, data, controllerLoaders) {
             });
           });
       }
+    });
+
+    socket.on('new-user', function (username) {
+      socket.name = username;
+      onlineUsers[socket.name] = username;
+
+      updateOnlineUsers();
+    });
+
+    socket.on('disconnect', function () {
+      if (!socket.name) {
+        return;
+      }
+
+      delete onlineUsers[socket.name];
+
+      updateOnlineUsers();
     });
   });
 

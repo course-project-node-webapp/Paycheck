@@ -77,6 +77,7 @@ module.exports = function({ models }) {
     },
     createUser(user) {
       let userModel = User.getUser(user);
+      console.log(user);
 
       return new Promise((resolve, reject) => {
         userModel.save(err => {
