@@ -14,19 +14,18 @@ block content
       .profile-header-top
         h3.capitalize #{result.userData.firstName} #{result.userData.lastName}
           br
-          a.btn-specialty-edit.btn-edit.edit-mode.animated.zoomIn.hide: i.material-icons mode_edit
-          small.specialty.capitalize #{result.userData.specialization}
+          small.specialty.capitalize #{result.userData.specialty}
         img.img-rounded.img-responsive(src=result.userData.image)
       .rates
-        .c100.dark.small(class="p" + result.userData.successRate)
-          span #{result.userData.successRate}%
+        .c100.dark.small(class="p" + result.userData.getSuccessRate(result.userData))
+          span #{result.userData.getSuccessRate(result.userData)}%
           .slice
             .bar
             .fill
       .overview
         h3.capitalize.container-header Summary
         a.btn-summary-edit.btn-edit.edit-mode.animated.zoomIn.hide: i.material-icons mode_edit
-        span #{result.userData.description}
+        span #{result.userData.summary}
     .portfolio.profile-container
       h3.capitalize.container-header Project History
       ul.portfolio
@@ -34,10 +33,7 @@ block content
           li.portfolio-item
             h4= project.name
             span= project.description
-            h5 Tasks
-            ul.tasks
-              each task in project.tasks
-                li.task= task.description
+            hr
         li.add-item
     .skills-container.profile-container
       h3.capitalize.container-header Skills &amp; Endorsements
@@ -54,4 +50,7 @@ block content
       a.btn.btn-success.uppercase.save-changes-btn.hide Save Changes
 
 block javascript
+  script(src="/bower_components/validator-js/validator.js")
+  script(src="/bower_components/toastr/toastr.js")
+  script(src="/javascripts/bin/requester.js")
   script(src="/javascripts/profile.js")

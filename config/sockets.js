@@ -3,7 +3,6 @@
 'use strict';
 
 module.exports = function (app, data, controllerLoaders) {
-  console.log(data);
   const server = require('http').Server(app);
   const io = require('socket.io').listen(server);
 
@@ -15,8 +14,11 @@ module.exports = function (app, data, controllerLoaders) {
     messageData
   } = data;
 
-  let messageController = false;
-  var messagesToDisplay;
+  var onlineUsers = {};
+
+  function updateOnlineUsers() {
+    return io.sockets.emit('online-users', Object.keys(onlineUsers));
+  }
 
   io.on('connection', function (socket) {
 
@@ -24,23 +26,15 @@ module.exports = function (app, data, controllerLoaders) {
       socket.emit('status', status);
     };
 
+    let messageController = false;
     if (!messageController) {
       messageController = messageControllerLoader(messageData);
     }
 
     messageController.getLast100Messages()
       .then((messages) => {
-        // console.log(messages);
-        // messages.toArray(function (err, res) {
-        //   socket.emit('output', res);
-        // });
+        socket.emit('output', messages);
       });
-
-    // col.find().limit(100).sort({
-    //   _id: 1
-    // }).toArray(function (err, res) {
-    //   socket.emit('output', res);
-    // });
 
     socket.on('input', function (socketData) {
       let message = socketData.message;
@@ -62,6 +56,23 @@ module.exports = function (app, data, controllerLoaders) {
             });
           });
       }
+    });
+
+    socket.on('new-user', function (username) {
+      socket.name = username;
+      onlineUsers[socket.name] = username;
+
+      updateOnlineUsers();
+    });
+
+    socket.on('disconnect', function () {
+      if (!socket.name) {
+        return;
+      }
+
+      delete onlineUsers[socket.name];
+
+      updateOnlineUsers();
     });
   });
 

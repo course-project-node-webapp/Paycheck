@@ -10,6 +10,10 @@
     "node": "registry:dt/node#6.0.0+20161110151007",
     "passport": "registry:dt/passport#0.2.0+20161028150851",
     "serve-static": "registry:dt/serve-static#0.0.0+20160606155157",
+    "socket.io": "registry:dt/socket.io#1.4.4+20160909205835",
     "winston": "registry:dt/winston#0.0.0+20161108133445"
+  },
+  "globalDevDependencies": {
+    "sinon": "registry:dt/sinon#1.16.0+20160924120326"
   }
 }

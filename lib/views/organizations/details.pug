@@ -16,3 +16,6 @@ block content
             p View Employees
           a.btn.btn-success(href= "/organizations/" + result.organization._id + "/projects") 
             p View Projects
+          if result.organization.applications.length > 0
+            a.btn.btn-success(href= "/organizations/" + result.organization._id + "/applications") 
+              p= "View Applications (" + result.organization.applications.length + ")" 

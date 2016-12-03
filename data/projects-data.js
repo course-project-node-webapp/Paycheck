@@ -61,8 +61,10 @@ module.exports = function ({
 
           if (!project.employees.some(x => x.employeeName === employee.employeeName)) {
             project.employees.push(employee);
+            project.applyers.remove(employee.employeeName);
             project.save();
           }
+
           return resolve(project);
         });
       });

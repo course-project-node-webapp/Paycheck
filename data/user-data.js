@@ -76,6 +76,11 @@ module.exports = function({ models }) {
       });
     },
     createUser(user) {
+      // Mongoose forced me to!
+      if (!user.image) {
+        delete user.image;
+      }
+
       let userModel = User.getUser(user);
 
       return new Promise((resolve, reject) => {

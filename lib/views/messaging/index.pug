@@ -5,12 +5,17 @@ block stylesheets
 
 block content
   if isAuthorized
-    h2.capitalize Messaging 
-    div.chat
-      div.chat-messages
-      textarea.chat-textarea(placeholder="Type your message")
-      div.chat-status
-        span Connected
+    #chat-wrapper.col-sm-12.col-xs-12.col-md-6.col-lg-6.col-centered
+      h2.capitalize Messenger
+      div.chat
+        div.chat-messages
+          ul.messages
+        textarea.chat-textarea(placeholder="Enter your message")
+        div.chat-status
+      span.connection-status Connected
+      div.list-users
+        div.online-users
+          ul.users
 
 block javascript
   script(src="/socket.io/socket.io.js")
