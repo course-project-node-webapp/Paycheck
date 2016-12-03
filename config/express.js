@@ -51,6 +51,6 @@ module.exports = function (config) {
 
   logger.debug('Setting "Public" folder');
   app.use(express.static(config.rootPath + 'public'));
-
+  
   return app;
 };
