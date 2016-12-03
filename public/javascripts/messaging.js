@@ -7,13 +7,13 @@
     $textarea = $('.chat-textarea'),
     $messages = $('ul.messages'),
     $fullname = $('.full-name'),
-    $onlineUsers = $('online-users'),
+    $onlineUsers = $('.online-users span'),
     defaultStatus = $status.text(),
-    setStatus = function(s) {
+    setStatus = function (s) {
       $status.text(s);
 
       if (s !== defaultStatus) {
-        let delay = setTimeout(function() {
+        let delay = setTimeout(function () {
           setStatus(defaultStatus);
           clearInterval(delay);
         }, 3000);
@@ -22,10 +22,14 @@
 
   var socket = io.connect();
 
-  socket.on('output', function(data) {
+  socket.emit('new-user', $fullname.text());
+
+  socket.on('output', function (data) {
     if (data.length) {
       for (let i = 0; i < data.length; i++) {
-        let $messageWrapper = $('<li/>', { 'class': 'chat-message' });
+        let $messageWrapper = $('<li/>', {
+          'class': 'chat-message'
+        });
         let $author = $(`<span class="message-author capitalize">${data[i].name}</span>`);
         let $message = $(`<span class="message">${data[i].message}</span>`);
 
@@ -33,11 +37,13 @@
           .append($author)
           .append($message);
         $messages.append($messageWrapper);
+
+        $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
       }
     }
   });
 
-  socket.on('status', function(data) {
+  socket.on('status', function (data) {
     setStatus((typeof data === 'object') ? data.message : data);
     if (data.clear === true) {
       $textarea.val('');
@@ -48,7 +54,7 @@
     let users = '';
     let dataLength = data.length;
     for (let i = 0; i < dataLength; i++) {
-      users += data[i].name + '<br />';
+      users += data[i] + '<br />';
     }
     $onlineUsers.html(users);
   });
@@ -63,7 +69,7 @@
         message: self.value
       });
 
-      $('chat-messages').scrollTop = $('chat-messages').scrollHeight;
+      $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
       event.preventDefault();
     }
   });
