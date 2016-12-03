@@ -2,23 +2,24 @@ extends ../shared/_layout
 
 block content
   if currentUser
-        h3.display-4.m-b-2 Create new project
-        form(method='POST' action='/projects/create')
-            label(for='name') Name:
-            input.form-control#projectname(type='text', name='name')
-            label(for='description') Description:
-            input.form-control#projectdescription(type='text', name='description')
-            label(for='devSkills') Developper skills required:
-            input.form-control#devskills(type='text', name='devSkills')
-            label(for='managerName') Manager of this project:
-            input.form-control#projectmanagername(type='text' name='managerName')
-            label(for='employees') Employees:
-            input.form-control#projectemployees(type='text' name='employees')
-            label(for='tasks') Tasks:
-            input.form-control#projecttasks(type='text' name='tasks')
-            input(type='hidden' name='privacy' value='public')
-            input(type='hidden' name='owner' value= result.user.username)
-            button.btn.btn-primary(type='submit') Submit
+    #wrapper(style="text-align: center")
+      h3.display-4.m-b-2 Create new project
+      form(method='POST' action='/projects/create')
+          label(for='name') Name:
+          input.form-control#projectname(type='text', name='name')
+          label(for='description') Description:
+          input.form-control#projectdescription(type='text', name='description')
+          label(for='devSkills') Developper skills required:
+          input.form-control#devskills(type='text', name='devSkills')
+          label(for='managerName') Manager of this project:
+          input.form-control#projectmanagername(type='text' name='managerName')
+          label(for='employees') Employees:
+          input.form-control#projectemployees(type='text' name='employees')
+          label(for='tasks') Tasks:
+          input.form-control#projecttasks(type='text' name='tasks')
+          input(type='hidden' name='privacy' value='public')
+          input(type='hidden' name='owner' value= result.user.username)
+          button.btn.btn-default(type='submit') Submit
   else
     .row
       .col-md-6.col-md-offset-3
