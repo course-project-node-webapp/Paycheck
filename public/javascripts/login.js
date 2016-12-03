@@ -1,4 +1,4 @@
-/* globals $ CryptoJS toastr window Promise document */
+/* globals $ CryptoJS toastr window Promise document requester */
 
 'use strict';
 
@@ -51,23 +51,16 @@
   }
 
   function createRequest(method, user) {
-    return new Promise((resolve, reject) => {
-      $.ajax({
-          url: '/account/login',
-          method: method,
-          contentType: 'application/json',
-          data: JSON.stringify(user)
-        })
-        .done((res) => {
-          toastr.success(res.message);
-          setTimeout(() => {
-            window.location = res.redirectUrl;
-          }, 1500);
-        })
-        .fail(() => {
-          return reject();
-        });
-    });
+    return requester.postJSON('/account/login', user)
+      .then((res) => {
+        toastr.success(res.message);
+        setTimeout(() => {
+          window.location = res.redirectUrl;
+        }, 1500);
+      })
+      .catch(() => {
+        return Promise.reject();
+      });
   }
 
   function validateString(value) {
