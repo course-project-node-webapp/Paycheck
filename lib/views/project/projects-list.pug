@@ -13,6 +13,9 @@ block content
             p Project description: #{pr.description}
             if result.user
               if pr.owner !== result.user.username
-                form(method='POST' action="/projects/aplyers/"+pr.name)
-                  input(type='hidden' name='applyer' value=result.user.username)
-                  button.btn.btn-primary(type='submit') Apply
+                if !pr.applyers.some(a=>a===result.user.username)
+                  form(method='POST' action="/projects/aplyers/"+pr.name)
+                    input(type='hidden' name='applyer' value=result.user.username)
+                    button.btn.btn-primary(type='submit') Apply
+                else
+                  | Your apllication was sent!
