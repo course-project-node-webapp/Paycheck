@@ -14,8 +14,11 @@ module.exports = function (app, data, controllerLoaders) {
     messageData
   } = data;
 
-  let messageController = false;
-  var messagesToDisplay;
+  let onlineUsers = {};
+
+  function updateOnlineUsers() {
+    return io.sockets.emit('online-users', Object.keys(onlineUsers));
+  }
 
   io.on('connection', function (socket) {
 
@@ -23,6 +26,7 @@ module.exports = function (app, data, controllerLoaders) {
       socket.emit('status', status);
     };
 
+    let messageController = false;
     if (!messageController) {
       messageController = messageControllerLoader(messageData);
     }
