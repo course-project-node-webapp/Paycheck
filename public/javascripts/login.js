@@ -63,7 +63,7 @@
         }, 1500);
       })
       .catch(() => {
-        return Promise.reject();
+        toastr.error('Invalid username or password.');
       });
   }
 

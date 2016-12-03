@@ -49,6 +49,10 @@
         validateName(user.firstName);
         validateName(user.lastName);
 
+        if (user.image && !validator.isURL(user.image)) {
+          throw new Error('Invalid image URL.');
+        }
+
         if (user.country === 'Country') {
           throw new Error('You must select a country.');
         }
