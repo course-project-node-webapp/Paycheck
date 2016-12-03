@@ -1,0 +1,9 @@
+#main-content .container {
+    height: 90vh;
+}
+
+#organizations,
+#create-organization {
+    height: 40vh;
+    margin: 5vh 0;
+}

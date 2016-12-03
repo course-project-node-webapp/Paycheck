@@ -12,6 +12,10 @@ block content
             h4 Required skills: #{pr.devSkills}
             p Project description: #{pr.description}
             if result.user
-              form(method='POST' action="/projects/aplyers/"+pr.name)
-                input(type='hidden' name='applyer' value=result.user.username)
-                button.btn.btn-primary(type='submit') Apply
+              if pr.owner !== result.user.username
+                if !pr.applyers.some(a=>a===result.user.username)
+                  form(method='POST' action="/projects/aplyers/"+pr.name)
+                    input(type='hidden' name='applyer' value=result.user.username)
+                    button.btn.btn-primary(type='submit') Apply
+                else
+                  | Your apllication was sent!
