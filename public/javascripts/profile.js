@@ -11,7 +11,6 @@
   const $addListItem = $('ul.skills>li.add');
   const $addSkillBtn = $('a.add-skill-btn');
 
-  const $editMode = $('.edit-mode');
   const $editProfileBtn = $('a.edit-profile-btn');
   const $saveChangesBtn = $('a.save-changes-btn');
   const $deleteSkillBtn = $('a.btn-delete');
@@ -24,7 +23,7 @@
   const $summaryContainer = $('div.overview');
   const $editSummayBtn = $('a.btn-summary-edit');
   const editSummaryBtnHtml = $editSummayBtn[0].outerHTML.replace(/hide\b/ig, '');
-  const $saveSummaryBtn = $('<a class="btn-save-circle btn-edit btn-save-summary">')
+  const $saveSummaryBtn = $('<a class="btn-save-circle btn-edit btn-save-summary edit-mode">')
     .append($saveIcon);
 
   const $submitSkillBtn = $('<a class="btn btn-success submit-skill-btn">Add</a>');
@@ -76,6 +75,7 @@
   });
 
   $editProfileBtn.on('click', function() {
+    let $editMode = $('.edit-mode');
     $(this).addClass('hide');
 
     $saveChangesBtn.removeClass('hide');
@@ -83,8 +83,17 @@
   });
 
   $saveChangesBtn.on('click', function() {
-    $(this).addClass('hide');
+    let $textArea = $('textarea.summary-input');
+    let $btnSummarySave = $('a.btn-save-summary');
+
+    let inputValue = $textArea.val();
+
+    $textArea.replaceWith(`<span>${inputValue}</span>`);
+    $btnSummarySave.replaceWith(editSummaryBtnHtml);
+
+    let $editMode = $('.edit-mode');
     $editMode.addClass('hide');
+    $(this).addClass('hide');
 
     $editProfileBtn.removeClass('hide');
   });
