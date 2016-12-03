@@ -5,14 +5,14 @@
 (() => {
   const $status = $('.chat-status span'),
     $textarea = $('.chat-textarea'),
-    $messages = $('.chat-messages'),
+    $messages = $('ul.messages'),
     $fullname = $('.full-name'),
     defaultStatus = $status.text(),
-    setStatus = function (s) {
+    setStatus = function(s) {
       $status.text(s);
 
       if (s !== defaultStatus) {
-        let delay = setTimeout(function () {
+        let delay = setTimeout(function() {
           setStatus(defaultStatus);
           clearInterval(delay);
         }, 3000);
@@ -21,29 +21,29 @@
 
   var socket = io.connect();
 
-  socket.on('output', function (data) {
+  socket.on('output', function(data) {
     if (data.length) {
       for (let i = 0; i < data.length; i++) {
-        let $message = $('<div/>', {
-          'class': 'chat-message'
-        });
-        
-        $message.html('<b>' + data[i].name + '</b>: ' + data[i].message);
+        let $messageWrapper = $('<li/>', { 'class': 'chat-message' });
+        let $author = $(`<span class="message-author capitalize">${data[i].name}</span>`);
+        let $message = $(`<span class="message">${data[i].message}</span>`);
 
-        $messages.append($message);
-        $messages.insertAfter($messages);
+        $messageWrapper
+          .append($author)
+          .append($message);
+        $messages.append($messageWrapper);
       }
     }
   });
 
-  socket.on('status', function (data) {
+  socket.on('status', function(data) {
     setStatus((typeof data === 'object') ? data.message : data);
     if (data.clear === true) {
       $textarea.val('');
     }
   });
 
-  $textarea.on('keydown', function (event) {
+  $textarea.on('keydown', function(event) {
     let self = this,
       name = $fullname.text();
 
