@@ -1,4 +1,4 @@
-/* globals $ toastr CryptoJS window Promise document */
+/* globals $ toastr CryptoJS window Promise document requester */
 
 'use strict';
 
@@ -45,16 +45,11 @@
         return user;
       })
       .then((user) => {
-        $.ajax({
-            url: '/account/register',
-            method: 'PUT',
-            contentType: 'application/json',
-            data: JSON.stringify(user)
-          })
-          .done((res) => {
+        return requester.putJSON('/account/register', user)
+          .then((res) => {
             window.location = res.redirectUrl;
           })
-          .fail((err) => {
+          .catch((err) => {
             toastr.error(err.message);
           });
       })
