@@ -6,6 +6,7 @@
   const $status = $('.chat-status span'),
     $textarea = $('.chat-textarea'),
     $messages = $('.chat-messages'),
+    $fullname = $('.full-name'),
     defaultStatus = $status.text(),
     setStatus = function(s) {
       $status.text(s);
@@ -41,7 +42,7 @@
 
   $textarea.on('keydown', function(event) {
     let self = this,
-      name = 'Temp Name';
+      name = $fullname.text();
 
     if (event.which === 13 && event.shiftKey === false) {
       socket.emit('input', {
