@@ -1,0 +1,22 @@
+extends ../shared/_layout
+
+block content
+  div.col-xs-8.col-xs-offset-2#applications
+    div.well
+      heading.text-center 
+        h3= result.organization.name
+    if result.organization.applications.length > 0
+      ul.list-group
+        each application in result.organization.applications
+          li.list-group-item
+            div.row
+              p Submit by: 
+                a(href="/users/" + application.userId)
+                  span= application.username
+              p= "Comment: " + application.comment
+            div.row
+              a.btn.btn-success(href="/organizations/" + result.organization._id + "/applications/approve/" + application.userId) Approve
+              a.btn.btn-danger(href="/organizations/" + result.organization._id + "/applications/decline/" + application.userId) Decline
+
+    else
+      p No applications are submitted at this time.
