@@ -37,6 +37,8 @@
           .append($author)
           .append($message);
         $messages.append($messageWrapper);
+
+        $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
       }
     }
   });
@@ -67,9 +69,7 @@
         message: self.value
       });
 
-
-
-      $('chat-messages').scrollTop = $('chat-messages').scrollHeight;
+      $('.chat-messages').scrollTop($('.chat-messages')[0].scrollHeight);
       event.preventDefault();
     }
   });
