@@ -17,8 +17,8 @@ block content
           small.specialty.capitalize #{result.userData.specialty}
         img.img-rounded.img-responsive(src=result.userData.image)
       .rates
-        .c100.dark.small(class="p" + result.userData.successRate)
-          span #{result.userData.successRate}%
+        .c100.dark.small(class="p" + result.userData.getSuccessRate())
+          span #{result.userData.getSuccessRate()}%
           .slice
             .bar
             .fill
