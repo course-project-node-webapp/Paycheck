@@ -12,6 +12,7 @@
   const tbFirstName = registerForm.find('#tb-first-name');
   const tbLastName = registerForm.find('#tb-last-name');
   const tbCountry = registerForm.find('#tb-country');
+  const tbProfileImg = registerForm.find('#tb-profile-img');
   const btnRegister = registerForm.find('#btn-register');
 
   $(document).on('keydown', (ev) => {
@@ -34,6 +35,7 @@
           password: CryptoJS.SHA256(password).toString(),
           firstName: tbFirstName.val(),
           lastName: tbLastName.val(),
+          image: tbProfileImg.val(),
           country: tbCountry.find(':selected').text()
         };
 
