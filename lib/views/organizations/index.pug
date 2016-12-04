@@ -6,7 +6,7 @@ block stylesheets
 block content
   section#organizations
     heading
-      h1 All registered organizations
+      h2 All registered organizations
 
     if isAuthenticated
       div.well.text-center#create-new-organization
@@ -19,7 +19,7 @@ block content
           each organization in result.organizations
             li.list-group-item
               a(href= "/organizations/" + organization._id)
-                p= organization.name
+                h3= organization.name
       else
         p No organizations have been created yet.
         if !isAuthenticated
@@ -37,3 +37,11 @@ block content
               li
                 a(href= "/organizations?page=" + result.pagination.next.value + "&size=" + result.pagination.pageSize aria-label="Next")
                   span(aria-hidden="true") Next page &raquo;
+
+
+  style(type="text/css").
+    #organizations {
+      text-align: center;
+      min-height: 60vh;
+      margin: 5vh 0;
+    }

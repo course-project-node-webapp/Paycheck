@@ -1,7 +1,16 @@
 extends ../shared/_layout
 
 block content
-  #successful-message-wrapper(style="min-height: 60vh; text-align: center; display: flex; align-items: center; justify-content: center")
+  #successful-message-wrapper
     .message
       h1  Project "#{name}" created succesfully!
       a.btn.btn-default(type='text' href='/') Go Back
+
+  style(type="text/css").
+    #successful-message-wrapper {
+      min-height: 60vh;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }

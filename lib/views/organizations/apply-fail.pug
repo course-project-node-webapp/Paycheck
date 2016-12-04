@@ -1,5 +1,12 @@
 extends ../shared/_layout
 
 block content
-  div.well#success-message
-    p Application from this user already exists.
+  div.well#fail-message
+    h2 Application from this user already exists.
+
+  style(type="text/css").
+    #fail-message {
+      text-align: center;
+      height: 60vh;
+      margin: 5vh 0;
+    }

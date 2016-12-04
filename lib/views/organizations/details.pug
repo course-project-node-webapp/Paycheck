@@ -4,7 +4,7 @@ block content
   div.well#organization-details
     div.panel.panel-primary
       div.panel-heading
-        a.btn(href= "/organizations/" + result.organization._id)
+        a.organization-link(href= "/organizations/" + result.organization._id)
           h3= result.organization.name
 
       div.panel-footer
@@ -19,3 +19,14 @@ block content
           if result.organization.applications.length > 0
             a.btn(href= "/organizations/" + result.organization._id + "/applications") 
               p= "View Applications (" + result.organization.applications.length + ")" 
+
+  style(type="text/css").
+    #organization-details {
+      min-height: 60vh;
+      margin: 5vh 0;
+    }
+    
+    #organization-details .organization-link {
+      color: #fff;
+      font-size: 3rem;
+    }
