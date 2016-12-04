@@ -4,7 +4,7 @@
 
 module.exports = function ({models, validator}) {
   const {
-    ContactMessage
+    Contact
   } = models;
 
   function createContactMessage(contactMessage) {
@@ -18,7 +18,7 @@ module.exports = function ({models, validator}) {
         throw new Error('Message is mandatory and minimum 200 symbols.');
       }
 
-      const newContactMessage = ContactMessage.getContactMessage(contactMessage);
+      const newContactMessage = Contact.getContactMessage(contactMessage);
       newContactMessage.save((err) => {
         if (err) {
           return reject(err);
@@ -31,7 +31,7 @@ module.exports = function ({models, validator}) {
 
   function findAll() {
     return new Promise((resolve, reject) => {
-      ContactMessage.find((err, messages) => {
+      Contact.find((err, messages) => {
         if (err) {
           return reject(err);
         }
