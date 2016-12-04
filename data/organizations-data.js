@@ -9,7 +9,7 @@ module.exports = function ({ models }) {
 
   function createOrganization(organization) {
     return new Promise((resolve, reject) => {
-      if (!organization.name || !validator.isAscii(organization.name)) {
+      if (!organization.name || !validator.isAlphanumeric(organization.name)) {
         throw new Error('Invalid organization name.');
       }
 
@@ -90,6 +90,14 @@ module.exports = function ({ models }) {
   }
 
   function findPage(page, size) {
+    if (!validator.isInt(page + '', { min: 0, max: 100 })) {
+      throw new Error('Invalid page number, allowed values 0 - 100.');
+    }
+
+    if (!validator.isInt(page + '', { min: 1, max: 50 })) {
+      throw new Error('Invalid page size, allowed values 1 - 50.');
+    }
+
     const promiseData = new Promise((resolve, reject) => {
       Organization.find()
         .skip(page * size)
