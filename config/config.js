@@ -13,7 +13,7 @@ module.exports = {
     },
     production: {
         rootPath,
-        sessionSecret: '[insert session secret here]',
+        sessionSecret: process.env.SESSION_SECRET,
         connectionString: process.env.CONNECTION_STRING,
         port: process.env.PORT
     }
