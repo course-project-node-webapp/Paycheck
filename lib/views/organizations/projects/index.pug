@@ -15,11 +15,11 @@ block content
               li.list-group-item
                 heading
                   h3= project.name
-                a.btn.btn-default(href="/organizations/" + result.organization._id + "/projects/" + project.projectId)
+                a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId)
                   p Project Details
-                a.btn.btn-default(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/employees")
+                a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/employees")
                   p Manage Employees
-                a.btn.btn-default(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/tasks")
+                a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/tasks")
                   p Manage Tasks
                 if result.userRole === 'owner'
                   a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/delete/" + project.projectId)

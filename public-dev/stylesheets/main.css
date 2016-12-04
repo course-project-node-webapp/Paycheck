@@ -27,7 +27,9 @@ a.btn.btn-primary {
     box-shadow: none;
 }
 
-a.btn.btn-primary:hover {
+a.btn.btn-primary:hover,
+a.btn.btn-primary:active,
+a.btn.btn-primary:focus {
     background-color: #292C2F;
     box-shadow: 0 14px 26px -12px rgba(22, 53, 65, .42);
 }

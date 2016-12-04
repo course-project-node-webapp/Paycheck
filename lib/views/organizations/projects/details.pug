@@ -1,6 +1,16 @@
 extends ../../shared/_layout
 
 block content
-  div#wrapper.jumbotron
-    p= result.project.name
-    p= result.project.description
+  #wrapper
+    h3 Project Details
+    div.well.jumbotron
+      h3= result.project.name
+      hr
+      p= result.project.description
+
+  style(type="text/css").
+    #wrapper {
+      text-align: center;
+      min-height: 60vh;
+      margin: 5vh 0;
+    }
