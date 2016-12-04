@@ -9,7 +9,7 @@ module.exports = function ({ models }) {
 
   function createOrganization(organization) {
     return new Promise((resolve, reject) => {
-      if (!organization.name || !validator.isAlphanumeric(organization.name)) {
+      if (!organization.name || !validator.isAscii(organization.name)) {
         throw new Error('Invalid organization name.');
       }
 
