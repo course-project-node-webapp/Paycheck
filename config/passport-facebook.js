@@ -7,7 +7,7 @@ module.exports = function (config, userData) {
   const facebookStrategy = new FacebookStrategy({
     clientID: config.facebookAppId,
     clientSecret: config.facebookAppSecret,
-    callbackURL: 'http://localhost:3002/account/login/facebook/callback'
+    callbackURL: 'https://paycheck-app.herokuapp.com/account/login/facebook/callback'
   },
     function (accessToken, refreshToken, profile, next) {
       userData.getUserByFacebookId(profile.id)
