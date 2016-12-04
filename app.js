@@ -22,3 +22,8 @@ const server = require('./config/sockets')(app, data, controllerLoaders);
 server.listen(port, () => {
   logger.info(`Listening on port: ${port}`);
 });
+
+// TODO: 
+// GITHUB LOGIN
+// DATA VALIDATION
+// CSS
