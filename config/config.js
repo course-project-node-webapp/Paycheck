@@ -8,8 +8,9 @@ module.exports = {
         rootPath,
         sessionSecret: '[insert session secret here]',
         connectionString: 'mongodb://localhost:27017/paycheck-db',
-        facebookAppId:  process.env.FACEBOOK_APP_ID,
-        facebookAppSecret:  process.env.FACEBOOK_APP_SECRET,
+        facebookAppId:  'asdf',
+        facebookAppSecret:  'asdf',
+        facebookCallbackUrl: 'localhost:3002/account/login/faceboo/callback',        
         port: 3002,
         errorResponseCode: 400
     },
@@ -19,6 +20,7 @@ module.exports = {
         connectionString: process.env.CONNECTION_STRING,
         facebookAppId:  process.env.FACEBOOK_APP_ID,
         facebookAppSecret:  process.env.FACEBOOK_APP_SECRET,
+        facebookCallbackUrl: process.env.FACEBOOK_APP_CALLBACK,
         port: process.env.PORT
     }
 };
