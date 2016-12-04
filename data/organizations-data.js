@@ -1,16 +1,29 @@
 /* globals Promise */
 
 'use strict';
-
-module.exports = function({ models, validator }) {
+const validator = require('validator');
+module.exports = function ({ models }) {
   const {
     Organization
   } = models;
 
   function createOrganization(organization) {
     return new Promise((resolve, reject) => {
-      const newOrganization = Organization.getOrganization(organization);
+      if (!organization.name || !validator.isAlphanumeric(organization.name)) {
+        throw new Error('Invalid organization name.');
+      }
 
+      if (organization.image && !validator.isURL(organization.image)) {
+        throw new Error('Invalid image url.');
+      }
+
+      if (!organization.owners || !Array.isArray(organization.owners)) {
+        throw new Error('Invalid owners list.');
+      }
+
+      organization.name = validator.escape(organization.name);
+
+      const newOrganization = Organization.getOrganization(organization);
       newOrganization.save((err) => {
         if (err) {
           return reject(err);
