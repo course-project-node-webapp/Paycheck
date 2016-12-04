@@ -100,11 +100,11 @@ module.exports = function ({
     },
     createProject(project) {
       if (!validator.isAlphanumeric(project.name)) {
-        throw new Error('Project name must contains letters and digits only');
+        throw new Error('Project name must contain letters and digits only.');
       }
 
-      if (!validator.isAlphanumeric(project.description)) {
-        throw new Error('Project description must contains letters and digits only');
+      if (!validator.isAscii(project.description)) {
+        throw new Error('Project description must contain ASCII characters only.');
       }
 
       const newProject = Project.getProject(project);

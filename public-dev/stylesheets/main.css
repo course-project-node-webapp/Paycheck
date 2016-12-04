@@ -22,6 +22,16 @@ a {
     text-transform: capitalize;
 }
 
+a.btn.btn-primary {
+    background-color: #292C2F;
+    box-shadow: none;
+}
+
+a.btn.btn-primary:hover {
+    background-color: #292C2F;
+    box-shadow: 0 14px 26px -12px rgba(22, 53, 65, .42);
+}
+
 
 /* Return To Top */
 

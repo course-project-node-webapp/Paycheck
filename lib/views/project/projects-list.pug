@@ -3,26 +3,31 @@ extends ../shared/_layout
 block content
   #wrapper
     if !result.data.length
-      h3 No projects found.
+      h3 There aren't any projects to show
     else
-      h3 All Public Projects
-        each pr in result.data
-          if pr.privacy === 'public'
-            div.well.text-center
-              h4 Name: #{pr.name}
-              span Required Skills: #{pr.devSkills}
-              span Description: #{pr.description}
-              if result.user
-                if pr.owner !== result.user.username
-                  if !pr.applyers.some(a=>a===result.user.username) && !pr.employees.some(e=>e.employeeName===result.user.username)
-                    form(method='POST' action="/projects/aplyers/"+pr.name)
-                      input(type='hidden' name='applyer' value=result.user.username)
-                      button.btn.btn-success(type='submit') Apply
+      h3 Public Projects
+      each pr in result.data
+        if pr.privacy === 'public'
+          div.well.text-center
+            h4.white-background #{pr.name}
+            if pr.description
+              span #{pr.description}
+            if pr.devSkills[0]
+              span.white-background #{pr.devSkills}
+            if result.user
+              if pr.owner !== result.user.username
+                if !pr.applyers.some(a=>a===result.user.username) && !pr.employees.some(e=>e.employeeName===result.user.username)
+                  form(method='POST' action="/projects/aplyers/"+pr.name)
+                    input(type='hidden' name='applyer' value=result.user.username)
+                    hr
+                    button.btn.btn-success(type='submit') Apply
+                else
+                  if !pr.employees.some(e=>e.employeeName===result.user.username)
+                    hr
+                    span Your apllication was sent!
                   else
-                    if !pr.employees.some(e=>e.employeeName===result.user.username)
-                      span Your apllication was sent!
-                    else
-                      span You are already accepted in this project!
+                    hr
+                    span You are already accepted in this project!
 
   style(type="text/css").
     #wrapper {
@@ -30,13 +35,17 @@ block content
       margin: 5vh 0;
       text-align: center;
     }
-
     #wrapper h4 {
-      font-size: 3rem;
-    }    
-
+      margin-top: 0;
+      font-size: 2.5rem;
+    }
     #wrapper span {
-      font-size: 3rem;
+      font-size: 1.6rem;
       font-weight: normal;
       display: block;
+      margin-bottom: 1rem;
+    }
+    .white-background {
+      background-color: #fff;
+      border: 1px solid #ccc;
     }
