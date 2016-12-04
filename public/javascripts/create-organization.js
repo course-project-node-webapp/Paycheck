@@ -19,6 +19,10 @@
         throw new Error('Invalid organization name.');
       }
 
+      if (organization.image && !validator.isURL(organization.image)) {
+        throw new Error('Invalid image url.');
+      }
+
       $.ajax({
         url: '/organizations/create',
         method: 'POST',
@@ -36,7 +40,7 @@
         toastr.success(res.message);
         setTimeout(() => {
           window.location = res.redirectUrl;
-        }, 1500);
+        }, 750);
       })
       .catch((err) => {
         toastr.error(err.message);
