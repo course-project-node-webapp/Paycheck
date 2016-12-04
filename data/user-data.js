@@ -2,7 +2,10 @@
 
 'use strict';
 
-module.exports = function ({ models, validator }) {
+module.exports = function ({
+  models,
+  validator
+}) {
   const {
     User
   } = models;
@@ -79,6 +82,22 @@ module.exports = function ({ models, validator }) {
       // Mongoose forced me to!
       if (!user.image) {
         delete user.image;
+      }
+
+      if (!validator.isAlphanumeric(user.username)) {
+        throw new Error('Username  must contains letters and digits only');
+      }
+
+      if (!validator.isAlphanumeric(user.firstName)) {
+        throw new Error('User firtsname  must contains letters and digits only');
+      }
+
+      if (!validator.isAlphanumeric(user.lastName)) {
+        throw new Error('User lastname  must contains letters and digits only');
+      }
+
+      if (user.image && !validator.isURL(user.image)) {
+        throw new Error('Not a valid picture URL');
       }
 
       let userModel = User.getUser(user);

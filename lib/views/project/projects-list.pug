@@ -14,12 +14,15 @@ block content
               span Description: #{pr.description}
               if result.user
                 if pr.owner !== result.user.username
-                  if !pr.applyers.some(a=>a===result.user.username)
+                  if !pr.applyers.some(a=>a===result.user.username) && !pr.employees.some(e=>e.employeeName===result.user.username)
                     form(method='POST' action="/projects/aplyers/"+pr.name)
                       input(type='hidden' name='applyer' value=result.user.username)
                       button.btn.btn-success(type='submit') Apply
                   else
-                    span Your apllication was sent!
+                    if !pr.employees.some(e=>e.employeeName===result.user.username)
+                      span Your apllication was sent!
+                    else
+                      span You are already accepted in this project!
 
   style(type="text/css").
     #wrapper {

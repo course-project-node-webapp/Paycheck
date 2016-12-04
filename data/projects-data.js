@@ -9,7 +9,6 @@ module.exports = function ({
   const {
     Project
   } = models;
-  const forbiddenChars = '<?>&%$@/()=^!_#+;.,';
 
   return {
     getAllProjects() {
@@ -100,8 +99,17 @@ module.exports = function ({
       });
     },
     createProject(project) {
-      project.name = validator.blacklist(project.name, forbiddenChars);
-      project.description = validator.blacklist(project.description, forbiddenChars);
+      if (!validator.isAlphanumeric(project.name)) {
+        throw new Error('Project name must contains letters and digits only');
+      }
+
+      if (!validator.isAlphanumeric(project.description)) {
+        throw new Error('Project description must contains letters and digits only');
+      }
+
+      if (!validator.isAlphanumeric(project.managerName)) {
+        throw new Error('Project manager name must contains letters and digits only');
+      }
 
       const newProject = Project.getProject(project);
 
