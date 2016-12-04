@@ -3,33 +3,41 @@ extends ../shared/_layout
 block content
   #projects-wrapper
     if !result.data.length
-      h2 No projects found.
+      h3 You don't have any projects
+      a.btn.btn-default(href="/projects/create") Create Project
+      a.btn.btn-primary(href="javascript:history.back()") Go Back
     else
-      h2 My projects
+      h3 My Projects
       each pr in result.data
         if pr.privacy === 'public' && result.user.username === pr.owner
           div.well.text-center
-            h3 Project name: #{pr.name}
-            h4 Required skills: #{pr.devSkills}
-            span Project description: #{pr.description}
+            h4.project-name.white-background #{pr.name}
+            if pr.description
+              span #{pr.description}
+            if pr.devSkills[0]
+              span.white-background #{pr.devSkills}
+            if pr.employees.length
+              hr
+              h5 Employees
+              ul
+                each employee in pr.employees
+                  li.form-control
+                    a(href='/users/search?search=' + employee.employeeName) #{employee.employeeName}
             if pr.applyers.length
-              h3 Appliers:
+              hr
+              h5 Appliers
               ul
                 each aplyer in pr.applyers
                   a(href='/users/search?search='+aplyer) #{aplyer}
-                  form(method='POST' action="/projects/employees/"+pr.name)
-                    input(type='hidden' name='employee' value= aplyer)
+                  form(method='POST' action="/projects/employees/" + pr.name)
+                    input(type='hidden' name='employee' value='aplyer')
                     button.btn.btn-success(type='submit') Assign to employees
-            else
-              h4 No appliers
             if pr.employees.length
               h3 Employees:
               ul
                 each employee in pr.employees
                   li.form-control
                     a(href='/users/search?search='+employee.employeeName) #{employee.employeeName}
-            else
-              h4 No employees
 
   style(type="text/css").
     #projects-wrapper {
@@ -37,7 +45,24 @@ block content
       text-align: center;
       margin: 5vh 0;
     }
-
+    #projects-wrapper a.btn.btn-primary {
+      background-color: #292C2F;
+      box-shadow: none;
+    }
+    #projects-wrapper a.btn.btn-primary:hover {
+      box-shadow: 0 14px 26px -12px rgba(22,53,65,.42);
+    }
+    #projects-wrapper .project-name {
+      font-size: 2.5rem;
+    }
     #projects-wrapper span {
-      font-size: 2rem;
+      display: block;
+      margin-bottom: 1em;
+    }
+    #projects-wrapper h5 {
+      text-decoration: underline;
+    }
+    .white-background {
+      background-color: #fff;
+      border: 1px solid #ccc;
     }

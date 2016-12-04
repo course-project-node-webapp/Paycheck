@@ -1,12 +1,18 @@
 extends ../../shared/_layout
 
 block content
-  div.jumbotron
-    form.col-xs-6.col-xs-offset-3(method="POST" action="/organizations/" + result.organizationId + "/projects/" + result.projectId + "/tasks/add")
-      div.row
-        input.form-control(type="text" name="name" placeholder="Task Name")
-      div.row
-        input.form-control(type="text" name="description" placeholder="Task Description")
-      div.row
-        button.btn.btn-success.form-control(type="submit") Create task
-    
+  #wrapper
+    div.jumbotron
+      form.col-xs-6.col-xs-offset-3(method="POST" action="/organizations/" + result.organizationId + "/projects/" + result.projectId + "/tasks/add")
+        div.row
+          input.form-control(type="text" name="name" placeholder="Task Name")
+        div.row
+          input.form-control(type="text" name="description" placeholder="Task Description")
+        div.row
+          button.btn.btn-success.form-control(type="submit") Create task
+  
+  style(type="text/css").
+    #wrapper {
+      min-height: 60vh;
+      margin: 5vh 0;
+    }

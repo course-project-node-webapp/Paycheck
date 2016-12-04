@@ -6,6 +6,7 @@ block stylesheets
 block content
   #users-container
     if users.length
+      h3(style="flex: 1 0 100%") Users
       each user in users
         .user-container.col-md-3.col-lg-3.col-sm-6.col-xs-12
           .left-user-container
