@@ -5,10 +5,17 @@ block stylesheets
 
 block content
   section.well#create-organization
-    form.col-xs-6.col-xs-offset-3(method="POST" action="/organizations/create")
+    
       div.row
-        input.text-center.form-control(type="text" name="name" placeholder="Organization name")
+        input.text-center.form-control#tb-organization-name(type="text" name="name" placeholder="Organization name")
       div.row
-        input.text-center.form-control(type="text" name="image" placeholder="Organization Image URL")
+        input.text-center.form-control#tb-organization-image(type="text" name="image" placeholder="Organization Image URL")
       div.row
-        button.btn.btn-success.form-control(type="submit") Create Organization
+        button.btn.btn-success.form-control#btn-submit(type="submit") Create Organization
+
+      form.col-xs-6.col-xs-offset-3(method="POST" action="/organizations/create")
+
+block javascript
+  script(src="/bower_components/validator-js/validator.js")
+  script(src="/bower_components/toastr/toastr.js")
+  script(src="/javascripts/create-organization.js")
