@@ -34,7 +34,7 @@ module.exports = function ({models}) {
   }
 
   return {
-    create,
+    createContactMessage,
     findAll
   };
 };
