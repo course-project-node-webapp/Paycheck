@@ -55,7 +55,7 @@ block content
                         
                 footer
                   a.btn.btn-primary(href="/organizations/" + result.organization._id + "/projects/" + project.projectId + "/employees")
-                    p Manage Employees for this project
+                    p Manage Employees
 
           div.well
             if result.organization.unassigned.length > 0
@@ -81,6 +81,7 @@ block content
   
   style(type="text/css").
     #organization-details {
+      text-align: center;
       min-height: 60vh;
       margin: 5vh 0;
     }
