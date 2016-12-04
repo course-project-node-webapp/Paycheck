@@ -13,6 +13,10 @@ module.exports = function ({ models }) {
         throw new Error('Invalid organization name.');
       }
 
+      if (!validator.isLength(organization.name, { min: 1, max: 50 })) {
+        throw new Error('Invalid organization name length, min: 1, max: 50');
+      }
+
       if (organization.image && !validator.isURL(organization.image)) {
         throw new Error('Invalid image url.');
       }
@@ -22,6 +26,18 @@ module.exports = function ({ models }) {
       }
 
       organization.name = validator.escape(organization.name);
+
+      organization.projects.forEach(project => {
+        project.tasks.forEach(task => {
+          if(!validator.isAscii(task.name)){
+            throw new Error(`Invalid task name: ${task.name}`);
+          }
+
+          if(!validator.isAscii(task.description)){
+            throw new Error(`Invalid task description: ${task.description}`);
+          }
+        });
+      });
 
       const newOrganization = Organization.getOrganization(organization);
       newOrganization.save((err) => {
@@ -55,6 +71,10 @@ module.exports = function ({ models }) {
   function findByName(name) {
     if (!name || !validator.isAscii(name)) {
       throw new Error('Invalid organization name.');
+    }
+
+    if (!validator.isLength(name, { min: 1, max: 50 })) {
+      throw new Error('Invalid organization name length, min: 1, max: 50');
     }
 
     return new Promise((resolve, reject) => {
@@ -94,7 +114,7 @@ module.exports = function ({ models }) {
       throw new Error('Invalid page number, allowed values 0 - 100.');
     }
 
-    if (!validator.isInt(page + '', { min: 1, max: 50 })) {
+    if (!validator.isInt(size + '', { min: 1, max: 50 })) {
       throw new Error('Invalid page size, allowed values 1 - 50.');
     }
 
@@ -129,6 +149,22 @@ module.exports = function ({ models }) {
   }
 
   function updateOrganization(organization) {
+    if (!organization.name || !validator.isAlphanumeric(organization.name)) {
+      throw new Error('Invalid organization name.');
+    }
+
+    if (!validator.isLength(organization.name, { min: 1, max: 50 })) {
+      throw new Error('Invalid organization name length, min: 1, max: 50');
+    }
+
+    if (organization.image && !validator.isURL(organization.image)) {
+      throw new Error('Invalid image url.');
+    }
+
+    if (!organization.owners || !Array.isArray(organization.owners)) {
+      throw new Error('Invalid owners list.');
+    }
+
     return new Promise((resolve, reject) => {
       organization.save((err, updated) => {
         if (err) {
