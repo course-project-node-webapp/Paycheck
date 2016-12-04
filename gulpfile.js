@@ -27,7 +27,3 @@ gulp.task('build', () => {
     .pipe(cssmin())
     .pipe(gulp.dest('public/stylesheets/'));
 });
-
-gulp.task('css', ()=>{
-  
-});
