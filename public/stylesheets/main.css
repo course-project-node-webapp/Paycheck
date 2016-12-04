@@ -121,6 +121,26 @@ a {
     text-align: center;
 }
 
+#header img.header-profile-picture {
+    display: inline-block;
+    height: 50px;
+    width: 55px;
+    margin-right: 10px;
+}
+
+#header a.profile-link {
+    padding: 0;
+    margin: 0;
+}
+
+#header a.profile-link span {
+    font-weight: normal;
+}
+
+#header a.btn {
+    background: none;
+}
+
 @media screen and (min-device-width: 770px) {
     #header a.btn {
         text-transform: capitalize;
@@ -244,25 +264,6 @@ ul#job-categories li.job-category i.material-icons {
 
 
 /* Footer */
-
-#header img.header-profile-img {
-    display: inline-block;
-    height: 50px;
-    margin-right: 10px;
-}
-
-#header a.profile-link {
-    padding: 0;
-    margin: 0;
-}
-
-#header a.profile-link span {
-    font-weight: normal;
-}
-
-#header a.btn {
-    background: none;
-}
 
 .footer-distributed {
     background-color: #292c2f;

@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha test --recursive --reporter spec",
     "start": "node app.js",
     "postinstall": "bower install",
     "nodemon": "nodemon app.js"
@@ -22,6 +22,8 @@
     "mongoose": "4.6.8",
     "morgan": "1.7.0",
     "passport": "0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-github2": "^0.1.10",
     "passport-local": "1.0.0",
     "progressbar.js": "1.0.1",
     "pug": "2.0.0-beta6",
@@ -30,7 +32,9 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
+    "chai-http": "^3.0.0",
     "eslint": "3.10.2",
-    "mocha": "3.1.2"
+    "mocha": "3.1.2",
+    "sinon": "^1.17.6"
   }
 }
