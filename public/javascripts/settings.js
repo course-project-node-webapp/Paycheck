@@ -34,9 +34,10 @@
     let password = $newPasswordInput.val();
     let passwordConfirm = $confirmPasswordInput.val();
 
-    return new Promise((resolve, reject) => {
+    return Promise.resolve()
+      .then(() => {
         if (!passwordConfirm) {
-          return reject({ message: 'You must confirm your password to continue.' });
+          throw new Error('You must confirm your password to continue.');
         }
 
         if (image) {
@@ -57,10 +58,10 @@
         validatePassword(passwordConfirm);
         user.passwordConfirm = CryptoJS.SHA256(passwordConfirm).toString();
 
-        return resolve(requester.putJSON('/account/update', user));
+        return requester.putJSON('/account/update', user);
       })
       .then((res) => {
-        toastr.success(res);
+        toastr.success(res.message);
         setTimeout(() => {
           window.location = res.redirectUrl;
         }, 1500);
@@ -68,10 +69,49 @@
       .catch((err) => {
         if (err.message) {
           toastr.error(err.message);
-        } else {
-          console.log(err);
+        } else if (err.responseText) {
+          toastr.error(err.responseText);
         }
       });
+
+    // return new Promise((resolve, reject) => {
+    //     if (!passwordConfirm) {
+    //       return reject({ message: 'You must confirm your password to continue.' });
+    //     }
+
+    //     if (image) {
+    //       validateImage(image);
+    //       user.image = image;
+    //     }
+
+    //     if (username) {
+    //       validateUsername(username);
+    //       user.username = validator.escape(username);
+    //     }
+
+    //     if (password) {
+    //       validatePassword(password);
+    //       user.password = CryptoJS.SHA256(password).toString();
+    //     }
+
+    //     validatePassword(passwordConfirm);
+    //     user.passwordConfirm = CryptoJS.SHA256(passwordConfirm).toString();
+
+    //     return resolve(requester.putJSON('/account/update', user));
+    //   })
+    //   .then((res) => {
+    //     toastr.success(res);
+    //     setTimeout(() => {
+    //       window.location = res.redirectUrl;
+    //     }, 1500);
+    //   })
+    //   .catch((err) => {
+    //     if (err.message) {
+    //       toastr.error(err.message);
+    //     } else if (err.responseText) {
+    //       toastr.error(err.responseText);
+    //     }
+    //   });
   });
 
   function validateUsername(value) {
