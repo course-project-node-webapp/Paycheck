@@ -40,7 +40,7 @@
           password: CryptoJS.SHA256(password).toString(),
           firstName: validator.escape(tbFirstName.val()),
           lastName: validator.escape(tbLastName.val()),
-          image: validator.escape(tbProfileImg.val()),
+          image: tbProfileImg.val(),
           country: tbCountry.find(':selected').text()
         };
 
