@@ -1,7 +1,7 @@
 extends ../../shared/_layout
 
 block content
-  div.well
+  div#wrapper.well
     div.jumbotron.col-xs-6.col-xs-offset-3
       form(method="POST" action= "/organizations/" + result.organizationId + "/projects/create")
         div.row
@@ -11,4 +11,8 @@ block content
         div.row
           button.form-control.btn.btn-success(type="submit") Create Project
 
-    
+  style(type="text/css").
+    #wrapper {
+      min-height: 60vh;
+      margin: 5vh 0;
+    }
