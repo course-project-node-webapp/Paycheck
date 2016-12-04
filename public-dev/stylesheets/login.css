@@ -22,8 +22,15 @@
     display: block;
 }
 
+#login-form a.fb-login {
+    background-color: #3b5998;
+}
+
+
 /*#footer {
     display: none;*/
+
+
 /*}*/
 
 @media screen and (max-device-width: 770px) {

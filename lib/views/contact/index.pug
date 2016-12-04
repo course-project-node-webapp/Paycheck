@@ -2,12 +2,35 @@ extends ../shared/_layout
 
 block content
   div.well.col-xs-6.col-xs-offset-3#contact-form
+    h3.form-header Contact Us
     div.row
       input.form-control#tb-author(type="text" placeholder="Author (optional)")
     div.row
       textarea.form-control#tb-content(placeholder="Message (required)" rows="12")      
     div.row
       button.btn.btn-default.form-control#btn-submit(type="button") Submit message
+
+  style(type="text/css").
+    #contact-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column wrap;
+      min-height: 60vh;
+      margin: 5vh 0;
+      width: 100%;
+    }
+    #contact-form > h3.form-header {
+      margin-bottom: auto;
+    }
+    #contact-form textarea {
+      resize: none;
+      border: 1px solid #ccc;
+      border-bottom: none;
+    }
+    #contact-form .row {
+      width: 100%;
+    }
 
 block javascript
   script(src="/bower_components/validator-js/validator.js")

@@ -7,4 +7,33 @@ block content
     h4 Project name: #{pr.name}
     h4 Required skills: #{pr.devSkills}
     p Project description: #{pr.description}
-    a.btn.btn-primary(type='text' href='/') Apply
+    if result.user
+                if pr.owner !== result.user.username
+                  if !pr.applyers.some(a=>a===result.user.username) && !pr.employees.some(e=>e.employeeName===result.user.username)
+                    form(method='POST' action="/projects/aplyers/"+pr.name)
+                      input(type='hidden' name='applyer' value=result.user.username)
+                      button.btn.btn-success(type='submit') Apply
+                  else
+                    if !pr.employees.some(e=>e.employeeName===result.user.username)
+                      span Your apllication was sent!
+                    else
+                      span You are already accepted in this project!
+    else
+      span Login to apply
+
+  style(type="text/css").
+    #wrapper {
+      min-height: 60vh;
+      margin: 5vh 0;
+      text-align: center;
+    }
+
+    #wrapper h4 {
+      font-size: 3rem;
+    }    
+
+    #wrapper span {
+      font-size: 3rem;
+      font-weight: normal;
+      display: block;
+    }
