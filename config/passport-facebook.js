@@ -8,7 +8,7 @@ module.exports = function (config, userData, env) {
     const facebookStrategy = new FacebookStrategy({
       clientID: config.facebookAppId,
       clientSecret: config.facebookAppSecret,
-      callbackURL: 'https://paycheck-app.herokuapp.com/account/login/facebook/callback'
+      callbackURL: config.facebookCallbackUrl
     },
       function (accessToken, refreshToken, profile, next) {
         userData.getUserByFacebookId(profile.id)
@@ -23,7 +23,6 @@ module.exports = function (config, userData, env) {
             next(null, user);
           })
           .catch((err) => {
-            console.log(err);
             next(err, false);
           });
       });
