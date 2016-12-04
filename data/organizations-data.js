@@ -35,6 +35,10 @@ module.exports = function ({ models }) {
   }
 
   function findById(id) {
+    if (!id || !validator.isAscii(id)) {
+      throw new Error('Invlalid organization id.');
+    }
+
     return new Promise((resolve, reject) => {
       Organization.findOne({
         _id: id
@@ -49,6 +53,10 @@ module.exports = function ({ models }) {
   }
 
   function findByName(name) {
+    if (!name || !validator.isAscii(name)) {
+      throw new Error('Invalid organization name.');
+    }
+
     return new Promise((resolve, reject) => {
       Organization.findOne({
         name
@@ -62,9 +70,12 @@ module.exports = function ({ models }) {
     });
   }
 
-  function getOrganizationsWhichContains(string) {
-    let regex = new RegExp(string, 'i');
+  function getOrganizationsWhichContains(stringToMatch) {
+    if (!stringToMatch || !validator.isAscii(stringToMatch)) {
+      throw new Error('Invalid organization name.');
+    }
 
+    let regex = new RegExp(stringToMatch, 'i');
     return new Promise((resolve, reject) => {
       Organization.find({
         name: regex

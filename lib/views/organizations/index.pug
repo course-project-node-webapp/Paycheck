@@ -5,6 +5,9 @@ block stylesheets
 
 block content
   section#organizations
+    heading
+      h1 All registered organizations
+
     if isAuthenticated
       div.well.text-center#create-new-organization
         a.btn.btn-success(href="/organizations/create")
