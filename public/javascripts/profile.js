@@ -105,6 +105,8 @@
   });
 
   $saveChangesBtn.on('click', function() {
+    $summaryContainer.trigger('click');
+
     let $textArea = $('textarea.summary-input');
     let $btnSummarySave = $('a.btn-save-summary');
 
