@@ -1,13 +1,14 @@
 extends ../../shared/_layout
 
 block content
-  div.jumbotron.col-xs-6.col-xs-offset-3
-    form(method="POST" action= "/organizations/" + result.organizationId + "/projects/create")
-      div.row
-        input.form-control(type="text" name="name" placeholder="Project name")
-      div.row
-        input.form-control(type="text" name="description" placeholder="Project description")
-      div.row
-        button.form-control.btn.btn-success(type="submit") Create Project
+  div.well
+    div.jumbotron.col-xs-6.col-xs-offset-3
+      form(method="POST" action= "/organizations/" + result.organizationId + "/projects/create")
+        div.row
+          input.form-control(type="text" name="name" placeholder="Project name")
+        div.row
+          input.form-control(type="text" name="description" placeholder="Project description")
+        div.row
+          button.form-control.btn.btn-success(type="submit") Create Project
 
     

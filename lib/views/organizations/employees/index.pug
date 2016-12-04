@@ -4,7 +4,8 @@ block content
   div.well#organization-details
     div.panel.panel-primary
       div.panel-heading
-        h1= result.organization.name
+        a(href= "/organizations/" + result.organization._id style="color:white;")
+          h2= result.organization.name
       
       if result.userRole
         div.panel-body
