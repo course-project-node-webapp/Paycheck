@@ -8,7 +8,8 @@
     "start": "node app.js",
     "postinstall": "bower install",
     "nodemon": "nodemon app.js",
-    "build": "gulp build"
+    "build": "gulp build",
+    "build-css": "gulp css"
   },
   "author": "",
   "license": "ISC",
