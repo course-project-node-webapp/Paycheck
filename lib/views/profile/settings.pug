@@ -1,0 +1,32 @@
+extends ../shared/_layout
+
+block stylesheets
+  link(rel="stylesheet" href="/stylesheets/settings.css")
+
+block content
+  #settings-container
+    .panel.panel-default.col-lg-6.col-lg-offset-3
+      .panel-heading.text-center
+        .panel-body
+          .row
+            label.capitalize(for="tb-username") New Username
+            input#tb-username.form-control.text-center(type="text" name="username")
+          .row
+            label.capitalize(for="tb-profile-pic") New Profile Picture
+            input#tb-profile-pic.form-control.text-center(type="text" name="image")
+          .row
+            label.capitalize(for="tb-new-password") New Password
+            input#tb-new-password.form-control.text-center(type="password" name="password")
+          .row
+            label.capitalize(for="tb-old-password") Confirm Your Password
+            input#tb-confirm-password.form-control.text-center(type="password" name="confirmPassword")
+        .form-footer
+          a.btn.btn-success.save-changes-btn Save Changes
+
+block javascript
+  script(src="/bower_components/crypto-js/crypto-js.js")
+  script(src="/bower_components/validator-js/validator.js")
+  script(src="/bower_components/toastr/toastr.js")
+  script(src="/javascripts/bin/constants/user-constants.js")
+  script(src="/javascripts/bin/requester.js")
+  script(src="/javascripts/settings.js")

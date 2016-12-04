@@ -13,7 +13,10 @@
         #responsive-navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-left
             li
-              a.btn.btn-default.btn-sm.hvr-underline-from-center.nav-btn(href="/") Home
+              if !result.user
+                a.btn.btn-default.btn-sm.hvr-underline-from-center.nav-btn(href="/") Home
+              else
+                a.btn.btn-default.btn-sm.hvr-underline-from-center.nav-btn(href="/") Profile
             li.dropdown
               a.btn.btn-default.btn-sm.hvr-underline-from-center.dropdown-toggle.nav-btn(href="" data-toggle="dropdown" aria-expanded="false") Browse
                i.material-icons keyboard_arrow_down
@@ -55,6 +58,6 @@
                     a(href="/projects/create") Create project
                   li.divider
                   li
-                    a(href="/profile/settings") Settings
+                    a(href="/account/settings") Settings
                   li
                     a(href="/account/logout") Sign Out
