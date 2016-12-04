@@ -1,25 +1,28 @@
 extends ../shared/_layout
 
 block content
-
-  h3 Mobile developer projects:
-  each pr in data
-    h4 Project name: #{pr.name}
-    h4 Required skills: #{pr.devSkills}
-    p Project description: #{pr.description}
-    if result.user
-                if pr.owner !== result.user.username
-                  if !pr.applyers.some(a=>a===result.user.username) && !pr.employees.some(e=>e.employeeName===result.user.username)
-                    form(method='POST' action="/projects/aplyers/"+pr.name)
-                      input(type='hidden' name='applyer' value=result.user.username)
-                      button.btn.btn-success(type='submit') Apply
-                  else
-                    if !pr.employees.some(e=>e.employeeName===result.user.username)
-                      span Your apllication was sent!
-                    else
-                      span You are already accepted in this project!
+  #wrapper
+    if data.length
+      h3 Mobile developer projects
+      each pr in data
+        h4 Project name: #{pr.name}
+        h4 Required skills: #{pr.devSkills}
+        p Project description: #{pr.description}
+        if result.user
+                    if pr.owner !== result.user.username
+                      if !pr.applyers.some(a=>a===result.user.username) && !pr.employees.some(e=>e.employeeName===result.user.username)
+                        form(method='POST' action="/projects/aplyers/"+pr.name)
+                          input(type='hidden' name='applyer' value=result.user.username)
+                          button.btn.btn-success(type='submit') Apply
+                      else
+                        if !pr.employees.some(e=>e.employeeName===result.user.username)
+                          span Your apllication was sent!
+                        else
+                          span You are already accepted in this project!
+        else
+          span Login to apply
     else
-      span Login to apply
+      h3 There are currently no projects of this category
 
   style(type="text/css").
     #wrapper {
