@@ -1,8 +1,8 @@
 /* globals Promise */
 
 'use strict';
-const validator = require('validator');
-module.exports = function ({ models }) {
+
+module.exports = function ({ models, validator }) {
   const {
     Organization
   } = models;

@@ -1,0 +1,15 @@
+extends ../shared/_layout
+
+block content
+  div.well.col-xs-6.col-xs-offset-3#contact-form
+    div.row
+      input.form-control#tb-author(type="text" placeholder="Author (optional)")
+    div.row
+      textarea.form-control#tb-content(placeholder="Message (required)" rows="12")      
+    div.row
+      button.btn.btn-default.form-control#btn-submit(type="button") Submit message
+
+block javascript
+  script(src="/bower_components/validator-js/validator.js")
+  script(src="/bower_components/toastr/toastr.js")
+  script(src="/javascripts/contact-form.js")
