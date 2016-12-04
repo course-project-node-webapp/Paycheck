@@ -2,4 +2,11 @@ extends ../shared/_layout
 
 block content
   div.well#success-message
-    p Application was submitted succesfully.
+    h2 Application was submitted succesfully.
+
+  style(type="text/css").
+    #success-message {
+      text-align: center;
+      height: 60vh;
+      margin: 5vh 0;
+    }

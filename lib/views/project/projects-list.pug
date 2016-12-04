@@ -1,21 +1,42 @@
 extends ../shared/_layout
 
 block content
-  if !result.data.length
-    h3 No projects found.
-  else
-    h3 All public projects
-      each pr in result.data
-        if pr.privacy === 'public'
-          div.well.text-center
-            h4 Project name: #{pr.name}
-            h4 Required skills: #{pr.devSkills}
-            p Project description: #{pr.description}
-            if result.user
-              if pr.owner !== result.user.username
-                if !pr.applyers.some(a=>a===result.user.username)
-                  form(method='POST' action="/projects/aplyers/"+pr.name)
-                    input(type='hidden' name='applyer' value=result.user.username)
-                    button.btn.btn-success(type='submit') Apply
-                else
-                  | Your apllication was sent!
+  #wrapper
+    if !result.data.length
+      h2 No projects found.
+    else
+      h2 All Public Projects
+        each pr in result.data
+          if pr.privacy === 'public'
+            div.well.text-center
+              h4 Name: #{pr.name}
+              span Required Skills: #{pr.devSkills}
+              span Description: #{pr.description}
+              if result.user
+                if pr.owner !== result.user.username
+                  if !pr.applyers.some(a=>a===result.user.username) && !pr.employees.some(e=>e.employeeName===result.user.username)
+                    form(method='POST' action="/projects/aplyers/"+pr.name)
+                      input(type='hidden' name='applyer' value=result.user.username)
+                      button.btn.btn-success(type='submit') Apply
+                  else
+                    if !pr.employees.some(e=>e.employeeName===result.user.username)
+                      span Your apllication was sent!
+                    else
+                      span You are already accepted in this project!
+
+  style(type="text/css").
+    #wrapper {
+      min-height: 60vh;
+      margin: 5vh 0;
+      text-align: center;
+    }
+
+    #wrapper h4 {
+      font-size: 3rem;
+    }    
+
+    #wrapper span {
+      font-size: 3rem;
+      font-weight: normal;
+      display: block;
+    }

@@ -1,9 +1,1 @@
-#main-content .container {
-    height: 90vh;
-}
-
-#organizations,
-#create-organization {
-    height: 40vh;
-    margin: 5vh 0;
-}
+#wrapper{min-height:60vh;margin:5vh 0;display:flex;align-items:center}#create-organization{width:100%}

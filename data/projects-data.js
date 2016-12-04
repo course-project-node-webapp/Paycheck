@@ -2,7 +2,10 @@
 
 'use strict';
 
-module.exports = function ({ models, validator }) {
+module.exports = function ({
+  models,
+  validator
+}) {
   const {
     Project
   } = models;
@@ -96,6 +99,14 @@ module.exports = function ({ models, validator }) {
       });
     },
     createProject(project) {
+      if (!validator.isAlphanumeric(project.name)) {
+        throw new Error('Project name must contains letters and digits only');
+      }
+
+      if (!validator.isAlphanumeric(project.description)) {
+        throw new Error('Project description must contains letters and digits only');
+      }
+
       const newProject = Project.getProject(project);
 
       return new Promise((resolve, reject) => {

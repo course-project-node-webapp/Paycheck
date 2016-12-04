@@ -1,0 +1,10 @@
+#wrapper {
+    min-height: 60vh;
+    margin: 5vh 0;
+    display: flex;
+    align-items: center;
+}
+
+#create-organization {
+    width: 100%;
+}

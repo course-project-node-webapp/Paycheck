@@ -1,8 +1,8 @@
 /* globals Promise */
 
 'use strict';
-const validator = require('validator');
-module.exports = function ({ models }) {
+
+module.exports = function ({ models, validator }) {
   const {
     Organization
   } = models;
@@ -26,18 +26,6 @@ module.exports = function ({ models }) {
       }
 
       organization.name = validator.escape(organization.name);
-
-      organization.projects.forEach(project => {
-        project.tasks.forEach(task => {
-          if(!validator.isAscii(task.name)){
-            throw new Error(`Invalid task name: ${task.name}`);
-          }
-
-          if(!validator.isAscii(task.description)){
-            throw new Error(`Invalid task description: ${task.description}`);
-          }
-        });
-      });
 
       const newOrganization = Organization.getOrganization(organization);
       newOrganization.save((err) => {
@@ -164,6 +152,18 @@ module.exports = function ({ models }) {
     if (!organization.owners || !Array.isArray(organization.owners)) {
       throw new Error('Invalid owners list.');
     }
+
+    organization.projects.forEach(project => {
+      project.tasks.forEach(task => {
+        if (!validator.isAscii(task.name)) {
+          throw new Error(`Invalid task name: ${task.name}`);
+        }
+
+        if (!validator.isAscii(task.description)) {
+          throw new Error(`Invalid task description: ${task.description}`);
+        }
+      });
+    });
 
     return new Promise((resolve, reject) => {
       organization.save((err, updated) => {

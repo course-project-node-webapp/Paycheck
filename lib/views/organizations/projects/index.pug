@@ -1,8 +1,11 @@
 extends ../../shared/_layout
 
 block content
-  div#organization-projects
-    h2= result.organization.name
+  div.well#organization-projects
+    div.panel.panel-primary
+      div.panel-heading
+        a(href= "/organizations/" + result.organization._id style="color:white;")
+          h2= result.organization.name
     
     section.well#projects
       if result.organization.projects.length > 0
@@ -27,3 +30,10 @@ block content
     section.well#create
       a.btn.btn-success(href= "/organizations/" + result.organization._id + "/projects/create") 
         p Create Project 
+
+  style(type="text/css").
+    #organization-projects {
+      text-align: center;
+      min-height: 60vh;
+      margin: 5vh 0;
+    }

@@ -1,10 +1,44 @@
 extends ../shared/_layout
 
 block content
-  if !result.data.length
-    h3 No organizations found.
-  else
-    h3 Organizations
-      each org in result.data
-        img(src=org.image)
-        h4 Organization name: #{org.name}
+  #wrapper
+    if !result.data.length
+      h3 No organizations found.
+    else
+      h3 Organizations
+      ul.organizations
+        each org in result.data
+          li.organization
+            img(src=org.image)
+            a(href="/organizations/" + org._id)
+              h4 Name: #{org.name}
+
+  style(type="text/css").
+    #wrapper {
+      min-height: 60vh;
+      margin: 5vh 0;
+      text-align: center;
+      background-color: #fff;
+      border: 2px solid #ccc;
+    }
+
+    #wrapper ul.organizations {
+      list-style-type: none;
+    }
+
+    #wrapper ul.organizations li.organization:nth-child(odd) {
+      background-color: #ccc;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      font-size: 1.8rem;
+    }
+
+    #wrapper ul.organizations li.organization:nth-child(odd) a {
+      color: #fff;
+    }
+
+    #wrapper span {
+      display: block;
+    }
