@@ -96,7 +96,7 @@ module.exports = function ({
         throw new Error('User lastname  must contains letters and digits only');
       }
 
-      if (!validator.isURI(user.image)) {
+      if (user.image && !validator.isURL(user.image)) {
         throw new Error('Not a valid picture URL');
       }
 
