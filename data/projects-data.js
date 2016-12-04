@@ -102,10 +102,6 @@ module.exports = function ({
     createProject(project) {
       project.name = validator.blacklist(project.name, forbiddenChars);
       project.description = validator.blacklist(project.description, forbiddenChars);
-      project.managerName = validator.blacklist(project.managerName, forbiddenChars);
-      project.employees = project.employees.split(' ').map(emp => validator.blacklist(emp, forbiddenChars));
-      project.devSkills = project.devSkills.split(' ').map(skill => validator.blacklist(skill, forbiddenChars));
-      project.tasks = project.tasks.split(' ').map(task => validator.blacklist(task, forbiddenChars));
 
       const newProject = Project.getProject(project);
 
