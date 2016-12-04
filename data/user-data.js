@@ -2,7 +2,7 @@
 
 'use strict';
 
-module.exports = function({ models }) {
+module.exports = function ({ models }) {
   const {
     User
   } = models;
@@ -101,6 +101,33 @@ module.exports = function({ models }) {
           }
 
           return resolve(updated);
+        });
+      });
+    },
+    getUserByFacebookId(facebookId) {
+      return new Promise((resolve, reject) => {
+        User.findOne({
+          facebookId
+        }, (err, user) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(user);
+        });
+      });
+    },
+    createUserFromFacebookUser(fbUser) {
+      console.log(fbUser);
+      const user = User.getUserFromFbProfile(fbUser);
+
+      return new Promise((resolve, reject) => {
+        user.save((err) => {
+          if (err) {
+            return reject(err);
+          }
+
+          return resolve(user);
         });
       });
     }
