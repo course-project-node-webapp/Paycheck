@@ -2,7 +2,7 @@
 
 'use strict';
 
-module.exports = function({ models }) {
+module.exports = function({ models, validator }) {
   const {
     Organization
   } = models;
