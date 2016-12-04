@@ -1,7 +1,6 @@
 #users-container {
-    margin: 10vh 0;
-    height: auto;
-    min-height: 50vh;
+    margin: 5vh 0;
+    min-height: 60vh;
     overflow: auto;
     text-align: center;
     display: flex;
@@ -9,6 +8,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: baseline;
+    align-content: flex-start;
 }
 
 .user-container {

@@ -3,9 +3,9 @@ extends ../shared/_layout
 block content
   #wrapper
     if !result.data.length
-      h2 No projects found.
+      h3 No projects found.
     else
-      h2 All Public Projects
+      h3 All Public Projects
         each pr in result.data
           if pr.privacy === 'public'
             div.well.text-center
