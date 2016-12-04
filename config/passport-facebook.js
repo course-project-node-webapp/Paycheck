@@ -13,7 +13,7 @@ module.exports = function (config, userData) {
       userData.getUserByFacebookId(profile.id)
         .then((user) => {
           if (user) {
-            next(null, user);
+            return next(null, user);
           }
 
           return userData.createUserFromFacebookUser(profile);

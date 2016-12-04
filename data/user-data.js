@@ -118,7 +118,6 @@ module.exports = function ({ models }) {
       });
     },
     createUserFromFacebookUser(fbUser) {
-      console.log(fbUser);
       const user = User.getUserFromFbProfile(fbUser);
 
       return new Promise((resolve, reject) => {
