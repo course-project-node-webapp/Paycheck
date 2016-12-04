@@ -15,6 +15,8 @@ module.exports = {
         rootPath,
         sessionSecret: process.env.SESSION_SECRET,
         connectionString: process.env.CONNECTION_STRING,
+        facebookAppId:  process.env.FACEBOOK_APP_ID,
+        facebookAppSecret:  process.env.FACEBOOK_APP_SECRET,
         port: process.env.PORT
     }
 };
