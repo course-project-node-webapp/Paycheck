@@ -23,7 +23,6 @@ module.exports = function (config, userData, env) {
             next(null, user);
           })
           .catch((err) => {
-            console.log(err);
             next(err, false);
           });
       });
