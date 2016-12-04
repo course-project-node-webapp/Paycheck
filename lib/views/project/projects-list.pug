@@ -9,9 +9,12 @@ block content
         each pr in result.data
           if pr.privacy === 'public'
             div.well.text-center
-              h4 Name: #{pr.name}
-              span Required Skills: #{pr.devSkills}
-              span Description: #{pr.description}
+              h4 Name: 
+              span #{pr.name}
+              h4 Required Skills: 
+              span #{pr.devSkills}
+              h4 Description: 
+              span #{pr.description}
               if result.user
                 if pr.owner !== result.user.username
                   if !pr.applyers.some(a=>a===result.user.username) && !pr.employees.some(e=>e.employeeName===result.user.username)
@@ -20,9 +23,9 @@ block content
                       button.btn.btn-success(type='submit') Apply
                   else
                     if !pr.employees.some(e=>e.employeeName===result.user.username)
-                      span Your apllication was sent!
+                      p.green Your apllication was sent!
                     else
-                      span You are already accepted in this project!
+                      p.green You are already accepted in this project!
 
   style(type="text/css").
     #wrapper {
@@ -39,4 +42,10 @@ block content
       font-size: 3rem;
       font-weight: normal;
       display: block;
+      color: grey;
+    }
+
+    p.green {
+      font-size: 3rem;
+      color: lightgreen;
     }

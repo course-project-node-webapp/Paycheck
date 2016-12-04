@@ -9,11 +9,14 @@ block content
       each pr in result.data
         if pr.privacy === 'public' && result.user.username === pr.owner
           div.well.text-center
-            h3 Project name: #{pr.name}
-            h4 Required skills: #{pr.devSkills}
-            span Project description: #{pr.description}
+            h3 Project name: 
+            span #{pr.name}
+            h3 Required skills: 
+            span #{pr.devSkills}
+            h3 Project description: 
+            span #{pr.description}
             if pr.applyers.length
-              h3 Appliers:
+              h3.full Appliers:
               ul
                 each aplyer in pr.applyers
                   a(href='/users/search?search='+aplyer) #{aplyer}
@@ -21,15 +24,15 @@ block content
                     input(type='hidden' name='employee' value= aplyer)
                     button.btn.btn-success(type='submit') Assign to employees
             else
-              h4 No appliers
+              h3.green No appliers
             if pr.employees.length
-              h3 Employees:
+              h3.full Employees:
               ul
                 each employee in pr.employees
                   li.form-control
                     a(href='/users/search?search='+employee.employeeName) #{employee.employeeName}
             else
-              h4 No employees
+              h3.green No employees
 
   style(type="text/css").
     #projects-wrapper {
@@ -40,4 +43,16 @@ block content
 
     #projects-wrapper span {
       font-size: 2rem;
+    }
+
+    h3.green {
+      color: lightgreen
+    }
+
+    h3.full {
+      color: green
+    }
+
+    span {
+      color: grey
     }
