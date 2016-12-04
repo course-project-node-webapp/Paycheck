@@ -32,6 +32,12 @@ block content
                   form(method='POST' action="/projects/employees/" + pr.name)
                     input(type='hidden' name='employee' value='aplyer')
                     button.btn.btn-success(type='submit') Assign to employees
+            if pr.employees.length
+              h3 Employees:
+              ul
+                each employee in pr.employees
+                  li.form-control
+                    a(href='/users/search?search='+employee.employeeName) #{employee.employeeName}
 
   style(type="text/css").
     #projects-wrapper {
