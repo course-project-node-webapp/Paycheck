@@ -55,13 +55,22 @@ describe('accountRouter', () => {
         parametersValidator
       });
 
-      chai.request(app)
-        .get('/account/login')
-        .end(function (req, res) {
-          console.log(req);
-          chai.expect(res.status).equals(200);
-          done();
+      new Promise(resolve => {
+        app.listen(3002, () => {
+          return resolve(app);
         });
+      })
+        .then(() => {
+          return new Promise(resolve => {
+            chai.request(app)
+              .get('/account/login')
+              .end(function (req, res) {
+                chai.expect(res.status).equals(200);
+                resolve();
+              });
+          });
+        })
+        .then(done, done);
     });
   });
 });
