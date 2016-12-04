@@ -4,18 +4,18 @@ block content
   div.well#organization-details
     div.panel.panel-primary
       div.panel-heading
-        h1= result.organization.name
-        h1= result.organization.owner   
+        a.btn(href= "/organizations/" + result.organization._id)
+          h3= result.organization.name
 
       div.panel-footer
         if !result.isMember
-          a.btn.btn-success(href= "/organizations/" + result.organization._id + "/apply")
+          a.btn(href= "/organizations/" + result.organization._id + "/apply")
             p Apply to this organization
         if result.isMember
-          a.btn.btn-success(href= "/organizations/" + result.organization._id + "/employees") 
+          a.btn(href= "/organizations/" + result.organization._id + "/employees") 
             p View Employees
-          a.btn.btn-success(href= "/organizations/" + result.organization._id + "/projects") 
+          a.btn(href= "/organizations/" + result.organization._id + "/projects") 
             p View Projects
           if result.organization.applications.length > 0
-            a.btn.btn-success(href= "/organizations/" + result.organization._id + "/applications") 
+            a.btn(href= "/organizations/" + result.organization._id + "/applications") 
               p= "View Applications (" + result.organization.applications.length + ")" 

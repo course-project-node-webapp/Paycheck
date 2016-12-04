@@ -28,6 +28,7 @@
     "progressbar.js": "1.0.1",
     "pug": "2.0.0-beta6",
     "socket.io": "1.7.1",
+    "validator": "^6.2.0",
     "winston": "2.3.0"
   },
   "devDependencies": {

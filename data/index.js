@@ -2,13 +2,14 @@
 
 const fs = require('fs');
 const path = require('path');
+const validator = require('validator');
 
 module.exports = function (models) {
   const data = Object.create(null, {});
   fs.readdirSync('./data')
     .filter(fileName => fileName.includes('-data'))
     .forEach(fileName => {
-      const dataModule = require(path.join(__dirname, fileName))({ models });
+      const dataModule = require(path.join(__dirname, fileName))({ models, validator });
       const dataModuleName = convertFileNameToDataModuleName(fileName);
 
       data[dataModuleName] = dataModule;

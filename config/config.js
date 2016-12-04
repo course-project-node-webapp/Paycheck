@@ -8,6 +8,8 @@ module.exports = {
         rootPath,
         sessionSecret: '[insert session secret here]',
         connectionString: 'mongodb://localhost:27017/paycheck-db',
+        facebookAppId:  process.env.FACEBOOK_APP_ID,
+        facebookAppSecret:  process.env.FACEBOOK_APP_SECRET,
         port: 3002,
         errorResponseCode: 400
     },

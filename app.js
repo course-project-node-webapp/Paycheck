@@ -16,7 +16,7 @@ const data = require('./data')(models);
 
 require('./config/database')(config);
 require('./config/passport')(data.userData);
-require('./config/passport-facebook')(config, data.userData);
+require('./config/passport-facebook')(config, data.userData, env);
 require('./lib/routes')(app, data, controllerLoaders);
 
 const server = require('./config/sockets')(app, data, controllerLoaders);
@@ -25,6 +25,5 @@ server.listen(port, () => {
 });
 
 // TODO: 
-// GITHUB LOGIN
 // DATA VALIDATION
 // CSS

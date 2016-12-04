@@ -2,11 +2,11 @@
 
 'use strict';
 
-module.exports = function ({ models }) {
+module.exports = function ({ models, validator }) {
   const {
     Message
   } = models;
-  
+
   return {
     createMessage(message) {
       let messageModel = Message.getMessage(message);
@@ -28,9 +28,9 @@ module.exports = function ({ models }) {
             return reject(err);
 
           }
-          
+
           return resolve(messages);
-        });
+        }).limit(100);
       });
     }
   };
