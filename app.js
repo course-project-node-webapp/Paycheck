@@ -25,6 +25,5 @@ server.listen(port, () => {
 });
 
 // TODO: 
-// GITHUB LOGIN
 // DATA VALIDATION
 // CSS

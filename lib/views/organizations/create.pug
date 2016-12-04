@@ -5,7 +5,10 @@ block stylesheets
 
 block content
   section.well#create-organization
-    form(method="POST" action="/organizations/create")
-      input(type="text" name="name" placeholder="Organization name")
-      input(type="text" name="image" placeholder="Organization Image URL")
-      button.btn.btn-success(type="submit") Create Organization
+    form.col-xs-6.col-xs-offset-3(method="POST" action="/organizations/create")
+      div.row
+        input.text-center.form-control(type="text" name="name" placeholder="Organization name")
+      div.row
+        input.text-center.form-control(type="text" name="image" placeholder="Organization Image URL")
+      div.row
+        button.btn.btn-success.form-control(type="submit") Create Organization
