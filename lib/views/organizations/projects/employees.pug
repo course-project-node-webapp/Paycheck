@@ -15,11 +15,9 @@ block content
               h4 Managers
             each manager in result.project.managers
               li.list-group-item.row
-                div.col-xs-2
-                  a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + manager.managerId + "/managers")
-                    p Remove
-                div.col-xs-9
-                  p= "Employee username: " + manager.name
+                p= "Employee username: " + manager.name
+                a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + manager.managerId + "/managers")
+                  | Remove
                 
         else 
           p This project has no managers assigned.
@@ -35,11 +33,9 @@ block content
               h4 Contributors
             each contributor in result.project.contributors
               li.list-group-item.row
-                div.col-xs-2
-                  a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + contributor.contributorId + "/contributors")
-                    p Remove
-                div.col-xs-9
-                  p= "Employee username: " + contributor.name
+                p= "Employee username: " + contributor.name
+                a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + contributor.contributorId + "/contributors")
+                  | Remove
                 
         else 
           p This project has no contributors assigned.
