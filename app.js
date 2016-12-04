@@ -23,7 +23,3 @@ const server = require('./config/sockets')(app, data, controllerLoaders);
 server.listen(port, () => {
   logger.info(`Listening on port: ${port}`);
 });
-
-// TODO: 
-// DATA VALIDATION
-// CSS
