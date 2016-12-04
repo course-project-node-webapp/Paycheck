@@ -78,3 +78,9 @@ block content
         else if result.userRole === 'owner' || result.userRole === 'manager'
           a.btn.btn-success(href= "/organizations/" + result.organization._id + "/add-employee") 
             p Add Employee
+  
+  style(type="text/css").
+    #organization-details {
+      min-height: 60vh;
+      margin: 5vh 0;
+    }

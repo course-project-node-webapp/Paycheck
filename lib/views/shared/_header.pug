@@ -17,6 +17,7 @@
                 a.btn.btn-default.btn-sm.hvr-underline-from-center.nav-btn(href="/") Home
               else
                 a.btn.btn-default.btn-sm.hvr-underline-from-center.nav-btn(href="/") Profile
+            
             li.dropdown
               a.btn.btn-default.btn-sm.hvr-underline-from-center.dropdown-toggle.nav-btn(href="" data-toggle="dropdown" aria-expanded="false") Browse
                i.material-icons keyboard_arrow_down
@@ -30,6 +31,9 @@
                   a(href="/projects") Projects
                 li
                   a(href="/organizations") Organizations
+            li
+              a.btn.btn-default.btn-sm.hvr-underline-from-center.nav-btn(data-toggle="modal" data-target="#search-modal")
+                i.material-icons.search-icon search
             ul.dropdown-menu.dropdown-menu-right
               li
                 a(href="/login") Login

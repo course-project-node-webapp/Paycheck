@@ -3,8 +3,9 @@ extends ../shared/_layout
 block content
   #successful-message-wrapper
     .message
-      h1  Project "#{name}" created succesfully!
-      a.btn.btn-default(type='text' href='/') Go Back
+      h3  Project "#{name}" was created succesfully!
+      a.btn.btn-default(href="/") Go Home
+      a.btn.btn-primary(href="javascript:history.back()") Go Back
 
   style(type="text/css").
     #successful-message-wrapper {
