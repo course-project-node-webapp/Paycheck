@@ -107,10 +107,6 @@ module.exports = function ({
         throw new Error('Project description must contains letters and digits only');
       }
 
-      if (!validator.isAlphanumeric(project.managerName)) {
-        throw new Error('Project manager name must contains letters and digits only');
-      }
-
       const newProject = Project.getProject(project);
 
       return new Promise((resolve, reject) => {
