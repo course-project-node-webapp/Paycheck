@@ -2,11 +2,9 @@
     min-height: 60vh;
     margin: 5vh 0;
     display: flex;
-    align-content: center;
+    align-items: center;
 }
 
 #create-organization {
-    display: flex;
-    align-items: center;
     width: 100%;
 }
