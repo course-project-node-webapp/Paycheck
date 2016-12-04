@@ -1,0 +1,131 @@
+ul {
+    list-style-type: none;
+}
+
+#profile>h2 {
+    margin-bottom: 0;
+}
+
+#profile>a.btn {
+    margin-top: 0;
+}
+
+#profile .rates {
+    margin: 0;
+    float: right;
+}
+
+#profile .rates span {
+    color: #fff;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.profile-header-top {
+    display: inline-block;
+}
+
+.profile-header-top>h3 {
+    margin-top: 0;
+}
+
+.container-header {
+    font-weight: 900;
+}
+
+.profile-header>.overview {
+    text-align: justify;
+}
+
+.profile-container {
+    position: relative;
+    border: 3px solid #ccc;
+    background-color: #fff;
+    padding: 2em;
+    margin-bottom: 2em;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.profile-header img {
+    height: 150px;
+    width: 150px;
+}
+
+ul.portfolio {
+    list-style-type: none;
+}
+
+li.skill:not(:last-child) {
+    margin-bottom: 1em;
+}
+
+li.skill span.endorsement-points {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    text-shadow: -1px -1px 4px rgba(7, 0, 0, 1);
+    font-size: 2rem;
+    padding: 5px;
+    margin-right: .2em;
+    background-color: #1BA8E5;
+}
+
+li.skill span.skill-name {
+    color: #292C2F;
+    font-size: 2rem;
+}
+
+#profile a.add-skill-btn {
+    border-radius: 15px;
+    background-color: #EEEEEE;
+    color: #666666;
+    margin-bottom: -2.5em;
+}
+
+#profile a.submit-skill-btn {
+    border-radius: 15px;
+    margin-bottom: -2.5em;
+}
+
+#profile a.edit-profile-btn {
+    width: 100%;
+    background-color: #337AB7;
+}
+
+#profile a.save-changes-btn {
+    width: 100%;
+}
+
+a.btn-delete {
+    color: #D9534F;
+}
+
+a.btn-edit {
+    color: #fff;
+}
+
+a.btn-edit i {
+    background-color: #292C2F;
+    line-height: 42px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+a.submit-skill-btn {
+    margin-top: 0;
+}
+
+input.skill-input {
+    margin-bottom: 0;
+    margin-top: 7px;
+}

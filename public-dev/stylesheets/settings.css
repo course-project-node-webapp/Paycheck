@@ -1,0 +1,17 @@
+.capitalize {
+  text-transform: capitalize;
+}
+
+#settings-container {
+  height: 60vh;
+  text-align: center;
+  margin-top: 5em;
+}
+
+#settings-container label {
+  margin-right: 5px;
+}
+
+#settings-container label::after {
+  content: ": ";
+}
