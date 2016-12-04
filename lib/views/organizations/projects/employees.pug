@@ -1,10 +1,11 @@
 extends ../../shared/_layout
 
 block content
-  div#employees
-    heading
-      h2= result.organization.name
-      h3 Employees List
+  div.well#employees
+    div.panel.panel-primary
+      div.panel-heading
+        a(href= "/organizations/" + result.organization._id style="color:white;")
+          h2= result.organization.name
 
     section.well#managers
       if result.project.managers.length > 0

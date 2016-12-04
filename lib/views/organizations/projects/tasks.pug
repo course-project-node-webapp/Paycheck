@@ -11,6 +11,6 @@ block content
     else
       p This project has no active tasks.
 
-  if result.isManager
-    a.btn.btn-success(href="/organizations/" + result.organizationId + "/projects/" + result.projectId + "/tasks/add")
-      p Create a new task
+    if result.isManager
+      a.btn.btn-success(href="/organizations/" + result.organizationId + "/projects/" + result.projectId + "/tasks/add")
+        p Create a new task
