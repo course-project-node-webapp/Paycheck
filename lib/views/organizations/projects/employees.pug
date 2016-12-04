@@ -1,49 +1,52 @@
 extends ../../shared/_layout
 
 block content
-  div.well#employees
-    div.panel.panel-primary
-      div.panel-heading
-        a(href= "/organizations/" + result.organization._id style="color:white;")
-          h2= result.organization.name
+  #wrapper
+    div.well#employees
+      div.panel.panel-primary
+        div.panel-heading
+          a(href= "/organizations/" + result.organization._id style="color:white;")
+            h2= result.organization.name
 
-    section.well#managers
-      if result.project.managers.length > 0
-        ul.list-group
-          heading
-            h4 Managers
-          each manager in result.project.managers
-            li.list-group-item.row
-              div.col-xs-2
-                a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + manager.managerId + "/managers")
-                  p Remove
-              div.col-xs-9
+      section.well#managers
+        if result.project.managers.length > 0
+          ul.list-group
+            heading
+              h4 Managers
+            each manager in result.project.managers
+              li.list-group-item.row
                 p= "Employee username: " + manager.name
-              
-      else 
-        p This project has no managers assigned.
+                a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + manager.managerId + "/managers")
+                  | Remove
+                
+        else 
+          p This project has no managers assigned.
 
-      if result.isManager
-        a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/add/managers")
-          p Add managers
+        if result.isManager
+          a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/add/managers")
+            p Add managers
 
-    section.well#contributors
-      if result.project.contributors.length > 0
-        ul.list-group
-          heading
-            h4 Contributors
-          each contributor in result.project.contributors
-            li.list-group-item.row
-              div.col-xs-2
-                a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + contributor.contributorId + "/contributors")
-                  p Remove
-              div.col-xs-9
+      section.well#contributors
+        if result.project.contributors.length > 0
+          ul.list-group
+            heading
+              h4 Contributors
+            each contributor in result.project.contributors
+              li.list-group-item.row
                 p= "Employee username: " + contributor.name
-              
-      else 
-        p This project has no contributors assigned.
+                a.btn.btn-danger(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/remove/" + contributor.contributorId + "/contributors")
+                  | Remove
+                
+        else 
+          p This project has no contributors assigned.
 
-      if result.isManager
-        a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/add/contributors")
-          p Add contributors
+        if result.isManager
+          a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.project.projectId + "/employees/add/contributors")
+            p Add contributors
 
+  style(type="text/css").
+    #wrapper {
+      text-align: center;
+      min-height: 60vh;
+      margin: 5vh 0;
+    }

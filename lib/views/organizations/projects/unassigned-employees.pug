@@ -8,6 +8,21 @@ block content
           li.list-group-item
             p= employee.username
             a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.projectId + "/employees/add/" + employee.unassignedId + "/" + result.roleName)
-              p= "Assign employee to project " + result.roleName
+              p= "Assign to " + result.roleName
     else 
-      p No unassigned employees of this organization are available.
+      h3 There aren't any unassigned employees
+  
+  style(type="text/css").
+    #unassigned-employees {
+      text-align: center;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      min-height: 60vh;
+      margin: 5vh 0;
+    }
+    #unassigned-employees li.list-group-item {
+      overflow: hidden;
+      text-align: center; 
+      width: 100%;
+    }

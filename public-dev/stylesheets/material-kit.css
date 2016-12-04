@@ -254,7 +254,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 .navbar .navbar-nav > li > a.btn.btn-primary.dropdown-toggle, .open >
 .navbar .navbar-nav > li > a.btn.btn-primary.dropdown-toggle:focus, .open >
 .navbar .navbar-nav > li > a.btn.btn-primary.dropdown-toggle:hover {
-  background-color: #9c27b0;
+  background-color: #292C2F;
   color: #FFFFFF;
 }
 .btn.btn-primary:focus, .btn.btn-primary:active, .btn.btn-primary:hover,
@@ -293,7 +293,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 .btn.btn-primary.btn-simple,
 .navbar .navbar-nav > li > a.btn.btn-primary.btn-simple {
   background-color: transparent;
-  color: #9c27b0;
+  color: #292C2F;
   box-shadow: none;
 }
 .btn.btn-primary.btn-simple:hover, .btn.btn-primary.btn-simple:focus, .btn.btn-primary.btn-simple:active,
@@ -301,7 +301,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 .navbar .navbar-nav > li > a.btn.btn-primary.btn-simple:focus,
 .navbar .navbar-nav > li > a.btn.btn-primary.btn-simple:active {
   background-color: transparent;
-  color: #9c27b0;
+  color: #292C2F;
 }
 .btn.btn-info,
 .navbar .navbar-nav > li > a.btn.btn-info {
@@ -786,7 +786,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 }
 .btn-group.open > .dropdown-toggle.btn.btn-primary,
 .btn-group-vertical.open > .dropdown-toggle.btn.btn-primary {
-  background-color: #9c27b0;
+  background-color: #292C2F;
 }
 .btn-group.open > .dropdown-toggle.btn.btn-success,
 .btn-group-vertical.open > .dropdown-toggle.btn.btn-success {
