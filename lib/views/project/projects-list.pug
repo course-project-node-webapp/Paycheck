@@ -1,7 +1,7 @@
 extends ../shared/_layout
 
 block content
-  #wrapper(style="min-height: 60vh; margin: 5vh 0; text-align: center;")
+  #wrapper
     if !result.data.length
       h2 No projects found.
     else
@@ -9,9 +9,9 @@ block content
         each pr in result.data
           if pr.privacy === 'public'
             div.well.text-center
-              h4(style="font-size: 3rem") Name: #{pr.name}
-              span(style="font-size: 3rem; font-weight: normal; display: block") Required Skills: #{pr.devSkills}
-              span(style="font-size: 3rem; font-weight: normal; display: block") Description: #{pr.description}
+              h4 Name: #{pr.name}
+              span Required Skills: #{pr.devSkills}
+              span Description: #{pr.description}
               if result.user
                 if pr.owner !== result.user.username
                   if !pr.applyers.some(a=>a===result.user.username)
@@ -20,3 +20,20 @@ block content
                       button.btn.btn-success(type='submit') Apply
                   else
                     span Your apllication was sent!
+
+  style(type="text/css").
+    #wrapper {
+      min-height: 60vh;
+      margin: 5vh 0;
+      text-align: center;
+    }
+
+    #wrapper h4 {
+      font-size: 3rem;
+    }    
+
+    #wrapper span {
+      font-size: 3rem;
+      font-weight: normal;
+      display: block;
+    }
