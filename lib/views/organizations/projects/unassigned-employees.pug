@@ -10,7 +10,7 @@ block content
             a.btn.btn-success(href="/organizations/" + result.organization._id + "/projects/" + result.projectId + "/employees/add/" + employee.unassignedId + "/" + result.roleName)
               p= "Assign to " + result.roleName
     else 
-      h3 There aren't any unassigned employees
+      h3 There are no unassigned employees
   
   style(type="text/css").
     #unassigned-employees {
