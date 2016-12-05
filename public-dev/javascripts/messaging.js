@@ -35,7 +35,7 @@
         let msgMinute = convertTime(msgDate.getMinutes());
         let msgSecond = convertTime(msgDate.getSeconds());
         msgDate = msgHour + ':' + msgMinute + ':' + msgSecond;
-        let $dateCreated = $(`<span class="message-time">[${msgDate}]: </span>`);
+        let $dateCreated = $(`<span class="message-time">[${msgDate}]</span>`);
         let $author = $(`<span class="message-author capitalize">${data[i].name}</span>`);
         let $message = $(`<span class="message">${data[i].message}</span>`);
 
