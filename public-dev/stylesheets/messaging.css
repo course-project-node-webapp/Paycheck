@@ -41,11 +41,8 @@ ul.messages>li.chat-message:nth-child(even) {
 
 .message {
     border-radius: 15px;
-    /*background-color: #77A2D6;*/
     padding: 10px;
 }
-
-.message-time {}
 
 .message-time::after {
     content: " ";
