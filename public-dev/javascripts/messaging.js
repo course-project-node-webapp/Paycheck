@@ -37,7 +37,7 @@
         msgDate = msgHour + ':' + msgMinute + ':' + msgSecond;
         let $dateCreated = $(`<span class="message-time">[${msgDate}]</span>`);
         let $author = $(`<span class="message-author capitalize">${data[i].name}</span>`);
-        let $message = $(`<span class="message">${validator.escape(data[i].message)}</span>`);
+        let $message = $(`<span class="message">${validator.blacklist(data[i].message, '<>')}</span>`);
 
         $messageWrapper
           .append($dateCreated)
@@ -78,7 +78,7 @@
     if (event.which === 13 && event.shiftKey === false) {
       socket.emit('input', {
         name: name,
-        message: validator.escape(self.value),
+        message: validator.blacklist(self.value, '<>'),
         dateCreated: Date.now()
       });
 
