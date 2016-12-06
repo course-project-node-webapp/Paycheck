@@ -1,1 +1,2 @@
-public-dev/stylesheets/* linguist-vendored
+public-dev/stylesheets/material-kit.css linguist-vendored
+public-dev/stylesheets/hover.css linguist-vendored
