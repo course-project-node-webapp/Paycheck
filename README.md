@@ -1,6 +1,5 @@
 # [Paycheck](https://paycheck-app.herokuapp.com/)
 
-[Video]()
 ![alt text](./readme-imgs/paycheck-fullscreen.png "app screenshot")
 
 Inspired by [Spotify's engineering culture](https://labs.spotify.com/2014/03/27/spotify-engineering-culture-part-1/)
